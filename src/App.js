@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { withStyles } from "@material-ui/core/styles";
+import React, { Component } from "react";
+import ProjectsOverview from "./components/ProjectsOverview";
+import { Container, Divider, Typography } from "@material-ui/core";
+import PresentationCard from "./components/PresentationCard";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const styles = theme => ({
+  content: {
+    height: "100vh",
+    backgroundColor: theme.palette.grey[100],
+    borderColor: theme.palette.grey[300],
+    borderStyle: "solid",
+    borderWidth: "0px 1px 0px 1px",
+  },
+  footer: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    textAlign: "center"
+  }
+});
+
+
+class App extends Component {
+  state = {};
+
+
+
+  render() {
+    const { classes } = this.props;
+
+
+
+    return (
+      <Container maxWidth="lg" className={classes.content}>
+
+        <PresentationCard></PresentationCard>
+        <Divider />
+        <ProjectsOverview />
+        <Divider />
+        <Typography className={classes.footer} variant="subtitle1" color="textSecondary" gutterBottom>
+          © 2019 Philippe Weier
+        </Typography>
+
+      </Container>
+    );
+  }
 }
 
-export default App;
+export default withStyles(styles, { withTheme: true })(App);
