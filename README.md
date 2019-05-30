@@ -1,3 +1,3 @@
 # Portfolio Website
 
-Personal blog
+Portfolio Website
