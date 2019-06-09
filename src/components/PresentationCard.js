@@ -3,11 +3,10 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import { Grid, Link, Button, Icon } from '@material-ui/core';
-import { SvgIcon } from 'material-ui';
+import { Grid, Link, Button, Icon, SvgIcon } from '@material-ui/core';
 
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   root: {
     padding: 50,
     paddingTop: 60,
@@ -26,10 +25,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   button: {
+
     textTransform: "none",
     margin: theme.spacing(2),
   },
-}));
+});
 
 const StyledLink = withStyles(theme => ({
   root: {
@@ -54,62 +54,68 @@ function LinkedInIcon(props) {
   );
 }
 
-function PresentationCard(props) {
-  const classes = useStyles();
+class PresentationCard extends React.Component {
 
-  return (
-    <div className={classes.root}>
-      <Grid container direction="row" justify="flex-start" spacing={8}>
-        <Grid item md={4}>
-          <Card className={classes.card}>
-            <CardMedia className={classes.image}
-              image={require('../data/images/phil_picture.jpg')}
-              title="My Picture"
-            />
-          </Card>
-        </Grid>
+  render() {
 
-        <Grid item md={8}>
-          <Grid container direction="column" alignItems="center">
-            <Grid item style={{ paddingTop: 5 }}>
-              <Typography component="h4" variant="h4" gutterBottom>
-                Philippe Weier
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <Grid container direction="row" justify="flex-start" spacing={8}>
+          <Grid item md={4}>
+            <Card className={classes.card}>
+              <CardMedia className={classes.image}
+                image={require('../data/images/phil_picture.jpg')}
+                title="My Picture"
+              />
+            </Card>
+          </Grid>
+
+          <Grid item md={8}>
+            <Grid container direction="column" alignItems="center">
+              <Grid item style={{ paddingTop: 5 }}>
+                <Typography component="h4" variant="h4" gutterBottom>
+                  Philippe Weier
                 </Typography>
-              <Typography variant="subtitle1" color="textSecondary" gutterBottom style={{ marginTop: 30 }}>
-                I am a Master student in Computer Science and Communication at <StyledLink target='_blank' href="https://www.epfl.ch/">EPFL</StyledLink> currently working at Unity Labs under the supervision of <StyledLink target='_blank' href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>.
+                <Typography variant="subtitle1" color="textSecondary" gutterBottom style={{ marginTop: 30 }}>
+                  I am a Master student in Computer Science and Communication at <StyledLink target='_blank' href="https://www.epfl.ch/">EPFL</StyledLink> currently working at Unity Labs under the supervision of <StyledLink target='_blank' href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>.
                   </Typography>
-              <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-                My main research interests are physically-based rendering, signal processing and realtime rendering. In my free time when not programming some toy project I have many hobbies including playing the trumpet, painting miniatures, climbing and bicyle touring.
+                <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+                  My main research interests are physically-based rendering, signal processing and realtime rendering. In my free time when not programming some toy project I have many hobbies including playing the trumpet, painting miniatures, climbing and bicyle touring.
                   </Typography>
-            </Grid>
-            <Grid item>
-              <Grid container direction="row" alignContent="center" style={{ marginTop: 40 }} justify="space-around">
-                <Grid item>
-                  <Button variant="outlined" color="secondary" className={classes.button}><Icon className={classes.icon} >description</Icon>
-                    CV
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="secondary" className={classes.button}><GitHubIcon className={classes.icon} color="primary" ></GitHubIcon>
-                    Github
-                </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="secondary" className={classes.button}><LinkedInIcon className={classes.icon} color="primary" ></LinkedInIcon>
-                    LinkedIn
-                </Button>
-                </Grid>
-              </Grid>
+                <Typography variant="subtitle1" color="textSecondary" style={{ marginTop: 30 }}>
+                  Feel free to <StyledLink href="mailto:philippe.weier@epfl.ch">contact me</StyledLink> if you have any questions.
+                </Typography>
 
+              </Grid>
+              <Grid item>
+                <Grid container direction="row" alignContent="center" style={{ marginTop: 40 }} justify="space-around">
+                  <Grid item>
+                    <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={require('../data/resume.pdf')}><Icon className={classes.icon} >description</Icon>
+                      CV
+                  </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href="https://github.com/WeiPhil"><GitHubIcon className={classes.icon} ></GitHubIcon>
+                      Github
+                </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href="https://ch.linkedin.com/in/philippe-weier-5125a2165"><LinkedInIcon className={classes.icon} ></LinkedInIcon>
+                      LinkedIn
+                </Button>
+                  </Grid>
+                </Grid>
+
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
 
-      </Grid >
-    </div >
-  );
+        </Grid >
+      </div >
+    );
+  }
 }
 
-
-export default PresentationCard;
-
+export default withStyles(styles, { withTheme: true })(PresentationCard);

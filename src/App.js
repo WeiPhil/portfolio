@@ -7,7 +7,7 @@ import PresentationCard from "./components/PresentationCard";
 
 const styles = theme => ({
   content: {
-    height: "100vh",
+    height: "100%",
     backgroundColor: theme.palette.grey[100],
     borderColor: theme.palette.grey[300],
     borderStyle: "solid",
