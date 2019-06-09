@@ -96,13 +96,13 @@ class Navigation extends Component {
 
         const qulkanProject = <ProjectCard image={require('../data/images/qulkanScreenshot.png')}
             title="Qulkan"
-            subtitle="A GPU Oriented Prototyping tool"
+            subtitle="A GPU Oriented Prototyping tool, 2019"
             description={"Qulkan is a personal project designed to give a quick start to anyone considering using OpenGL or Vulkan as a graphical API. It has been designed to offer a simple interface for more complex software or research validation tools."} />
 
 
         const procaryotaProject = <ProjectCard image={require('../data/images/procaryotaScreenshot.png')}
             title="Procaryota"
-            subtitle="A 2D space-shooter like game"
+            subtitle="A 2D space-shooter like game, 2018"
             description={"Procaryota is beeing developped in my free time. You incarnate a little cell fighting evil viruses, continuously evolving and trying to make his way through a dangerous environment."}
             githubLink="https://github.com/WeiPhil/Procaryota" />
 
@@ -112,13 +112,13 @@ class Navigation extends Component {
             </>
         const lotrProject = <ProjectCard image={require('../data/images/lotrScreenshot.png')}
             title="Lotr Army Companion App"
-            subtitle="Lord of the Ring: An unofficial companion App for your armies"
+            subtitle="Lord of the Ring: An unofficial companion App for your armies, 2018"
             description={lotrDescription}
             githubLink="https://github.com/WeiPhil/LotrArmyCompanion" />
 
         ///////////////////////
 
-        const personalProjects = [procaryotaProject, qulkanProject, lotrProject]
+        const personalProjects = [qulkanProject, procaryotaProject, lotrProject]
         const researchProjects = [layeredAnisoProject]
         const courseProjects = [cs440Project]
 
