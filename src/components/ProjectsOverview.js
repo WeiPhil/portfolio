@@ -78,7 +78,7 @@ class Navigation extends Component {
             title="Advanced Computer Graphics"
             subtitle={cs440Subtitle}
             description={cs440Description}
-            projectPageLink={"https://weiphil.github.io/"} />
+            projectPageLink={"https://weiphil.github.io/acg2018/"} />
 
 
         // TODO Semester project
