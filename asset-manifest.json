@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/static/js/main.c6d77a49.chunk.js",
-    "main.js.map": "/static/js/main.c6d77a49.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.4989088c.chunk.js": "/static/js/2.4989088c.chunk.js",
-    "static/js/2.4989088c.chunk.js.map": "/static/js/2.4989088c.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.382f5298ae1c148958f572b391adce7c.js": "/precache-manifest.382f5298ae1c148958f572b391adce7c.js",
-    "service-worker.js": "/service-worker.js",
-    "static/media/cs440.png": "/static/media/cs440.e6e1053f.png",
-    "static/media/layered_aniso.png": "/static/media/layered_aniso.abcda57d.png",
-    "static/media/lotrScreenshot.png": "/static/media/lotrScreenshot.bb34f7ec.png",
-    "static/media/phil_picture.jpg": "/static/media/phil_picture.bbd436f5.jpg",
-    "static/media/procaryotaScreenshot.png": "/static/media/procaryotaScreenshot.f3555398.png",
-    "static/media/qulkanScreenshot.png": "/static/media/qulkanScreenshot.566af880.png",
-    "static/media/resume.pdf": "/static/media/resume.87d265b9.pdf"
+    "main.js": "/portefolio/static/js/main.c6d77a49.chunk.js",
+    "main.js.map": "/portefolio/static/js/main.c6d77a49.chunk.js.map",
+    "runtime~main.js": "/portefolio/static/js/runtime~main.32a7b7e9.js",
+    "runtime~main.js.map": "/portefolio/static/js/runtime~main.32a7b7e9.js.map",
+    "static/js/2.4989088c.chunk.js": "/portefolio/static/js/2.4989088c.chunk.js",
+    "static/js/2.4989088c.chunk.js.map": "/portefolio/static/js/2.4989088c.chunk.js.map",
+    "index.html": "/portefolio/index.html",
+    "precache-manifest.bcf14a8728c6f1f13360b0d3129d0c5d.js": "/portefolio/precache-manifest.bcf14a8728c6f1f13360b0d3129d0c5d.js",
+    "service-worker.js": "/portefolio/service-worker.js",
+    "static/media/cs440.png": "/portefolio/static/media/cs440.e6e1053f.png",
+    "static/media/layered_aniso.png": "/portefolio/static/media/layered_aniso.abcda57d.png",
+    "static/media/lotrScreenshot.png": "/portefolio/static/media/lotrScreenshot.bb34f7ec.png",
+    "static/media/phil_picture.jpg": "/portefolio/static/media/phil_picture.bbd436f5.jpg",
+    "static/media/procaryotaScreenshot.png": "/portefolio/static/media/procaryotaScreenshot.f3555398.png",
+    "static/media/qulkanScreenshot.png": "/portefolio/static/media/qulkanScreenshot.566af880.png",
+    "static/media/resume.pdf": "/portefolio/static/media/resume.87d265b9.pdf"
   }
 }
