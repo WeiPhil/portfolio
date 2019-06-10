@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/portefolio/static/js/main.c6d77a49.chunk.js",
-    "main.js.map": "/portefolio/static/js/main.c6d77a49.chunk.js.map",
-    "runtime~main.js": "/portefolio/static/js/runtime~main.32a7b7e9.js",
-    "runtime~main.js.map": "/portefolio/static/js/runtime~main.32a7b7e9.js.map",
-    "static/js/2.4989088c.chunk.js": "/portefolio/static/js/2.4989088c.chunk.js",
-    "static/js/2.4989088c.chunk.js.map": "/portefolio/static/js/2.4989088c.chunk.js.map",
-    "index.html": "/portefolio/index.html",
-    "precache-manifest.285d5b5d3d4bd681ae31540fd7ea77a9.js": "/portefolio/precache-manifest.285d5b5d3d4bd681ae31540fd7ea77a9.js",
-    "service-worker.js": "/portefolio/service-worker.js",
-    "static/media/cs440.png": "/portefolio/static/media/cs440.e6e1053f.png",
-    "static/media/layered_aniso.png": "/portefolio/static/media/layered_aniso.abcda57d.png",
-    "static/media/lotrScreenshot.png": "/portefolio/static/media/lotrScreenshot.bb34f7ec.png",
-    "static/media/phil_picture.jpg": "/portefolio/static/media/phil_picture.bbd436f5.jpg",
-    "static/media/procaryotaScreenshot.png": "/portefolio/static/media/procaryotaScreenshot.f3555398.png",
-    "static/media/qulkanScreenshot.png": "/portefolio/static/media/qulkanScreenshot.566af880.png",
-    "static/media/resume.pdf": "/portefolio/static/media/resume.87d265b9.pdf"
+    "main.js": "/portfolio/static/js/main.c9504894.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.c9504894.chunk.js.map",
+    "runtime~main.js": "/portfolio/static/js/runtime~main.f308c8e6.js",
+    "runtime~main.js.map": "/portfolio/static/js/runtime~main.f308c8e6.js.map",
+    "static/js/2.7a2c647d.chunk.js": "/portfolio/static/js/2.7a2c647d.chunk.js",
+    "static/js/2.7a2c647d.chunk.js.map": "/portfolio/static/js/2.7a2c647d.chunk.js.map",
+    "index.html": "/portfolio/index.html",
+    "precache-manifest.ddaa1aefd9422c97aa97b6278f11d861.js": "/portfolio/precache-manifest.ddaa1aefd9422c97aa97b6278f11d861.js",
+    "service-worker.js": "/portfolio/service-worker.js",
+    "static/media/cs440.png": "/portfolio/static/media/cs440.e6e1053f.png",
+    "static/media/layered_aniso.png": "/portfolio/static/media/layered_aniso.abcda57d.png",
+    "static/media/lotrScreenshot.png": "/portfolio/static/media/lotrScreenshot.bb34f7ec.png",
+    "static/media/phil_picture.jpg": "/portfolio/static/media/phil_picture.bbd436f5.jpg",
+    "static/media/procaryotaScreenshot.png": "/portfolio/static/media/procaryotaScreenshot.f3555398.png",
+    "static/media/qulkanScreenshot.png": "/portfolio/static/media/qulkanScreenshot.566af880.png",
+    "static/media/resume.pdf": "/portfolio/static/media/resume.87d265b9.pdf"
   }
 }
