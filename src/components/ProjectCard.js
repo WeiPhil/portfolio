@@ -1,18 +1,22 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import { Grid, Button, SvgIcon, Icon, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   icon: {
     marginRight: theme.spacing(2),
   },
   card: {
     width: "100%",
     height: 300,
+    [theme.breakpoints.down('xs')]: {
+      height: 160,
+    },
 
   },
   image: {
@@ -22,7 +26,7 @@ const styles = theme => ({
   button: {
     textTransform: "none",
   },
-});
+}));
 
 function GitHubIcon(props) {
   return (
@@ -32,88 +36,73 @@ function GitHubIcon(props) {
   );
 }
 
-class ProjectCard extends React.Component {
-
-  render() {
-
-    const { classes, image, title, subtitle, description, githubLink, projectPageLink } = this.props;
-
-    return (
-      <Grid container direction="row" justify="space-between">
-        <Grid item xs={4}>
-
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.image}
-              image={image}
-              title="Project Illustration"
-            />
-          </Card>
-        </Grid>
+function ProjectCard(props) {
+  const theme = useTheme();
+  const classes = useStyles();
 
 
-        <Grid item xs={7}>
-          <Grid container direction="column">
+  const { image, title, subtitle, description, githubLink, projectPageLink } = props;
 
-            <Grid item>
-              <Typography component="h5" variant="h5" gutterBottom>
-                {title}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-                <em>
-                  {subtitle}
-                </em>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" color="textSecondary">
-                {description}
-              </Typography>
-            </Grid>
+  const mobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-            <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginTop: 40 }}>
-              <Grid item style={{ marginLeft: 10 }}>
-                {githubLink !== "" && <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={githubLink}><GitHubIcon className={classes.icon} ></GitHubIcon>
-                  Github
-                </Button>}
-              </Grid>
-              <Grid item style={{ marginLeft: 10 }}>
+  return (
+    <Grid container direction={mobile ? "column" : "row"} justify="space-between">
+      <Grid item xs={mobile ? true : 4}>
 
-
-
-                {projectPageLink !== "" && <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={projectPageLink}><Icon className={classes.icon} >folder</Icon>
-                  Project Page
-                </Button>}
-
-              </Grid>
-            </Grid>
-
-          </Grid>
-          {/* <Typography component="h5" variant="h5" gutterBottom>
-          {title}
-        </Typography>
-        <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-          {subtitle}
-        </Typography>
-        <Typography variant="body2" color="textSecondary">
-          {description}
-        </Typography>
-
-
-        {githubLink !== "" && <Button variant="outlined" color="secondary" className={classes.button}><GitHubIcon className={classes.icon} color="primary" ></GitHubIcon>
-          {githubLink}
-        </Button>}
-
-        {projectPageLink !== "" && <Button variant="outlined" color="secondary" className={classes.button}><Icon className={classes.icon} >folder</Icon>
-          {projectPageLink}
-        </Button>} */}
-
-        </Grid>
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.image}
+            image={image}
+            title="Project Illustration"
+          />
+        </Card>
       </Grid>
-    );
-  }
+
+
+      <Grid item xs={mobile ? true : 7}>
+        <Grid container direction="column" style={{ marginTop: mobile && 20 }}>
+
+          <Grid item>
+            <Typography component="h5" variant="h5" gutterBottom>
+              {title}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+              <em>
+                {subtitle}
+              </em>
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="body2" color="textSecondary">
+              {description}
+            </Typography>
+          </Grid>
+
+          <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginTop: mobile ? 20 : 40 }}>
+            <Grid item style={{ marginLeft: 10 }}>
+              {githubLink !== "" && <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={githubLink}><GitHubIcon className={classes.icon} ></GitHubIcon>
+                Github
+                </Button>}
+            </Grid>
+            <Grid item style={{ marginLeft: 10 }}>
+
+
+
+              {projectPageLink !== "" && <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={projectPageLink}><Icon className={classes.icon} >folder</Icon>
+                Project Page
+                </Button>}
+
+            </Grid>
+          </Grid>
+
+        </Grid>
+
+      </Grid>
+    </Grid>
+  );
+
 }
 
 ProjectCard.propTypes = {
@@ -127,4 +116,53 @@ ProjectCard.defaultProps = {
 };
 
 
-export default withStyles(styles, { withTheme: true })(ProjectCard);
+// export default withStyles(styles, { withTheme: true })(ProjectCard);
+
+
+// import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Card from '@material-ui/core/Card';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import { Grid } from '@material-ui/core';
+
+
+// const useStyles = makeStyles(theme => ({
+//   card: {
+//     width: "100%",
+//     height: 300,
+
+//   },
+//   image: {
+//     height: "100%",
+//     width: "100%",
+//   },
+// }));
+
+// function ProjectCard(props) {
+//   const classes = useStyles();
+//   const image = props.image;
+//   const content = props.content;
+
+//   return (
+//     <Grid container direction="row" spacing={10}>
+//       <Grid item md={4}>
+
+//         <Card className={classes.card}>
+//           <CardMedia
+//             className={classes.image}
+//             image={image}
+//             title="Project Illustration"
+//           />
+//         </Card>
+//       </Grid>
+
+//       <Grid item md={8}>
+//         {content}
+//       </Grid>
+//     </Grid>
+//   );
+// }
+
+
+export default ProjectCard;
+

@@ -1,21 +1,31 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Grid, Link, Button, Icon, SvgIcon } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     padding: 50,
     paddingTop: 60,
     paddingBottom: 50,
+    [theme.breakpoints.down('sm')]: {
+      padding: 10,
+    },
   },
   card: {
+    marginTop: 15,
     height: 250,
     width: 180,
-    // minWidth: 180,
+    [theme.breakpoints.down('sm')]: {
+      height: 200,
+      width: 160,
+      margin: "0 auto",
+      marginTop: 30,
+    },
   },
   image: {
     height: "100%",
@@ -29,7 +39,7 @@ const styles = theme => ({
     textTransform: "none",
     margin: theme.spacing(2),
   },
-});
+}));
 
 const StyledLink = withStyles(theme => ({
   root: {
@@ -54,68 +64,77 @@ function LinkedInIcon(props) {
   );
 }
 
-class PresentationCard extends React.Component {
+function PresentationCard(props) {
+  const theme = useTheme();
+  const classes = useStyles();
 
-  render() {
+  const smallWidth = useMediaQuery(theme.breakpoints.down('sm'));
 
-    const { classes } = this.props;
+  return (
+    <div className={classes.root}>
+      <Grid container direction={smallWidth ? "column" : "row"} alignItems={smallWidth ? "center" : "flex-start"} >
+        {!smallWidth && <Grid item md={3}>
+          <Card className={classes.card}>
+            <CardMedia className={classes.image}
+              image={require('../data/images/phil_picture.jpg')}
+              title="My Picture"
+            />
+          </Card>
+        </Grid>}
 
-    return (
-      <div className={classes.root}>
-        <Grid container direction="row" justify="flex-start" spacing={8}>
-          <Grid item md={4}>
-            <Card className={classes.card}>
-              <CardMedia className={classes.image}
-                image={require('../data/images/phil_picture.jpg')}
-                title="My Picture"
-              />
-            </Card>
-          </Grid>
-
-          <Grid item md={8}>
-            <Grid container direction="column" alignItems="center">
-              <Grid item style={{ paddingTop: 5 }}>
-                <Typography component="h4" variant="h4" gutterBottom>
-                  Philippe Weier
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary" gutterBottom style={{ marginTop: 30 }}>
-                  I am a Master student in Computer Science and Communication at <StyledLink target='_blank' href="https://www.epfl.ch/">EPFL</StyledLink> currently working at Unity Labs under the supervision of <StyledLink target='_blank' href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>.
-                  </Typography>
-                <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-                  My main research interests are physically-based rendering, signal processing and realtime rendering. In my free time when not programming some toy project I have many hobbies including playing the trumpet, painting miniatures, climbing and bicyle touring.
-                  </Typography>
-                <Typography variant="subtitle1" color="textSecondary" style={{ marginTop: 30 }}>
-                  Feel free to <StyledLink href="mailto:philippe.weier@epfl.ch">contact me</StyledLink> if you have any questions.
+        <Grid item md={smallWidth ? true : 9}>
+          <Grid container direction="column" alignItems="center">
+            <Grid item style={{ paddingTop: smallWidth ? 15 : 5, }}>
+              <Typography component={smallWidth ? "h2" : "h4"} variant={smallWidth ? "h3" : "h4"} align={smallWidth ? "center" : "inherit"} gutterBottom>
+                Philippe Weier
                 </Typography>
 
-              </Grid>
-              <Grid item>
-                <Grid container direction="row" alignContent="center" style={{ marginTop: 40 }} justify="space-around">
-                  <Grid item>
-                    <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={require('../data/resume.pdf')}><Icon className={classes.icon} >description</Icon>
-                      CV
+              {smallWidth &&
+                <Card className={classes.card}>
+                  <CardMedia className={classes.image}
+                    image={require('../data/images/phil_picture.jpg')}
+                    title="My Picture"
+                  />
+                </Card>}
+
+              <Typography variant="subtitle1" color="textSecondary" gutterBottom style={{ marginTop: 30 }}>
+                I am a Master student in Computer Science and Communication at <StyledLink target='_blank' href="https://www.epfl.ch/">EPFL</StyledLink> currently working at Unity Labs under the supervision of <StyledLink target='_blank' href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>.
+                  </Typography>
+              <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+                My main research interests are physically-based rendering, signal processing and realtime rendering. In my free time when not programming some toy project I have many hobbies including playing the trumpet, painting miniatures, climbing and bicyle touring.
+                  </Typography>
+              <Typography variant="subtitle1" color="textSecondary" style={{ marginTop: 30 }}>
+                Feel free to <StyledLink href="mailto:philippe.weier@epfl.ch">contact me</StyledLink> if you have any questions.
+                </Typography>
+
+            </Grid>
+            <Grid item>
+              <Grid container direction="row" alignContent="center" style={{ marginTop: 40 }} justify="space-around">
+                <Grid item>
+                  <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={require('../data/resume.pdf')}><Icon className={classes.icon} >description</Icon>
+                    CV
                   </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href="https://github.com/WeiPhil"><GitHubIcon className={classes.icon} ></GitHubIcon>
-                      Github
-                </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href="https://ch.linkedin.com/in/philippe-weier-5125a2165"><LinkedInIcon className={classes.icon} ></LinkedInIcon>
-                      LinkedIn
-                </Button>
-                  </Grid>
                 </Grid>
-
+                <Grid item>
+                  <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href="https://github.com/WeiPhil"><GitHubIcon className={classes.icon} ></GitHubIcon>
+                    Github
+                </Button>
+                </Grid>
+                <Grid item>
+                  <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href="https://ch.linkedin.com/in/philippe-weier-5125a2165"><LinkedInIcon className={classes.icon} ></LinkedInIcon>
+                    LinkedIn
+                </Button>
+                </Grid>
               </Grid>
+
             </Grid>
           </Grid>
+        </Grid>
 
-        </Grid >
-      </div >
-    );
-  }
+      </Grid >
+    </div >
+  );
+
 }
 
-export default withStyles(styles, { withTheme: true })(PresentationCard);
+export default PresentationCard;

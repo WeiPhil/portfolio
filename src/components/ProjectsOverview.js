@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
-import { Typography, Grid, withStyles, Link, Button, Icon } from '@material-ui/core';
+import { Grid, withStyles, Link, Divider } from '@material-ui/core';
 import ProjectCard from './ProjectCard';
-import { SvgIcon } from 'material-ui';
 
 
 const StyledTabs = withStyles(theme => ({
@@ -24,6 +23,9 @@ const styles = theme => ({
     content: {
         margin: 40,
         height: "100%",
+        [theme.breakpoints.down('md')]: {
+            margin: 15,
+        },
     },
     tabView: {
         marginTop: 50,
@@ -52,7 +54,7 @@ const StyledLink = withStyles(theme => ({
 
 
 
-class Navigation extends Component {
+class ProjectsOverview extends Component {
     state = {
         tabValue: 0,
     };
@@ -108,7 +110,7 @@ class Navigation extends Component {
 
 
         const lotrDescription = <>
-            The Lotr Army Companion App is a full-stack Web Application created in React. It has been created for the table-top game <StyledLink href="https://www.games-workshop.com/en-EU/Middle-earth">Middle-Earth Strategy Battle Game</StyledLink> and its unoficial extension Battle Companies. It serves as a database and an interactive army creation helper.
+            The Lotr Army Companion App is a full-stack Web Application created in React. It has been created for the table-top game <StyledLink href="https://www.games-workshop.com/en-EU/Middle-earth">Middle-Earth Strategy Battle Game</StyledLink> and its unofficial extension Battle Companies. It serves as a database and an interactive army creation helper.
             </>
         const lotrProject = <ProjectCard image={require('../data/images/lotrScreenshot.png')}
             title="Lotr Army Companion App"
@@ -135,9 +137,12 @@ class Navigation extends Component {
                     <Grid container direction="column">
 
                         {courseProjects.map((projectCard, index) => (
-                            <Grid item key={index} style={{ marginTop: 40 }}>
-                                {projectCard}
-                            </Grid>
+                            <div key={index} >
+                                {index !== 0 && <Divider style={{ marginTop: index !== 0 && 20 }} />}
+                                <Grid item key={index} style={{ marginTop: index !== 0 && 40 }}>
+                                    {projectCard}
+                                </Grid>
+                            </div>
                         ))}
 
                     </Grid >
@@ -145,18 +150,24 @@ class Navigation extends Component {
                     <Grid container direction="column">
 
                         {researchProjects.map((projectCard, index) => (
-                            <Grid item key={index} style={{ marginTop: 40 }}>
-                                {projectCard}
-                            </Grid>
+                            <div key={index} >
+                                {index !== 0 && <Divider style={{ marginTop: index !== 0 && 20 }} />}
+                                <Grid item style={{ marginTop: index !== 0 && 40 }}>
+                                    {projectCard}
+                                </Grid>
+                            </div>
                         ))}
 
                     </Grid >
                     <Grid container direction="column">
 
                         {personalProjects.map((projectCard, index) => (
-                            <Grid item key={index} style={{ marginTop: 40 }}>
-                                {projectCard}
-                            </Grid>
+                            <div key={index} >
+                                {index !== 0 && <Divider style={{ marginTop: index !== 0 && 20 }} />}
+                                <Grid item key={index} style={{ marginTop: index !== 0 && 40 }}>
+                                    {projectCard}
+                                </Grid>
+                            </div>
                         ))}
 
                     </Grid >
@@ -168,4 +179,4 @@ class Navigation extends Component {
     }
 }
 
-export default withStyles(styles, { withTheme: true })(Navigation);
+export default withStyles(styles, { withTheme: true })(ProjectsOverview);
