@@ -71,10 +71,10 @@ class ProjectsOverview extends Component {
         // Course Projects
 
         const cs440Subtitle = <>
-            Implementation and extension of a ray tracer using the <StyledLink href="https://wjakob.github.io/nori/">Nori framework</StyledLink>, 2018
+            Implementation and extension of a ray tracer in C++ using the <StyledLink href="https://wjakob.github.io/nori/">Nori framework</StyledLink>, 2018
         </>
         const cs440Description = <>
-            During the course given by <StyledLink href="https://rgl.epfl.ch/people/wjakob/">Wenzel Jakob</StyledLink> at EPFL I extended my ray tracer with various features including a volumetric path tracer and won the 2nd place in the yearly rendering competition among ~45 entries."
+            During the course given by <StyledLink href="https://rgl.epfl.ch/people/wjakob/">Wenzel Jakob</StyledLink> at EPFL I extended my ray tracer with various features including a volumetric path tracer and won the 2nd place in the yearly rendering competition among ~45 entries.
         </>
         const cs440Project = <ProjectCard image={require('../data/images/cs440.png')}
             title="Advanced Computer Graphics"
@@ -87,30 +87,30 @@ class ProjectsOverview extends Component {
 
         // Research Projects
         const layeredAnisoDescription = <>
-            In this research project I enhanced the <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> to anisotropic layered materials."
+            I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new bsdf plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended bsdf model has high performances for offline and realtime rendering and will also be implemented in the High Definition Rendering Pipeline (HDRP) of <StyledLink href="https://unity.com/">Unity</StyledLink> in the future.
         </>
         const layeredAnisoProject = <ProjectCard image={require('../data/images/layered_aniso.png')}
             title="Efficient Rendering of Anisotropic Layered Materials using an Atomic Decomposition with Statistical Operators"
-            subtitle="Philippe Weier and Laurent Belcour, 2019"
+            subtitle="Philippe Weier and Laurent Belcour at Unity Labs, 2019"
             description={layeredAnisoDescription} />
 
         // Personal Projects
 
         const qulkanProject = <ProjectCard image={require('../data/images/qulkanScreenshot.png')}
             title="Qulkan"
-            subtitle="A GPU Oriented Prototyping tool, 2019"
-            description={"Qulkan is a personal project designed to give a quick start to anyone considering using OpenGL or Vulkan as a graphical API. It has been designed to offer a simple interface for more complex software or research validation tools."} />
+            subtitle="A GPU Oriented Prototyping tool in C++17, 2019"
+            description={"Qulkan is a personal project designed to give a quick start to anyone considering using OpenGL or Vulkan as a graphical API. It has been designed to offer a simple and flexible interface for more complex software or research validation tools."} />
 
 
         const procaryotaProject = <ProjectCard image={require('../data/images/procaryotaScreenshot.png')}
             title="Procaryota"
-            subtitle="A 2D space-shooter like game, 2018"
-            description={"Procaryota is beeing developped in my free time. You incarnate a little cell fighting evil viruses, continuously evolving and trying to make his way through a dangerous environment."}
+            subtitle="A 2D space-shooter like game in C#, 2018"
+            description={"Procaryota is beeing developped in my free time for fun. You incarnate a little cell fighting evil viruses, continuously evolving and trying to make his way through a dangerous environment."}
             githubLink="https://github.com/WeiPhil/Procaryota" />
 
 
         const lotrDescription = <>
-            The Lotr Army Companion App is a full-stack Web Application created in React. It has been created for the table-top game <StyledLink href="https://www.games-workshop.com/en-EU/Middle-earth">Middle-Earth Strategy Battle Game</StyledLink> and its unofficial extension Battle Companies. It serves as a database and an interactive army creation helper.
+            The Lotr Army Companion App is a full-stack Web Application created in React. It has been created for the table-top game <StyledLink href="https://www.games-workshop.com/en-EU/Middle-earth">Middle-Earth Strategy Battle Game</StyledLink> and its unofficial extension Battle Companies. It has a full database of all the Middle-Earth characters and an interactive army creation interface allowing you to quickly build up any army you would like to play.
             </>
         const lotrProject = <ProjectCard image={require('../data/images/lotrScreenshot.png')}
             title="Lotr Army Companion App"
