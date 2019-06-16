@@ -101,7 +101,7 @@ function PresentationCard(props) {
                 I am a Master student in Computer Science and Communication at <StyledLink target='_blank' href="https://www.epfl.ch/">EPFL</StyledLink> currently working at Unity Labs under the supervision of <StyledLink target='_blank' href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>.
                   </Typography>
               <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-                My main research interests are physically-based rendering, signal processing and realtime rendering. In my free time when not programming some toy project I have many hobbies including playing the trumpet, painting miniatures, climbing and bicyle touring.
+                My main research interests are physically-based rendering, signal processing and realtime rendering. In my free time when not programming some toy project I have many hobbies including playing the trumpet, painting miniatures, climbing and bicycle touring.
                   </Typography>
               <Typography variant="subtitle1" color="textSecondary" style={{ marginTop: 30 }}>
                 Feel free to <StyledLink href="mailto:philippe.weier@epfl.ch">contact me</StyledLink> if you have any questions.
