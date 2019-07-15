@@ -69,9 +69,7 @@ function ProjectCard(props) {
           </Grid>
           <Grid item>
             <Typography variant="subtitle1" color="textSecondary" gutterBottom>
-              <em>
-                {subtitle}
-              </em>
+              <i>{subtitle}</i>
             </Typography>
           </Grid>
           <Grid item>

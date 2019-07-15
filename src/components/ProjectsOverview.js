@@ -63,10 +63,10 @@ class ProjectsOverview extends Component {
         this.setState({ tabValue });
     };
 
-
     render() {
 
         const { classes } = this.props;
+
 
         // Course Projects
 
@@ -132,7 +132,13 @@ class ProjectsOverview extends Component {
                     <Tab disableRipple className={classes.tab} label="Research Projects" />
                     <Tab disableRipple className={classes.tab} label="Personal Projects" />
                 </StyledTabs>
-                <SwipeableViews className={classes.tabView} index={this.state.tabValue} onChangeIndex={this.handleTabChange}>
+                <SwipeableViews enableMouseEvents
+                    onSwitching={(i, type) => {
+                        if (type === "end") {
+                            this.setState({ tabValue: i });
+                        }
+                    }}
+                    className={classes.tabView} index={this.state.tabValue} >
 
                     <Grid container direction="column">
 
