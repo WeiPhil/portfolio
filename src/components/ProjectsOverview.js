@@ -56,7 +56,7 @@ const StyledLink = withStyles(theme => ({
 
 class ProjectsOverview extends Component {
     state = {
-        tabValue: 0,
+        tabValue: 0
     };
 
     handleTabChange = (event, tabValue) => {
@@ -83,11 +83,12 @@ class ProjectsOverview extends Component {
             projectPageLink={"https://weiphil.github.io/acg2018/"} />
 
 
+
         // TODO Semester project
 
         // Research Projects
         const layeredAnisoDescription = <>
-            I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new bsdf plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended bsdf model has high performances for offline and realtime rendering and will also be implemented in the High Definition Rendering Pipeline (HDRP) of <StyledLink href="https://unity.com/">Unity</StyledLink> in the future.
+            I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new BSDF (Bidirectional Scattering Distribution Function) plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended BSDF model has great performances in offline and realtime rendering frameworks thanks to statistical evaluation of the layered structure. It will soon be part of the High Definition Rendering Pipeline (HDRP) of <StyledLink href="https://unity.com/">Unity</StyledLink>.
         </>
         const layeredAnisoProject = <ProjectCard image={require('../data/images/layered_aniso.png')}
             title="Efficient Rendering of Anisotropic Layered Materials using an Atomic Decomposition with Statistical Operators"
@@ -132,6 +133,7 @@ class ProjectsOverview extends Component {
                     <Tab disableRipple className={classes.tab} label="Research Projects" />
                     <Tab disableRipple className={classes.tab} label="Personal Projects" />
                 </StyledTabs>
+
                 <SwipeableViews enableMouseEvents
                     onSwitching={(i, type) => {
                         if (type === "end") {

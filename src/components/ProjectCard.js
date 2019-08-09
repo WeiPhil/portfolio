@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import { Grid, Button, SvgIcon, Icon, Typography } from '@material-ui/core';
+import { Grid, Button, SvgIcon, Icon, Typography, CardActionArea } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -40,22 +41,42 @@ function ProjectCard(props) {
   const theme = useTheme();
   const classes = useStyles();
 
+  const [toggle, setToggle] = useState(false);
 
   const { image, title, subtitle, description, githubLink, projectPageLink } = props;
 
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  function handleClickOpen() {
+    setToggle(true);
+  }
+
+  function handleClose() {
+    setToggle(false);
+  }
 
   return (
     <Grid container direction={mobile ? "column" : "row"} justify="space-between">
       <Grid item xs={mobile ? true : 4}>
 
         <Card className={classes.card}>
-          <CardMedia
-            className={classes.image}
-            image={image}
-            title="Project Illustration"
-          />
+
+          <CardActionArea style={{ width: '100%', height: '100%' }} onClick={handleClickOpen}>
+            <CardMedia
+              className={classes.image}
+              image={image}
+              title="Project Illustration"
+            />
+          </CardActionArea>
         </Card>
+
+        {toggle && (
+          <Lightbox
+            mainSrc={image}
+            onCloseRequest={handleClose}
+          />
+        )}
+
       </Grid>
 
 
@@ -98,7 +119,7 @@ function ProjectCard(props) {
         </Grid>
 
       </Grid>
-    </Grid>
+    </Grid >
   );
 
 }
