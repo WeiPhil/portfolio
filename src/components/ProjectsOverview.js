@@ -96,11 +96,11 @@ class ProjectsOverview extends Component {
         //     description={layeredAnisoDescription} />
 
         const layeredAnisoDescription = <>
-
+            Research Project in Rendering at Unity Labs under the supervision of Laurent Belcour
         </>
-        const layeredAnisoProject = <ProjectCard image={require('../data/images/coming_soon.png')}
+        const layeredAnisoProject = <ProjectCard image={require('../data/images/unity_logo.png')}
             title="In Progress"
-            subtitle=""
+            subtitle="Graphics Intern at Unity Labs"
             description={layeredAnisoDescription} />
 
         // Personal Projects
