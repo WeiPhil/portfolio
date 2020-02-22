@@ -70,17 +70,32 @@ class ProjectsOverview extends Component {
 
         // Course Projects
 
+        // Advanced Computer Graphics
         const cs440Subtitle = <>
             Implementation and extension of a ray tracer in C++ using the <StyledLink href="https://wjakob.github.io/nori/">Nori framework</StyledLink>, 2018
         </>
         const cs440Description = <>
-            During the course given by <StyledLink href="https://rgl.epfl.ch/people/wjakob/">Wenzel Jakob</StyledLink> at EPFL I extended my ray tracer with various features including a volumetric path tracer and won the 2nd place in the yearly rendering competition among ~45 entries.
+            During the course given by <StyledLink href="https://rgl.epfl.ch/people/wjakob/">Wenzel Jakob</StyledLink> at EPFL I extended my ray tracer with various features including a volumetric path tracer and won the 2nd place in the yearly rendering competition.
         </>
         const cs440Project = <ProjectCard image={require('../data/images/cs440.png')}
             title="Advanced Computer Graphics"
             subtitle={cs440Subtitle}
             description={cs440Description}
             projectPageLink={"https://weiphil.github.io/acg2018/"} />
+
+        // Computational Photography
+
+        const imageAndVideoSubtitle = <>
+            GPU implementation of different light field reconstruction algorithms using OpenGL3, 2019
+        </>
+        const imageAndVideoDescription = <>
+            During the Image and Video processing course (EE550) at EPFL I implemented different reconstruction algorithm of the plenoptic function based on the Light Field Rendering paper from <StyledLink href="https://graphics.stanford.edu/~levoy/">Marc Levoy</StyledLink>. This includes a view-based reconstruction, digital refocusing and dynamic aperture change.
+        </>
+        const imageAndVideoProject = <ProjectCard image={require('../data/images/imageAndVideoProc.gif')}
+            title="Computational Photography"
+            subtitle={imageAndVideoSubtitle}
+            description={imageAndVideoDescription}
+            githubLink={"https://github.com/WeiPhil/LightFieldImaging"} />
 
 
 
@@ -131,7 +146,7 @@ class ProjectsOverview extends Component {
 
         const personalProjects = [qulkanProject, procaryotaProject, lotrProject]
         const researchProjects = [layeredAnisoProject]
-        const courseProjects = [cs440Project]
+        const courseProjects = [cs440Project, imageAndVideoProject]
 
 
         return (

@@ -98,13 +98,13 @@ function PresentationCard(props) {
                 </Card>}
 
               <Typography variant="subtitle1" color="textSecondary" gutterBottom style={{ marginTop: 30 }}>
-                I am a Master student in Computer Science and Communication at <StyledLink target='_blank' href="https://www.epfl.ch/">EPFL</StyledLink> currently working at Unity Labs under the supervision of <StyledLink target='_blank' href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>.
+                I am a Master student in Computer Science and Communication at <StyledLink target='_blank' href="https://www.epfl.ch/">EPFL</StyledLink> currently doing my Master Thesis at <StyledLink target='_blank' href="https://www.wetafx.co.nz/">Weta Digital</StyledLink> in rendering.
                   </Typography>
               <Typography variant="subtitle1" color="textSecondary" gutterBottom>
                 My main research interests are physically-based rendering, signal processing and realtime rendering. In my free time when not programming some toy project I have many hobbies including playing the trumpet, painting miniatures, climbing and bicycle touring.
                   </Typography>
               <Typography variant="subtitle1" color="textSecondary" style={{ marginTop: 30 }}>
-                Feel free to <StyledLink href="mailto:philippe.weier@epfl.ch">contact me</StyledLink> if you have any questions.
+                Feel free to <StyledLink href="mailto:philippe.weier@epfl.ch">contact me</StyledLink> if you have any questions or simply want to chat.
                 </Typography>
 
             </Grid>
