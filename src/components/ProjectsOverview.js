@@ -89,7 +89,7 @@ class ProjectsOverview extends Component {
             GPU implementation of different light field reconstruction algorithms using OpenGL3, 2019
         </>
         const imageAndVideoDescription = <>
-            During the Image and Video processing course (EE550) at EPFL I implemented different reconstruction algorithm of the plenoptic function based on the Light Field Rendering paper from <StyledLink href="https://graphics.stanford.edu/~levoy/">Marc Levoy</StyledLink>. This includes a view-based reconstruction, digital refocusing and dynamic aperture change.
+            During the Image and Video processing course (EE550) at EPFL I implemented different reconstruction algorithms of the plenoptic function. It is mainly based on previous work on Light Field Rendering by <StyledLink href="https://graphics.stanford.edu/~levoy/">Marc Levoy</StyledLink> and <StyledLink href="https://graphics.stanford.edu/~renng/">Ren Ng</StyledLink>. This includes a view-based reconstruction, digital refocusing and dynamic aperture change.
         </>
         const imageAndVideoProject = <ProjectCard image={require('../data/images/imageAndVideoProc.gif')}
             title="Computational Photography"
