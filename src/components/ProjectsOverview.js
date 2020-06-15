@@ -102,13 +102,13 @@ class ProjectsOverview extends Component {
         // TODO Semester project
 
         // Research Projects
-        // const layeredAnisoDescription = <>
-        //     I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new BSDF (Bidirectional Scattering Distribution Function) plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended BSDF model has great performances in offline and realtime rendering frameworks thanks to statistical evaluation of the layered structure. It will soon be part of the High Definition Rendering Pipeline (HDRP) of <StyledLink href="https://unity.com/">Unity</StyledLink>.
-        // </>
-        // const layeredAnisoProject = <ProjectCard image={require('../data/images/layered_aniso.png')}
-        //     title="Efficient Rendering of Anisotropic Layered Materials using an Atomic Decomposition with Statistical Operators"
-        //     subtitle="Philippe Weier and Laurent Belcour at Unity Labs, 2019"
-        //     description={layeredAnisoDescription} />
+        const layeredAnisoDescription = <>
+            I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new BSDF (Bidirectional Scattering Distribution Function) plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended BSDF model has great performances in offline and realtime rendering frameworks thanks to statistical evaluation of the layered structure. The publication that followed this work will soon be available in the <StyledLink href="http://jcgt.org/">Journal of Computer Graphics Techniques</StyledLink>.
+        </>
+        const layeredAnisoProject = <ProjectCard image={require('../data/images/layered_aniso.png')}
+            title="Efficient Rendering of Anisotropic Layered Materials using an Atomic Decomposition with Statistical Operators"
+            subtitle="Philippe Weier and Laurent Belcour, 2020"
+            description={layeredAnisoDescription} />
 
         const layeredAnisoDescription = <>
             Research Project in Rendering at Unity Labs under the supervision of Laurent Belcour
@@ -135,7 +135,7 @@ class ProjectsOverview extends Component {
 
         const lotrDescription = <>
             The Lotr Army Companion App is a full-stack Web Application created in React. It has been created for the table-top game <StyledLink href="https://www.games-workshop.com/en-EU/Middle-earth">Middle-Earth Strategy Battle Game</StyledLink> and its unofficial extension Battle Companies. It has a full database of all the Middle-Earth characters and an interactive army creation interface allowing you to quickly build up any army you would like to play.
-            </>
+        </>
         const lotrProject = <ProjectCard image={require('../data/images/lotrScreenshot.png')}
             title="Lotr Army Companion App"
             subtitle="Lord of the Ring: An unofficial companion App for your armies, 2018"
