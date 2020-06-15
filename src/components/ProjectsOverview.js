@@ -110,14 +110,6 @@ class ProjectsOverview extends Component {
             subtitle="Philippe Weier and Laurent Belcour, 2020"
             description={layeredAnisoDescription} />
 
-        const layeredAnisoDescription = <>
-            Research Project in Rendering at Unity Labs under the supervision of Laurent Belcour
-        </>
-        const layeredAnisoProject = <ProjectCard image={require('../data/images/unity_logo.png')}
-            title="In Progress"
-            subtitle="Graphics Intern at Unity Labs"
-            description={layeredAnisoDescription} />
-
         // Personal Projects
 
         const qulkanProject = <ProjectCard image={require('../data/images/qulkanScreenshot.png')}
