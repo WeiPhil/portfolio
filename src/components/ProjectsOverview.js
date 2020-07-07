@@ -103,7 +103,7 @@ class ProjectsOverview extends Component {
 
         // Research Projects
         const layeredAnisoDescription = <>
-            I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new BSDF (Bidirectional Scattering Distribution Function) plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended BSDF model has great performances in offline and realtime rendering frameworks thanks to statistical evaluation of the layered structure. The publication that followed this work will soon be available in the <StyledLink href="http://jcgt.org/">Journal of Computer Graphics Techniques</StyledLink>.
+            I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new BSDF (Bidirectional Scattering Distribution Function) plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended BSDF model has great performances in offline and realtime rendering frameworks thanks to statistical evaluation of the layered structure. The publication that followed this work is now available in the <StyledLink href="http://jcgt.org/published/0009/02/03/">Journal of Computer Graphics Techniques</StyledLink>.
         </>
         const layeredAnisoProject = <ProjectCard image={require('../data/images/layered_aniso.png')}
             title="Efficient Rendering of Anisotropic Layered Materials using an Atomic Decomposition with Statistical Operators"
