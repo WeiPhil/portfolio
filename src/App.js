@@ -1,8 +1,9 @@
 import { withStyles } from "@material-ui/core/styles";
 import React, { Component } from "react";
 import ProjectsOverview from "./components/ProjectsOverview";
-import { Container, Divider, Typography } from "@material-ui/core";
+import { Container, Divider } from "@material-ui/core";
 import PresentationCard from "./components/PresentationCard";
+import Footer from "./components/Footer";
 
 
 const styles = theme => ({
@@ -13,11 +14,6 @@ const styles = theme => ({
     borderStyle: "solid",
     borderWidth: "0px 1px 0px 1px",
   },
-  footer: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    textAlign: "center"
-  }
 });
 
 
@@ -29,18 +25,15 @@ class App extends Component {
   render() {
     const { classes } = this.props;
 
-
-
     return (
       <Container maxWidth="lg" className={classes.content}>
 
         <PresentationCard></PresentationCard>
         <Divider />
         <ProjectsOverview />
+
         <Divider />
-        <Typography className={classes.footer} variant="subtitle1" color="textSecondary" gutterBottom>
-          © 2019 Philippe Weier
-        </Typography>
+        <Footer />
 
       </Container>
     );

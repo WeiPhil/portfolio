@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
-import { Grid, Button, SvgIcon, Icon, Typography, CardActionArea } from '@material-ui/core';
+import { Grid, Button, Typography, CardActionArea } from '@material-ui/core';
+import FolderIcon from '@material-ui/icons/Folder';
+import ArchiveIcon from '@material-ui/icons/Archive';
+import DescriptionIcon from '@material-ui/icons/Description';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import GitHubIcon from "@material-ui/icons/GitHub"
+import SlideshowIcon from '@material-ui/icons/Slideshow';
 import PropTypes from 'prop-types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Lightbox from "react-image-lightbox";
@@ -29,21 +35,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function GitHubIcon(props) {
-  return (
-    <SvgIcon {...props}>
-      <path d="M12.007 0C6.12 0 1.1 4.27.157 10.08c-.944 5.813 2.468 11.45 8.054 13.312.19.064.397.033.555-.084.16-.117.25-.304.244-.5v-2.042c-3.33.735-4.037-1.56-4.037-1.56-.22-.726-.694-1.35-1.334-1.756-1.096-.75.074-.735.074-.735.773.103 1.454.557 1.846 1.23.694 1.21 2.23 1.638 3.45.96.056-.61.327-1.178.766-1.605-2.67-.3-5.462-1.335-5.462-6.002-.02-1.193.42-2.35 1.23-3.226-.327-1.015-.27-2.116.166-3.09 0 0 1.006-.33 3.3 1.23 1.966-.538 4.04-.538 6.003 0 2.295-1.5 3.3-1.23 3.3-1.23.445 1.006.49 2.144.12 3.18.81.877 1.25 2.033 1.23 3.226 0 4.607-2.805 5.627-5.476 5.927.578.583.88 1.386.825 2.206v3.29c-.005.2.092.393.26.507.164.115.377.14.565.063 5.568-1.88 8.956-7.514 8.007-13.313C22.892 4.267 17.884.007 12.008 0z" />
-    </SvgIcon>
-  );
-}
-
 function ProjectCard(props) {
   const theme = useTheme();
   const classes = useStyles();
 
   const [toggle, setToggle] = useState(false);
 
-  const { image, title, subtitle, description, githubLink, projectPageLink } = props;
+  const { image, title, subtitle, description, githubLink, projectPageLink, paperData, archiveDatas, videoLink, slidesLink } = props;
+  const [paperLink, paperLinkLabel] = paperData;
 
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -99,21 +98,51 @@ function ProjectCard(props) {
             </Typography>
           </Grid>
 
-          <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginTop: mobile ? 20 : 40 }}>
-            <Grid item style={{ marginLeft: 10 }}>
-              {githubLink !== "" && <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={githubLink}><GitHubIcon className={classes.icon} ></GitHubIcon>
+          <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginTop: mobile ? 20 : 30 }}>
+            {githubLink !== null && <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={githubLink}><GitHubIcon className={classes.icon} />
                 Github
-                </Button>}
-            </Grid>
-            <Grid item style={{ marginLeft: 10 }}>
+              </Button>
+            </Grid>}
 
+            {projectPageLink !== null &&
+              <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginBottom: mobile ? 10 : 10 }}>
+                <Grid item style={{ marginLeft: 10 }}>
 
+                  <Button variant="outlined" color="secondary" className={classes.button} href={projectPageLink}><FolderIcon className={classes.icon} />
+                    Project Page
+                  </Button>
+                </Grid>
+              </Grid>}
 
-              {projectPageLink !== "" && <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={projectPageLink}><Icon className={classes.icon} >folder</Icon>
-                Project Page
-                </Button>}
+            {paperLink !== null && <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={paperLink}><DescriptionIcon className={classes.icon} />
+                {paperLinkLabel}
+              </Button>
+            </Grid>}
 
-            </Grid>
+            {archiveDatas.map(([archiveLink, archiveLinkLabel],) => (
+              <>
+                {archiveLink !== null && <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                  <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={archiveLink}><ArchiveIcon className={classes.icon} />
+                    {archiveLinkLabel}
+                  </Button>
+                </Grid>}
+              </>
+            ))}
+
+            {videoLink !== null && <Grid item style={{ marginLeft: 10 }}>
+              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={videoLink}><VideocamIcon className={classes.icon} />
+                Video
+              </Button>
+            </Grid>}
+
+            {slidesLink !== null && <Grid item style={{ marginLeft: 10 }}>
+              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={slidesLink}><SlideshowIcon className={classes.icon} />
+                Slides
+              </Button>
+            </Grid>}
+
           </Grid>
 
         </Grid>
@@ -127,61 +156,20 @@ function ProjectCard(props) {
 ProjectCard.propTypes = {
   githubLink: PropTypes.string,
   projectPageLink: PropTypes.string,
+  paperData: [PropTypes.string, PropTypes.string],
+  archiveDatas: [[PropTypes.string, PropTypes.string]],
+  videoLink: PropTypes.string,
+  slidesLink: PropTypes.string
 };
 
 ProjectCard.defaultProps = {
-  githubLink: "",
-  projectPageLink: "",
+  githubLink: null,
+  projectPageLink: null,
+  paperData: [null, null],
+  archiveDatas: [[null, null]],
+  videoLink: null,
+  slidesLink: null
 };
-
-
-// export default withStyles(styles, { withTheme: true })(ProjectCard);
-
-
-// import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Card from '@material-ui/core/Card';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import { Grid } from '@material-ui/core';
-
-
-// const useStyles = makeStyles(theme => ({
-//   card: {
-//     width: "100%",
-//     height: 300,
-
-//   },
-//   image: {
-//     height: "100%",
-//     width: "100%",
-//   },
-// }));
-
-// function ProjectCard(props) {
-//   const classes = useStyles();
-//   const image = props.image;
-//   const content = props.content;
-
-//   return (
-//     <Grid container direction="row" spacing={10}>
-//       <Grid item md={4}>
-
-//         <Card className={classes.card}>
-//           <CardMedia
-//             className={classes.image}
-//             image={image}
-//             title="Project Illustration"
-//           />
-//         </Card>
-//       </Grid>
-
-//       <Grid item md={8}>
-//         {content}
-//       </Grid>
-//     </Grid>
-//   );
-// }
-
 
 export default ProjectCard;
 

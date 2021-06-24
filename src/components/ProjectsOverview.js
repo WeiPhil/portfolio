@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
-import { Grid, withStyles, Link, Divider } from '@material-ui/core';
+import { Grid, withStyles, Link, Divider, Box } from '@material-ui/core';
 import ProjectCard from './ProjectCard';
-
 
 const StyledTabs = withStyles(theme => ({
     indicator: {
@@ -103,19 +102,24 @@ class ProjectsOverview extends Component {
 
         // Research Projects
         const layeredAnisoDescription = <>
-            I enhanced <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Laurent Belcour's Siggraph Paper</StyledLink> creating a new BSDF (Bidirectional Scattering Distribution Function) plugin for anisotropic layered materials in the <StyledLink href="https://www.mitsuba-renderer.org/">Mitsuba Renderer</StyledLink>. This extended BSDF model has great performances in offline and realtime rendering frameworks thanks to statistical evaluation of the layered structure. The publication that followed this work is now available in the <StyledLink href="http://jcgt.org/published/0009/02/03/">Journal of Computer Graphics Techniques</StyledLink>.
+            <Box fontWeight={500}>Abstract </Box>
+            We present a lightweight and efficient method to render layered materials with anisotropic interfaces. Our work extends the statistical framework of <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Belcour [2018]</StyledLink> to handle anisotropic microfacet models. A key insight to our work is that when projected on the tangent plane, BRDF lobes from an anisotropic GGX distribution are well approximated by ellipsoidal distributions aligned with the tangent frame: its covariance matrix is diagonal in this space. We leverage this property and perform the adding-doubling algorithm on each anisotropy axis independently. We further update the mapping of roughness to directional variance and the evaluation of the average reflectance to account for anisotropy. We extensively tested this model against ground truth.
         </>
-        const layeredAnisoProject = <ProjectCard image={require('../data/images/layered_aniso.png')}
-            title="Efficient Rendering of Anisotropic Layered Materials using an Atomic Decomposition with Statistical Operators"
+        const layeredAnisoProject = <ProjectCard image={require('../data/images/layered/layered_aniso.png')}
+            title="Rendering Layered Materials with Anisotropic Interfaces"
             subtitle="Philippe Weier and Laurent Belcour, 2020"
-            description={layeredAnisoDescription} />
+            description={layeredAnisoDescription}
+            projectPageLink={"projects/multilayered"}
+            paperData={["http://jcgt.org/published/0009/02/03/paper.pdf", "Paper (10.8 MiB)"]}
+            archiveDatas={[["http://jcgt.org/published/0009/02/03/mitsuba_supplemental.zip", "Code (20.8 KiB)"], ["http://jcgt.org/published/0009/02/03/html_supplemental.zip", "Supplemental (4.1 GiB)"]]} />
 
         // Personal Projects
 
         const qulkanProject = <ProjectCard image={require('../data/images/qulkanScreenshot.png')}
             title="Qulkan"
             subtitle="A GPU Oriented Prototyping tool in C++17, 2019"
-            description={"Qulkan is a personal project designed to give a quick start to anyone considering using OpenGL or Vulkan as a graphical API. It has been designed to offer a simple and flexible interface for more complex software or research validation tools."} />
+            description={"Qulkan is a personal project designed to give a quick start to anyone considering using OpenGL or Vulkan as a graphical API. It has been designed to offer a simple and flexible interface for more complex software or research validation tools."}
+            githubLink="https://github.com/WeiPhil/qulkan" />
 
 
         const procaryotaProject = <ProjectCard image={require('../data/images/procaryotaScreenshot.png')}
@@ -136,17 +140,17 @@ class ProjectsOverview extends Component {
 
         ///////////////////////
 
+        const publications = [layeredAnisoProject]
         const personalProjects = [qulkanProject, procaryotaProject, lotrProject]
-        const researchProjects = [layeredAnisoProject]
-        const courseProjects = [cs440Project, imageAndVideoProject]
+        const studyProjects = [cs440Project, imageAndVideoProject]
 
 
         return (
             <div className={classes.content}>
                 <StyledTabs variant="fullWidth" value={this.state.tabValue} onChange={this.handleTabChange} >
-                    <Tab disableRipple className={classes.tab} label="Course Projects" />
-                    <Tab disableRipple className={classes.tab} label="Research Projects" />
+                    <Tab disableRipple className={classes.tab} label="Publications" />
                     <Tab disableRipple className={classes.tab} label="Personal Projects" />
+                    <Tab disableRipple className={classes.tab} label="Study Projects" />
                 </StyledTabs>
 
                 <SwipeableViews enableMouseEvents
@@ -159,7 +163,20 @@ class ProjectsOverview extends Component {
 
                     <Grid container direction="column">
 
-                        {courseProjects.map((projectCard, index) => (
+                        {publications.map((projectCard, index) => (
+                            <div key={index} >
+                                {index !== 0 && <Divider style={{ marginTop: index !== 0 && 20 }} />}
+                                <Grid item style={{ marginTop: index !== 0 && 40 }}>
+                                    {projectCard}
+                                </Grid>
+                            </div>
+                        ))}
+
+                    </Grid >
+
+                    <Grid container direction="column">
+
+                        {personalProjects.map((projectCard, index) => (
                             <div key={index} >
                                 {index !== 0 && <Divider style={{ marginTop: index !== 0 && 20 }} />}
                                 <Grid item key={index} style={{ marginTop: index !== 0 && 40 }}>
@@ -172,19 +189,7 @@ class ProjectsOverview extends Component {
 
                     <Grid container direction="column">
 
-                        {researchProjects.map((projectCard, index) => (
-                            <div key={index} >
-                                {index !== 0 && <Divider style={{ marginTop: index !== 0 && 20 }} />}
-                                <Grid item style={{ marginTop: index !== 0 && 40 }}>
-                                    {projectCard}
-                                </Grid>
-                            </div>
-                        ))}
-
-                    </Grid >
-                    <Grid container direction="column">
-
-                        {personalProjects.map((projectCard, index) => (
+                        {studyProjects.map((projectCard, index) => (
                             <div key={index} >
                                 {index !== 0 && <Divider style={{ marginTop: index !== 0 && 20 }} />}
                                 <Grid item key={index} style={{ marginTop: index !== 0 && 40 }}>
