@@ -17,8 +17,7 @@ ReactDOM.render(
       <MenuBar />
       <Router>
         <Switch>
-          <Route exact path="/projects/:projectpage" component={ProjectsPage} />
-          <Route exact path="/" component={App} />
+          <Route exact path="/portfolio/projects/:projectpage" component={ProjectsPage} />
           <Route exact path="/portfolio" component={App} />
           <Redirect to="/portfolio" />
         </Switch>

@@ -90,7 +90,7 @@ function PresentationCard(props) {
                 My main research interests are physically-based rendering, signal processing and real-time rendering. In my free time, when not programming some toy project, I like to play all sorts of instruments, including the Euphonium, the trumpet and the saxophone. You might also see me paint miniatures, climbing walls or cycling :)
               </Typography>
               <Typography variant="subtitle1" color="textSecondary" style={{ marginTop: 30 }}>
-                Feel free to <StyledLink href="mailto:philippe.weier@epfl.ch">contact me</StyledLink> if you have any questions or simply want to chat.
+                Feel free to <StyledLink href="mailto:ph.weier@gmail.com">contact me</StyledLink> if you have any questions or simply want to chat.
               </Typography>
 
             </Grid>
