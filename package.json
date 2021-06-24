@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://weiphil.github.io/portfolio/"
+  "homepage": "https://weiphil.github.io/"
 }

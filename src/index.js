@@ -19,7 +19,8 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/projects/:projectpage" component={ProjectsPage} />
           <Route exact path="/" component={App} />
-          <Redirect to="/" />
+          <Route exact path="/portfolio" component={App} />
+          <Redirect to="/portfolio" />
         </Switch>
       </Router>
     </MuiThemeProvider>
