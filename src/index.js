@@ -15,7 +15,7 @@ ReactDOM.render(
     <CssBaseline />
     <MuiThemeProvider>
       <MenuBar />
-      <Router basename="portfolio">
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/projects/:projectpage" component={ProjectsPage} />
           <Route exact path="/" component={App} />

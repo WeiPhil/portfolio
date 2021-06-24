@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     height: "100%",
     width: "100%",
   },
-  grazingcard: {
+  grazingCard: {
     marginTop: 30,
     marginBottom: 30,
     height: 450,
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
       height: 300,
     },
   },
-  maincomparcard: {
+  mainComparCard: {
     marginTop: 30,
     marginBottom: 30,
     height: 600,
@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: "none",
     margin: theme.spacing(0.5),
   },
-  figurelegend: {
+  figureLegend: {
     maxWidth: "70%",
     [theme.breakpoints.down('sm')]: {
       maxWidth: "100%"
@@ -107,15 +107,15 @@ function Multilayered(props) {
 
         <Grid item  >
 
-          <Typography component="h5" variant="h5" gutterBottom>
-            Rendering Layered Materials with Anisotropic Interfaces
+          <Typography variant="h5" gutterBottom>
+            <Box fontWeight="fontWeightRegular">Rendering Layered Materials with Anisotropic Interfaces</Box>
           </Typography>
 
-          <Typography component="h4" variatn="h4">
-            <StyledLink href="/">Philippe Weier</StyledLink> and <StyledLink href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>, 2020
+          <Typography>
+            <StyledLink href={process.env.PUBLIC_URL + "/"}>Philippe Weier</StyledLink> and <StyledLink href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>, 2020
           </Typography>
 
-          <Typography component="h4" variatn="h4" gutterBottom>
+          <Typography gutterBottom>
             Published in Journal of Computer Graphics Techniques (<StyledLink href="http://jcgt.org/">JCGT</StyledLink>)
           </Typography>
 
@@ -152,7 +152,7 @@ function Multilayered(props) {
 
 
             <Grid item style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }} >
-              <Typography variant="subtitle1" gutterBottom>
+              <Typography variant="h6" gutterBottom>
                 <Box fontWeight={500}>Abstract</Box>
               </Typography>
               <Typography variant="body1" gutterBottom>
@@ -160,7 +160,7 @@ function Multilayered(props) {
               </Typography>
 
 
-              <Typography variant="subtitle1" gutterBottom style={{ marginTop: 10 }}>
+              <Typography variant="h6" gutterBottom style={{ marginTop: 10 }}>
                 <Box fontWeight={500}>Validation</Box>
               </Typography>
               <Typography variant="body1" gutterBottom>
@@ -174,26 +174,26 @@ function Multilayered(props) {
               alignItems="center"
             >
 
-              <Card className={classes.maincomparcard} style={{ border: "none", boxShadow: "none" }}>
+              <Card className={classes.mainComparCard} style={{ border: "none", boxShadow: "none" }}>
                 <CardMedia className={classes.image}
                   image={require('../data/images/layered/layered_aniso_05_05_top_varying.png')}
                   title="layered_aniso_05_05_top_varying"
                 />
               </Card>
-              <Typography variant="body1" gutterBottom>
+              <Typography variant="body1" gutterBottom className={classes.figureLegend}>
                 <i>
                   Example of the validation of our layered model with respect to the ground truth when changing the roughness of the top dielectric layer.
                 </i>
               </Typography>
 
 
-              <Card className={classes.grazingcard} >
+              <Card className={classes.grazingCard} >
                 <CardMedia className={classes.image}
                   image={require('../data/images/layered/grazing_angles_overblur.png')}
                   title="layered_aniso_05_05_top_varying"
                 />
               </Card>
-              <Typography variant="body1" gutterBottom className={classes.figurelegend}>
+              <Typography variant="body1" gutterBottom className={classes.figureLegend}>
                 <i>
                   Our method differs from the reference at grazing angles. This is due to the correlation between total internal reflection (TIR) and our precomputed average reflectance for one bounce. Since we do not account for it, our model overblurs the reflectance at grazinangles.
                 </i>
