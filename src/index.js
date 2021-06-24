@@ -15,11 +15,11 @@ ReactDOM.render(
     <CssBaseline />
     <MuiThemeProvider>
       <MenuBar />
-      <Router>
+      <Router basename="portfolio">
         <Switch>
-          <Route exact path="/portfolio/projects/:projectpage" component={ProjectsPage} />
-          <Route exact path="/portfolio" component={App} />
-          <Redirect to="/portfolio" />
+          <Route exact path="/projects/:projectpage" component={ProjectsPage} />
+          <Route exact path="/" component={App} />
+          <Redirect to="/" />
         </Switch>
       </Router>
     </MuiThemeProvider>
