@@ -109,7 +109,7 @@ class ProjectsOverview extends Component {
             title="Rendering Layered Materials with Anisotropic Interfaces"
             subtitle="Philippe Weier and Laurent Belcour, 2020"
             description={layeredAnisoDescription}
-            projectPageLink={process.env.PUBLIC_URL + "/projects/multilayered"}
+            projectPageLink="/publications/multilayered"
             paperData={["http://jcgt.org/published/0009/02/03/paper.pdf", "Paper (10.8 MiB)"]}
             archiveDatas={[["http://jcgt.org/published/0009/02/03/mitsuba_supplemental.zip", "Code (20.8 KiB)"], ["http://jcgt.org/published/0009/02/03/html_supplemental.zip", "Supplemental (4.1 GiB)"]]} />
 

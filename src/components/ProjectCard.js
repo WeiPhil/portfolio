@@ -12,6 +12,7 @@ import SlideshowIcon from '@material-ui/icons/Slideshow';
 import PropTypes from 'prop-types';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Lightbox from "react-image-lightbox";
+import {Link} from "react-router-dom";
 import "react-image-lightbox/style.css";
 
 const useStyles = makeStyles(theme => ({
@@ -108,8 +109,8 @@ function ProjectCard(props) {
             {projectPageLink !== null &&
               <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginBottom: mobile ? 10 : 10 }}>
                 <Grid item style={{ marginLeft: 10 }}>
-
-                  <Button variant="outlined" color="secondary" className={classes.button} href={projectPageLink}><FolderIcon className={classes.icon} />
+                  
+                  <Button component={Link} to={projectPageLink} variant="outlined" color="secondary" className={classes.button}><FolderIcon className={classes.icon} />
                     Project Page
                   </Button>
                 </Grid>
