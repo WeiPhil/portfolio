@@ -15,11 +15,11 @@ ReactDOM.render(
     <CssBaseline />
     <MuiThemeProvider>
       <MenuBar />
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
-          <Route exact path="/projects/:projectpage" component={ProjectsPage} />
-          <Route exact path="/" component={App} />
-          <Redirect to="/" />
+          <Route exact path={process.env.PUBLIC_URL + "/projects/:projectpage"} component={ProjectsPage} />
+          <Route exact path={process.env.PUBLIC_URL + "/"} component={App} />
+          <Redirect to={process.env.PUBLIC_URL + "/"} />
         </Switch>
       </Router>
     </MuiThemeProvider>
