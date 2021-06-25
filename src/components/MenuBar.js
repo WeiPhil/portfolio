@@ -64,7 +64,7 @@ function MenuBar(props) {
             <HideOnScroll {...props}>
                 <AppBar className={classes.appbar} >
                     <Toolbar>
-                        <IconButton className={classes.homebutton} color="inherit" href={"/"}>
+                        <IconButton className={classes.homebutton} color="inherit" href={process.env.PUBLIC_URL + "/"}>
                             <HomeIcon />
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>Philippe Weier</Typography>
