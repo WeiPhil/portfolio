@@ -100,18 +100,37 @@ class ProjectsOverview extends Component {
 
         // TODO Semester project
 
-        // Research Projects
+        // Publications
         const layeredAnisoDescription = <>
-            <Box fontWeight={500}>Abstract </Box>
+            <Box fontWeight={500} style={{marginTop:5}}>Abstract </Box>
             We present a lightweight and efficient method to render layered materials with anisotropic interfaces. Our work extends the statistical framework of <StyledLink href="https://belcour.github.io/blog/research/2018/05/05/brdf-realtime-layered.html">Belcour [2018]</StyledLink> to handle anisotropic microfacet models. A key insight to our work is that when projected on the tangent plane, BRDF lobes from an anisotropic GGX distribution are well approximated by ellipsoidal distributions aligned with the tangent frame: its covariance matrix is diagonal in this space. We leverage this property and perform the adding-doubling algorithm on each anisotropy axis independently. We further update the mapping of roughness to directional variance and the evaluation of the average reflectance to account for anisotropy. We extensively tested this model against ground truth.
         </>
-        const layeredAnisoProject = <ProjectCard image={require('../data/images/layered/layered_aniso.png')}
+        const layeredSubtitle = <>
+            Philippe Weier and Laurent Belcour, 2020
+            <Box fontWeight={500} fontSize="fontSize">Published in Journal of Computer Graphics Techniques (JCGT)</Box>
+        </>
+        const layeredAnisoProject = <ProjectCard image={require('../data/layered/layered_aniso.png')}
             title="Rendering Layered Materials with Anisotropic Interfaces"
-            subtitle="Philippe Weier and Laurent Belcour, 2020"
+            subtitle={layeredSubtitle}
             description={layeredAnisoDescription}
             projectPageLink="/publications/multilayered"
             paperData={["http://jcgt.org/published/0009/02/03/paper.pdf", "Paper (10.8 MiB)"]}
             archiveDatas={[["http://jcgt.org/published/0009/02/03/mitsuba_supplemental.zip", "Code (20.8 KiB)"], ["http://jcgt.org/published/0009/02/03/html_supplemental.zip", "Supplemental (4.1 GiB)"]]} />
+
+        const opsrDescription = <>
+            <Box fontWeight={500}>Abstract </Box>
+            We present Optimised Path Space Regularisation (OPSR), a novel regularisation technique for forward path tracing algorithms. Our regularisation controls the amount of roughness added to materials depending on the type of sampled paths and trades a small error in the estimator for a drastic reduction of variance in difficult paths, including indirectly visible caustics. We formulate the problem as a joint bias-variance minimisation problem and use differentiable rendering to optimise our model. The learnt parameters generalise to a large variety of scenes irrespective of their geometric complexity. The regularisation added to the underlying light transport algorithm naturally allows us to handle the problem of near-specular and glossy path chains robustly. Our method consistently improves the convergence of path tracing estimators, including state-of-the-art path guiding techniques where it enables finding otherwise hard-to-sample paths and thus, in turn, can significantly speed up the learning of guiding distributions.
+        </>
+        const opsrSubtitle = <>
+            Philippe Weier, Marc Droske, Johannes Hanika, Andrea Weidlich, Jiří Vorba, 2021
+            <Box fontWeight={500} fontSize="fontSize">Published in Computer Graphics Forum (Proceedings of Eurographics Symposium on Rendering)</Box>
+        </>
+        const opsrProject = <ProjectCard image={require('../data/opsr/beach_thumbnail.png')}
+            title="Optimised Path Space Regularisation"
+            subtitle={opsrSubtitle}
+            description={opsrDescription}
+            projectPageLink="/publications/opsr"
+            paperData={[require('../data/opsr/OPSR_EGSR2021.pdf'), "Paper (58.8 MiB)"]}/>
 
         // Personal Projects
 
@@ -140,7 +159,7 @@ class ProjectsOverview extends Component {
 
         ///////////////////////
 
-        const publications = [layeredAnisoProject]
+        const publications = [opsrProject,layeredAnisoProject]
         const personalProjects = [qulkanProject, procaryotaProject, lotrProject]
         const studyProjects = [cs440Project, imageAndVideoProject]
 

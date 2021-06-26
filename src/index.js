@@ -4,6 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
 import App from './App';
 import Multilayered from './publications/Multilayered';
+import Opsr from './publications/Opsr';
 import MenuBar from './components/MenuBar'
 import theme from './theme';
 import { MuiThemeProvider } from 'material-ui/styles';
@@ -18,6 +19,7 @@ ReactDOM.render(
       <MenuBar />
         <Switch>
           <Route path="/publications/multilayered" component={Multilayered} />
+          <Route path="/publications/opsr" component={Opsr} />
           <Route exact path="/" component={App} />
         </Switch>
       </Router>
