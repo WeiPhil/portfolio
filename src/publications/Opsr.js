@@ -121,7 +121,7 @@ function Opsr(props) {
             </Typography>
 
             <Typography>
-              <StyledLink href={process.env.PUBLIC_URL + "/"}>Philippe Weier</StyledLink> and <StyledLink href="https://belcour.github.io/blog/">Laurent Belcour</StyledLink>, 2020
+              <StyledLink href={process.env.PUBLIC_URL + "/"}>Philippe Weier</StyledLink>, Marc Droske, Johannes Hanika, Andrea Weidlich, Jiří Vorba, 2021
             </Typography>
 
             <Typography gutterBottom>
