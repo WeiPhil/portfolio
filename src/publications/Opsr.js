@@ -6,6 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import { Grid, Link, Button, Box, Container } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import DescriptionIcon from '@material-ui/icons/Description';
+import ArchiveIcon from '@material-ui/icons/Archive';
+import SlideshowIcon from '@material-ui/icons/Slideshow';
+import ReactPlayer from 'react-player'
 
 import Footer from '../components/Footer'
 
@@ -102,7 +105,9 @@ function Opsr(props) {
   const smallWidth = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [paperLink, paperLinkLabel] = [require('../data/opsr/OPSR_EGSR2021.pdf'), "Paper (58.8 MiB)"];
- 
+  const [supplementalLink,supplementalLabel] = [require('../data/opsr/opsr_supplemental.zip'), "Supplemental (153.8 MB)"];
+  const [presentationLink,presentationLabel] = [require('../data/opsr/opsr_egsr_presentation.pptx'), "Presentation (40.8 MB)"];
+
   return (
     <Container className={classes.content}>
       <div className={classes.root}>
@@ -131,10 +136,10 @@ function Opsr(props) {
             <Card className={classes.card}>
               <CardMedia className={classes.image}
                 image={require('../data/opsr/beach_thumbnail.png')}
-                title="Layered Teaser"
+                title="OPSR Teaser"
               />
             </Card>
-
+           
             <Grid item style={{ marginTop: 10 }}>
               <Grid
                 container
@@ -143,9 +148,21 @@ function Opsr(props) {
                 alignItems="center"
               >
 
-                <Grid item  >
+                <Grid item>
                   <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={paperLink}><DescriptionIcon className={classes.icon} />
                     {paperLinkLabel}
+                  </Button>
+                </Grid>
+
+                <Grid item>
+                  <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={supplementalLink}><ArchiveIcon className={classes.icon} />
+                    {supplementalLabel}
+                  </Button>
+                </Grid>
+
+                <Grid item>
+                  <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={presentationLink}><SlideshowIcon className={classes.icon} />
+                    {presentationLabel}
                   </Button>
                 </Grid>
 
@@ -159,14 +176,29 @@ function Opsr(props) {
                 <Typography variant="body1" gutterBottom>
                   We present Optimised Path Space Regularisation (OPSR), a novel regularisation technique for forward path tracing algorithms. Our regularisation controls the amount of roughness added to materials depending on the type of sampled paths and trades a small error in the estimator for a drastic reduction of variance in difficult paths, including indirectly visible caustics. We formulate the problem as a joint bias-variance minimisation problem and use differentiable rendering to optimise our model. The learnt parameters generalise to a large variety of scenes irrespective of their geometric complexity. The regularisation added to the underlying light transport algorithm naturally allows us to handle the problem of near-specular and glossy path chains robustly. Our method consistently improves the convergence of path tracing estimators, including state-of-the-art path guiding techniques where it enables finding otherwise hard-to-sample paths and thus, in turn, can significantly speed up the learning of guiding distributions.  
                 </Typography>
+                
+              </Grid>
 
-
+              <Grid item style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }} >
                 <Typography variant="h6" gutterBottom style={{ marginTop: 10 }}>
-                  <Box fontWeight={500}>More information soon!</Box>
+                  <Box fontWeight={500}>
+                  Presentation
+                  </Box>
+                </Typography>
+
+                <ReactPlayer url={require('../data/opsr/opsr_presentation_final.mp4')} controls={true} />
+
+                <Typography variant="body2" gutterBottom style={{ marginTop: 10 }}> 
+                  The original EGSR talk can also be found <StyledLink href={'https://www.youtube.com/watch?v=u9HqKGqvJhQ&t=2074s'}>here</StyledLink> 
                 </Typography>
                 
               </Grid>
-             
+
+                <Typography variant="h6" gutterBottom style={{ marginTop: 50 }}>
+                  <Box fontWeight={500}>More information soon!</Box>
+                </Typography>
+
+
             </Grid>
 
 

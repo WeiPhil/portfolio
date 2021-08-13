@@ -42,8 +42,9 @@ function ProjectCard(props) {
 
   const [toggle, setToggle] = useState(false);
 
-  const { image, title, subtitle, description, githubLink, projectPageLink, paperData, archiveDatas, videoLink, slidesLink } = props;
+  const { image, title, subtitle, description, githubLink, projectPageLink, paperData, archiveDatas, videoLink, presentationData } = props;
   const [paperLink, paperLinkLabel] = paperData;
+  const [presentationLink, presentationLabel] = presentationData;
 
   const mobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -122,25 +123,25 @@ function ProjectCard(props) {
               </Button>
             </Grid>}
 
-            {archiveDatas.map(([archiveLink, archiveLinkLabel],) => (
+            {archiveDatas.map(([archiveLink, archiveLabel],) => (
               <>
                 {archiveLink !== null && <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
                   <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={archiveLink}><ArchiveIcon className={classes.icon} />
-                    {archiveLinkLabel}
+                    {archiveLabel}
                   </Button>
                 </Grid>}
               </>
             ))}
 
-            {videoLink !== null && <Grid item style={{ marginLeft: 10 }}>
+            {videoLink !== null && <Grid item style={{ marginLeft: 10,marginTop: 4 }}>
               <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={videoLink}><VideocamIcon className={classes.icon} />
                 Video
               </Button>
             </Grid>}
 
-            {slidesLink !== null && <Grid item style={{ marginLeft: 10 }}>
-              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={slidesLink}><SlideshowIcon className={classes.icon} />
-                Slides
+            {presentationLink !== null && <Grid item style={{ marginLeft: 10 ,marginTop: 4 }}>
+              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={presentationLink}><SlideshowIcon className={classes.icon} />
+                {presentationLabel}
               </Button>
             </Grid>}
 
@@ -158,18 +159,18 @@ ProjectCard.propTypes = {
   githubLink: PropTypes.string,
   projectPageLink: PropTypes.string,
   paperData: [PropTypes.string, PropTypes.string],
+  presentationData: [PropTypes.string, PropTypes.string],
   archiveDatas: [[PropTypes.string, PropTypes.string]],
-  videoLink: PropTypes.string,
-  slidesLink: PropTypes.string
+  videoLink: PropTypes.string
 };
 
 ProjectCard.defaultProps = {
   githubLink: null,
   projectPageLink: null,
   paperData: [null, null],
+  presentationData : [null, null],
   archiveDatas: [[null, null]],
   videoLink: null,
-  slidesLink: null
 };
 
 export default ProjectCard;

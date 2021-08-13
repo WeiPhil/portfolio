@@ -130,7 +130,9 @@ class ProjectsOverview extends Component {
             subtitle={opsrSubtitle}
             description={opsrDescription}
             projectPageLink="/publications/opsr"
-            paperData={[require('../data/opsr/OPSR_EGSR2021.pdf'), "Paper (58.8 MiB)"]}/>
+            paperData={[require('../data/opsr/OPSR_EGSR2021.pdf'), "Paper (58.8 MiB)"]}
+            archiveDatas={[[require('../data/opsr/opsr_supplemental.zip'), "Supplemental (153.8 MB)"]]}
+            presentationData={[require('../data/opsr/opsr_egsr_presentation.pptx'), "Presentation (40.8 MB)"]}/>
 
         // Personal Projects
 

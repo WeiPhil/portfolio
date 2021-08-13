@@ -18,7 +18,7 @@ function Footer(props) {
         <React.Fragment>
             <Divider />
             <Typography className={classes.footer} variant="subtitle1" color="textSecondary" gutterBottom>
-                © 2019 Philippe Weier
+                © 2021 Philippe Weier
             </Typography>
         </React.Fragment>
     );
