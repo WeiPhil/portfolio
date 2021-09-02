@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { ThemeProvider } from '@material-ui/styles';
-import App from './App';
-import Multilayered from './publications/Multilayered';
-import Opsr from './publications/Opsr';
-import MenuBar from './components/MenuBar'
-import theme from './theme';
-import { MuiThemeProvider } from 'material-ui/styles';
+import React from "react";
+import ReactDOM from "react-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider } from "@material-ui/styles";
+import App from "./App";
+import Multilayered from "./publications/Multilayered";
+import Opsr from "./publications/Opsr";
+import MenuBar from "./components/MenuBar";
+import theme from "./theme";
+import { MuiThemeProvider } from "material-ui/styles";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 ReactDOM.render(
@@ -16,7 +16,7 @@ ReactDOM.render(
     <CssBaseline />
     <MuiThemeProvider>
       <Router>
-      <MenuBar />
+        <MenuBar />
         <Switch>
           <Route path="/publications/multilayered" component={Multilayered} />
           <Route path="/publications/opsr" component={Opsr} />
@@ -25,5 +25,5 @@ ReactDOM.render(
       </Router>
     </MuiThemeProvider>
   </ThemeProvider>,
-  document.querySelector('#root'),
+  document.querySelector("#root")
 );

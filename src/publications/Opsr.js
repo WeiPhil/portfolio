@@ -104,9 +104,9 @@ function Opsr(props) {
 
   const smallWidth = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [paperLink, paperLinkLabel] = [require('../data/opsr/OPSR_EGSR2021.pdf'), "Paper (58.8 MiB)"];
-  const [supplementalLink,supplementalLabel] = [require('../data/opsr/opsr_supplemental.zip'), "Supplemental (153.8 MB)"];
-  const [presentationLink,presentationLabel] = [require('../data/opsr/opsr_egsr_presentation.pptx'), "Presentation (40.8 MB)"];
+  const [paperLink, paperLinkLabel] = ['https://weiphil.s3.eu-central-1.amazonaws.com/OPSR_EGSR2021.pdf', "Paper (58.8 MiB)"];
+  const [supplementalLink,supplementalLabel] = ['https://weiphil.s3.eu-central-1.amazonaws.com/opsr_supplemental.zip', "Supplemental (153.8 MB)"];
+  const [presentationLink,presentationLabel] = ['https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx', "Presentation (40.8 MB)"];
 
   return (
     <Container className={classes.content}>
@@ -186,7 +186,7 @@ function Opsr(props) {
                   </Box>
                 </Typography>
 
-                <ReactPlayer url={require('../data/opsr/opsr_presentation_final.mp4')} controls={true} />
+                <ReactPlayer url={'https://weiphil.s3.eu-central-1.amazonaws.com/opsr_presentation_final.mp4'} controls={true} />
 
                 <Typography variant="body2" gutterBottom style={{ marginTop: 10 }}> 
                   The original EGSR talk can also be found <StyledLink href={'https://www.youtube.com/watch?v=u9HqKGqvJhQ&t=2074s'}>here</StyledLink> 

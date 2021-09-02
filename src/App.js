@@ -5,8 +5,7 @@ import { Container, Divider } from "@material-ui/core";
 import PresentationCard from "./components/PresentationCard";
 import Footer from "./components/Footer";
 
-
-const styles = theme => ({
+const styles = (theme) => ({
   content: {
     height: "100%",
     backgroundColor: theme.palette.grey[100],
@@ -16,25 +15,20 @@ const styles = theme => ({
   },
 });
 
-
 class App extends Component {
   state = {};
-
-
 
   render() {
     const { classes } = this.props;
 
     return (
       <Container maxWidth="lg" className={classes.content}>
-
         <PresentationCard></PresentationCard>
         <Divider />
         <ProjectsOverview />
 
         <Divider />
         <Footer />
-
       </Container>
     );
   }

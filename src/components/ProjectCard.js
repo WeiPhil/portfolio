@@ -1,31 +1,30 @@
-import React, { useState } from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import { Grid, Button, Typography, CardActionArea } from '@material-ui/core';
-import FolderIcon from '@material-ui/icons/Folder';
-import ArchiveIcon from '@material-ui/icons/Archive';
-import DescriptionIcon from '@material-ui/icons/Description';
-import VideocamIcon from '@material-ui/icons/Videocam';
-import GitHubIcon from "@material-ui/icons/GitHub"
-import SlideshowIcon from '@material-ui/icons/Slideshow';
-import PropTypes from 'prop-types';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { useState } from "react";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
+import { Grid, Button, Typography, CardActionArea } from "@material-ui/core";
+import FolderIcon from "@material-ui/icons/Folder";
+import ArchiveIcon from "@material-ui/icons/Archive";
+import DescriptionIcon from "@material-ui/icons/Description";
+import VideocamIcon from "@material-ui/icons/Videocam";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import SlideshowIcon from "@material-ui/icons/Slideshow";
+import PropTypes from "prop-types";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Lightbox from "react-image-lightbox";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "react-image-lightbox/style.css";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
   card: {
     width: "100%",
     height: 300,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       height: 160,
     },
-
   },
   image: {
     height: "100%",
@@ -42,11 +41,22 @@ function ProjectCard(props) {
 
   const [toggle, setToggle] = useState(false);
 
-  const { image, title, subtitle, description, githubLink, projectPageLink, paperData, archiveDatas, videoLink, presentationData } = props;
+  const {
+    image,
+    title,
+    subtitle,
+    description,
+    githubLink,
+    projectPageLink,
+    paperData,
+    archiveDatas,
+    videoLink,
+    presentationData,
+  } = props;
   const [paperLink, paperLinkLabel] = paperData;
   const [presentationLink, presentationLabel] = presentationData;
 
-  const mobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   function handleClickOpen() {
     setToggle(true);
@@ -57,12 +67,17 @@ function ProjectCard(props) {
   }
 
   return (
-    <Grid container direction={mobile ? "column" : "row"} justify="space-between">
+    <Grid
+      container
+      direction={mobile ? "column" : "row"}
+      justify="space-between"
+    >
       <Grid item xs={mobile ? true : 4}>
-
         <Card className={classes.card}>
-
-          <CardActionArea style={{ width: '100%', height: '100%' }} onClick={handleClickOpen}>
+          <CardActionArea
+            style={{ width: "100%", height: "100%" }}
+            onClick={handleClickOpen}
+          >
             <CardMedia
               className={classes.image}
               image={image}
@@ -71,19 +86,11 @@ function ProjectCard(props) {
           </CardActionArea>
         </Card>
 
-        {toggle && (
-          <Lightbox
-            mainSrc={image}
-            onCloseRequest={handleClose}
-          />
-        )}
-
+        {toggle && <Lightbox mainSrc={image} onCloseRequest={handleClose} />}
       </Grid>
-
 
       <Grid item xs={mobile ? true : 7}>
         <Grid container direction="column" style={{ marginTop: mobile && 20 }}>
-
           <Grid item>
             <Typography component="h5" variant="h5" gutterBottom>
               {title}
@@ -100,59 +107,133 @@ function ProjectCard(props) {
             </Typography>
           </Grid>
 
-          <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginTop: mobile ? 20 : 30 }}>
-            {githubLink !== null && <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
-              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={githubLink}><GitHubIcon className={classes.icon} />
-                Github
-              </Button>
-            </Grid>}
+          <Grid
+            container
+            direction="row"
+            alignContent="flex-start"
+            justify="flex-start"
+            style={{ marginTop: mobile ? 20 : 30 }}
+          >
+            {githubLink !== null && (
+              <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  className={classes.button}
+                  target="_blank"
+                  href={githubLink}
+                >
+                  <GitHubIcon className={classes.icon} />
+                  Github
+                </Button>
+              </Grid>
+            )}
 
-            {projectPageLink !== null &&
-              <Grid container direction="row" alignContent="flex-start" justify="flex-start" style={{ marginBottom: mobile ? 10 : 10 }}>
+            {projectPageLink !== null && (
+              <Grid
+                container
+                direction="row"
+                alignContent="flex-start"
+                justify="flex-start"
+                style={{ marginBottom: mobile ? 10 : 10 }}
+              >
                 <Grid item style={{ marginLeft: 10 }}>
-                  
-                  <Button component={Link} to={projectPageLink} variant="outlined" color="secondary" className={classes.button}><FolderIcon className={classes.icon} />
-                    Project Page
-                  </Button>
+                  {projectPageLink.substring(0, 4) !== "http" ? (
+                    <Button
+                      component={Link}
+                      to={projectPageLink}
+                      variant="outlined"
+                      color="secondary"
+                      className={classes.button}
+                    >
+                      <FolderIcon className={classes.icon} />
+                      Project Page
+                    </Button>
+                  ) : (
+                    // For absolute path links
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      className={classes.button}
+                      href={projectPageLink}
+                      target="_blank"
+                    >
+                      <FolderIcon className={classes.icon} />
+                      Project Page
+                    </Button>
+                  )}
                 </Grid>
-              </Grid>}
+              </Grid>
+            )}
 
-            {paperLink !== null && <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
-              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={paperLink}><DescriptionIcon className={classes.icon} />
-                {paperLinkLabel}
-              </Button>
-            </Grid>}
+            {paperLink !== null && (
+              <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  className={classes.button}
+                  target="_blank"
+                  href={paperLink}
+                >
+                  <DescriptionIcon className={classes.icon} />
+                  {paperLinkLabel}
+                </Button>
+              </Grid>
+            )}
 
-            {archiveDatas.map(([archiveLink, archiveLabel],) => (
+            {archiveDatas.map(([archiveLink, archiveLabel]) => (
               <>
-                {archiveLink !== null && <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
-                  <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={archiveLink}><ArchiveIcon className={classes.icon} />
-                    {archiveLabel}
-                  </Button>
-                </Grid>}
+                {archiveLink !== null && (
+                  <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      className={classes.button}
+                      target="_blank"
+                      href={archiveLink}
+                    >
+                      <ArchiveIcon className={classes.icon} />
+                      {archiveLabel}
+                    </Button>
+                  </Grid>
+                )}
               </>
             ))}
 
-            {videoLink !== null && <Grid item style={{ marginLeft: 10,marginTop: 4 }}>
-              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={videoLink}><VideocamIcon className={classes.icon} />
-                Video
-              </Button>
-            </Grid>}
+            {videoLink !== null && (
+              <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  className={classes.button}
+                  target="_blank"
+                  href={videoLink}
+                >
+                  <VideocamIcon className={classes.icon} />
+                  Video
+                </Button>
+              </Grid>
+            )}
 
-            {presentationLink !== null && <Grid item style={{ marginLeft: 10 ,marginTop: 4 }}>
-              <Button variant="outlined" color="secondary" className={classes.button} target="_blank" href={presentationLink}><SlideshowIcon className={classes.icon} />
-                {presentationLabel}
-              </Button>
-            </Grid>}
-
+            {presentationLink !== null && (
+              <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  className={classes.button}
+                  target="_blank"
+                  href={presentationLink}
+                >
+                  <SlideshowIcon className={classes.icon} />
+                  {presentationLabel}
+                </Button>
+              </Grid>
+            )}
           </Grid>
-
         </Grid>
-
       </Grid>
-    </Grid >
+    </Grid>
   );
-
 }
 
 ProjectCard.propTypes = {
@@ -161,17 +242,16 @@ ProjectCard.propTypes = {
   paperData: [PropTypes.string, PropTypes.string],
   presentationData: [PropTypes.string, PropTypes.string],
   archiveDatas: [[PropTypes.string, PropTypes.string]],
-  videoLink: PropTypes.string
+  videoLink: PropTypes.string,
 };
 
 ProjectCard.defaultProps = {
   githubLink: null,
   projectPageLink: null,
   paperData: [null, null],
-  presentationData : [null, null],
+  presentationData: [null, null],
   archiveDatas: [[null, null]],
   videoLink: null,
 };
 
 export default ProjectCard;
-
