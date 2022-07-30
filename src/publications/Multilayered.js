@@ -132,9 +132,7 @@ function Multilayered(props) {
             </Typography>
 
             <Typography>
-              <StyledLink href={process.env.PUBLIC_URL + "/"}>
-                Philippe Weier
-              </StyledLink>{" "}
+              <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>{" "}
               and{" "}
               <StyledLink href="https://belcour.github.io/blog/">
                 Laurent Belcour

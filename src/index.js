@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import App from "./App";
 import Multilayered from "./publications/Multilayered";
 import Opsr from "./publications/Opsr";
+import Ears from "./publications/Ears";
 import MenuBar from "./components/MenuBar";
 import theme from "./theme";
 import { MuiThemeProvider } from "material-ui/styles";
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/publications/multilayered" component={Multilayered} />
           <Route path="/publications/opsr" component={Opsr} />
+          <Route path="/publications/ears" component={Ears} />
           <Route exact path="/" component={App} />
         </Switch>
       </Router>

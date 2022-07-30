@@ -133,9 +133,7 @@ function Opsr(props) {
             </Typography>
 
             <Typography>
-              <StyledLink href={process.env.PUBLIC_URL + "/"}>
-                Philippe Weier
-              </StyledLink>
+              <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>
               , Marc Droske, Johannes Hanika, Andrea Weidlich, Jiří Vorba, 2021
             </Typography>
 
@@ -231,20 +229,24 @@ function Opsr(props) {
                 </Typography>
               </Grid>
 
-              <Grid
-                item
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
                 style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
               >
-                <Typography variant="h6" gutterBottom style={{ marginTop: 10 }}>
-                  <Box fontWeight={500}>Presentation</Box>
-                </Typography>
-
                 <ReactPlayer
+
                   url={
                     "https://weiphil.s3.eu-central-1.amazonaws.com/opsr_presentation_final.mp4"
                   }
                   controls={true}
                 />
+              </Box>
+              <Grid
+                item
+                style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+              >
 
                 <Typography
                   variant="body2"
@@ -260,9 +262,6 @@ function Opsr(props) {
                 </Typography>
               </Grid>
 
-              <Typography variant="h6" gutterBottom style={{ marginTop: 50 }}>
-                <Box fontWeight={500}>More information soon!</Box>
-              </Typography>
             </Grid>
           </Grid>
         </Grid>

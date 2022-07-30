@@ -100,28 +100,25 @@ function PresentationCard(props) {
                 gutterBottom
                 style={{ marginTop: 30 }}
               >
-                I recently finished my Master in Computer Science and
-                Communication at{" "}
-                <StyledLink target="_blank" href="https://www.epfl.ch/">
-                  EPFL
-                </StyledLink>{" "}
-                and currently working on Light Transport at{" "}
-                <StyledLink target="_blank" href="https://www.wetafx.co.nz/">
+                My name is Philippe Weier and I'm a PhD student at the University of Saarland. My research focuses on appearance modelling, spectral rendering, appearance filtering and differentiable rendering.<br />
+                Before that, I graduated with a Masters in Computer Science
+                at the <StyledLink target="_blank" href="https://www.epfl.ch/">
+                  École Polytechnique Fédérale de Lausanne (EPFL)
+                </StyledLink>.
+                I also worked as a Rendering Researcher at <StyledLink target="_blank" href="https://www.wetafx.co.nz/">
                   Weta Digital
-                </StyledLink>{" "}
-                as a rendering researcher.
+                </StyledLink>{" "}, where I improved the performance of light transport algorithms in the in-house <StyledLink target="_blank" href="https://www.wetafx.co.nz/research-and-tech/technology/manuka/">
+                  Manuka Renderer
+                </StyledLink>.
               </Typography>
               <Typography
                 variant="subtitle1"
                 color="textSecondary"
                 gutterBottom
               >
-                My main research interests are physically-based rendering,
-                signal processing and real-time rendering. In my free time, when
-                not programming some toy project, I like to play all sorts of
-                instruments, including the Euphonium, the trumpet and the
-                saxophone. You might also see me paint miniatures, climbing
-                walls or cycling :)
+                In my free time, when not programming some toy project, I like to play
+                all sorts of instruments, including the euphonium, the trumpet and the
+                saxophone. You might also see me paint miniatures, climbing walls or cycling :)
               </Typography>
               <Typography
                 variant="subtitle1"

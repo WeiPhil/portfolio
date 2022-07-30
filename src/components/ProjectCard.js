@@ -5,6 +5,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { Grid, Button, Typography, CardActionArea } from "@material-ui/core";
 import FolderIcon from "@material-ui/icons/Folder";
 import ArchiveIcon from "@material-ui/icons/Archive";
+import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
 import DescriptionIcon from "@material-ui/icons/Description";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import GitHubIcon from "@material-ui/icons/GitHub";
@@ -50,6 +51,7 @@ function ProjectCard(props) {
     projectPageLink,
     paperData,
     archiveDatas,
+    linkDatas,
     videoLink,
     presentationData,
   } = props;
@@ -200,6 +202,25 @@ function ProjectCard(props) {
               </>
             ))}
 
+            {linkDatas.map(([link, linkLabel]) => (
+              <>
+                {link !== null && (
+                  <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      className={classes.button}
+                      target="_blank"
+                      href={link}
+                    >
+                      <OpenInBrowserIcon className={classes.icon} />
+                      {linkLabel}
+                    </Button>
+                  </Grid>
+                )}
+              </>
+            ))}
+
             {videoLink !== null && (
               <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
                 <Button
@@ -242,6 +263,7 @@ ProjectCard.propTypes = {
   paperData: [PropTypes.string, PropTypes.string],
   presentationData: [PropTypes.string, PropTypes.string],
   archiveDatas: [[PropTypes.string, PropTypes.string]],
+  linkDatas: [[PropTypes.string, PropTypes.string]],
   videoLink: PropTypes.string,
 };
 
@@ -251,6 +273,7 @@ ProjectCard.defaultProps = {
   paperData: [null, null],
   presentationData: [null, null],
   archiveDatas: [[null, null]],
+  linkDatas: [[null, null]],
   videoLink: null,
 };
 

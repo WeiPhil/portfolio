@@ -158,7 +158,7 @@ class ProjectsOverview extends Component {
     );
     const layeredSubtitle = (
       <>
-        Philippe Weier and Laurent Belcour, 2020
+        <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box> and Laurent Belcour, 2020
         <Box fontWeight={500} fontSize="fontSize">
           Published in Journal of Computer Graphics Techniques (JCGT)
         </Box>
@@ -211,7 +211,7 @@ class ProjectsOverview extends Component {
     );
     const opsrSubtitle = (
       <>
-        Philippe Weier, Marc Droske, Johannes Hanika, Andrea Weidlich, Jiří
+        <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Marc Droske, Johannes Hanika, Andrea Weidlich, Jiří
         Vorba, 2021
         <Box fontWeight={500} fontSize="fontSize">
           Published in Computer Graphics Forum (Proceedings of Eurographics
@@ -239,6 +239,53 @@ class ProjectsOverview extends Component {
         presentationData={[
           "https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx",
           "Presentation (40.8 MB)",
+        ]}
+      />
+    );
+
+    const earsDescription = (
+      <>
+        <Box fontWeight={500}>Abstract </Box>
+        Russian roulette and splitting are widely used techniques to increase the efficiency of Monte Carlo estimators. But, despite their popularity, there
+        is little work on how to best apply them. Most existing approaches rely on
+        simple heuristics based on, e.g., surface albedo and roughness. Their efficiency
+        often hinges on user-controlled parameters. We instead iteratively learn optimal
+        Russian roulette and splitting factors during rendering, using a simple and
+        lightweight data structure. Given perfect estimates of variance and cost, our
+        fixed-point iteration provably converges to the optimal Russian roulette and
+        splitting factors that maximize the rendering efficiency. In our application
+        to unidirectional path tracing, we achieve consistent and significant speed-ups
+        over the state of the art.
+      </>
+    );
+    const earsSubtitle = (
+      <>
+        Alexander Rath, Pascal Grittmann, Sebastian Herholz, <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Philipp Slusallek, 2022
+        <Box fontWeight={500} fontSize="fontSize">
+          ACM Transactions on Graphics (Proceedings of SIGGRAPH 2022)
+        </Box>
+      </>
+    );
+    const earsProject = (
+      <ProjectCard
+        image={require("../data/ears/ears_teaser.png")}
+        title="EARS: Efficiency-Aware Russian Roulette and Splitting"
+        subtitle={earsSubtitle}
+        description={earsDescription}
+        projectPageLink="/publications/ears"
+        paperData={[
+          "https://graphics.cg.uni-saarland.de/papers/rath-2022-ears.pdf",
+          "Paper (30.7 MiB)",
+        ]}
+        linkDatas={[
+          [
+            "https://graphics.cg.uni-saarland.de/papers/ears/",
+            "Interactive Viewer",
+          ],
+        ]}
+        presentationData={[
+          "https://www.youtube.com/watch?v=Fby_DTcbU0c&ab_channel=AlexanderRath",
+          "Presentation",
         ]}
       />
     );
@@ -294,7 +341,7 @@ class ProjectsOverview extends Component {
 
     ///////////////////////
 
-    const publications = [opsrProject, layeredAnisoProject];
+    const publications = [earsProject, opsrProject, layeredAnisoProject];
     const personalProjects = [qulkanProject, procaryotaProject, lotrProject];
     const studyProjects = [cs440Project, imageAndVideoProject];
 
