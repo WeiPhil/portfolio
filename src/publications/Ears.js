@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import { Grid, Link, Button, Box, Container } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DescriptionIcon from "@material-ui/icons/Description";
-import ArchiveIcon from "@material-ui/icons/Archive";
 import SlideshowIcon from "@material-ui/icons/Slideshow";
 import ReactPlayer from "react-player";
 
