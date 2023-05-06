@@ -1,10 +1,10 @@
 import React from "react";
-import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import { Grid, Link, Button, Icon } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles, withStyles, useTheme } from "@mui/styles";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Grid, Link, Button, Icon } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,14 +100,13 @@ function PresentationCard(props) {
                 gutterBottom
                 style={{ marginTop: 30 }}
               >
-                My name is Philippe Weier and I'm a PhD student at the University of Saarland. My research focuses on appearance modelling, spectral rendering, appearance filtering and differentiable rendering.<br />
+                I'm currently a PhD student at the University of Saarland. My research focuses on appearance modelling and filtering, differentiable rendering and neural representations.<br />
                 Before that, I graduated with a Masters in Computer Science
                 at the <StyledLink target="_blank" href="https://www.epfl.ch/">
                   École Polytechnique Fédérale de Lausanne (EPFL)
-                </StyledLink>.
-                I also worked as a Rendering Researcher at <StyledLink target="_blank" href="https://www.wetafx.co.nz/">
+                </StyledLink> and worked as a Rendering Researcher at <StyledLink target="_blank" href="https://www.wetafx.co.nz/">
                   Weta Digital
-                </StyledLink>{" "}, where I improved the performance of light transport algorithms in the in-house <StyledLink target="_blank" href="https://www.wetafx.co.nz/research-and-tech/technology/manuka/">
+                </StyledLink>, where I improved the performance of light transport algorithms in the in-house <StyledLink target="_blank" href="https://www.wetafx.co.nz/research-and-tech/technology/manuka/">
                   Manuka Renderer
                 </StyledLink>.
               </Typography>
@@ -123,7 +122,7 @@ function PresentationCard(props) {
               <Typography
                 variant="subtitle1"
                 color="textSecondary"
-                style={{ marginTop: 30 }}
+                style={{ marginTop: 30, marginBottom: 30 }}
               >
                 Feel free to{" "}
                 <StyledLink href="mailto:ph.weier@gmail.com">

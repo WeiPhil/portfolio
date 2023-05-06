@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 import SwipeableViews from "react-swipeable-views";
-import { Grid, withStyles, Link, Divider, Box } from "@material-ui/core";
+import { Grid, Link, Divider, Box } from "@mui/material";
+import { withStyles } from "@mui/styles";
+
 import ProjectCard from "./ProjectCard";
 
 const StyledTabs = withStyles((theme) => ({
@@ -287,6 +289,7 @@ class ProjectsOverview extends Component {
           "https://www.youtube.com/watch?v=Fby_DTcbU0c&ab_channel=AlexanderRath",
           "Presentation",
         ]}
+        githubLink="https://github.com/iRath96/ears"
       />
     );
 

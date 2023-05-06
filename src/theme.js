@@ -1,5 +1,6 @@
-import red from "@material-ui/core/colors/red";
-import { createTheme } from '@material-ui/core/styles';
+import { grey } from "@mui/material/colors";
+import red from "@mui/material/colors/red";
+import { createTheme } from '@mui/material/styles';
 
 // A custom theme for this app
 const theme = createTheme({
@@ -17,6 +18,22 @@ const theme = createTheme({
       default: "#f1f1f1",
     },
   },
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        colorPrimary: {
+          backgroundColor: grey[800],
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        }
+      }
+    }
+  }
 });
 
 export default theme;

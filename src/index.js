@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 import App from "./App";
 import Multilayered from "./publications/Multilayered";
 import Opsr from "./publications/Opsr";
 import Ears from "./publications/Ears";
 import MenuBar from "./components/MenuBar";
 import theme from "./theme";
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 ReactDOM.render(

@@ -1,16 +1,17 @@
 import React from "react";
-import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import { Grid, Link, Button, Box, Container } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import DescriptionIcon from "@material-ui/icons/Description";
-import SlideshowIcon from "@material-ui/icons/Slideshow";
+import { makeStyles, withStyles, useTheme } from "@mui/styles";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Grid, Link, Button, Box, Container } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import DescriptionIcon from "@mui/icons-material/Description";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
-import OpenInBrowser from "@material-ui/icons/OpenInBrowser";
+import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -74,10 +75,6 @@ const useStyles = makeStyles((theme) => ({
 	icon: {
 		marginRight: theme.spacing(1),
 	},
-	button: {
-		textTransform: "none",
-		margin: theme.spacing(0.5),
-	},
 	figureLegend: {
 		maxWidth: "70%",
 		[theme.breakpoints.down("sm")]: {
@@ -113,6 +110,10 @@ function Ears(props) {
 	const [presentationLink, presentationLabel] = [
 		"https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx",
 		"Presentation",
+	];
+	const [githubLink, githubLabel] = [
+		"https://github.com/iRath96/ears",
+		"Github",
 	];
 
 	return (
@@ -159,7 +160,21 @@ function Ears(props) {
 								direction={smallWidth ? "column" : "row"}
 								justifyContent="flex-start"
 								alignItems="center"
+								columnSpacing={1}
 							>
+								<Grid item>
+									<Button
+										variant="outlined"
+										color="secondary"
+										className={classes.button}
+										target="_blank"
+										href={githubLink}
+									>
+										<GitHubIcon className={classes.icon} />
+										{githubLabel}
+									</Button>
+								</Grid>
+
 								<Grid item>
 									<Button
 										variant="outlined"
@@ -198,6 +213,8 @@ function Ears(props) {
 										{presentationLabel}
 									</Button>
 								</Grid>
+
+
 							</Grid>
 
 							<Grid

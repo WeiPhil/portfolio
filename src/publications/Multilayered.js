@@ -1,12 +1,12 @@
 import React from "react";
-import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import { Grid, Link, Button, Box, Container } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import ArchiveIcon from "@material-ui/icons/Archive";
-import DescriptionIcon from "@material-ui/icons/Description";
+import { makeStyles, withStyles, useTheme } from "@mui/styles";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Grid, Link, Button, Box, Container } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 import Footer from "../components/Footer";
 
@@ -176,6 +176,7 @@ function Multilayered(props) {
                 {archiveDatas.map(([archiveLink, archiveLinkLabel]) => (
                   <Grid item>
                     <Button
+                      key={archiveLink}
                       variant="outlined"
                       color="secondary"
                       className={classes.button}
@@ -269,7 +270,7 @@ function Multilayered(props) {
                     This is due to the correlation between total internal
                     reflection (TIR) and our precomputed average reflectance for
                     one bounce. Since we do not account for it, our model
-                    overblurs the reflectance at grazinangles.
+                    overblurs the reflectance at grazing angles.
                   </i>
                 </Typography>
               </Grid>

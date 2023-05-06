@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import { Grid, Button, Typography, CardActionArea } from "@material-ui/core";
-import FolderIcon from "@material-ui/icons/Folder";
-import ArchiveIcon from "@material-ui/icons/Archive";
-import OpenInBrowserIcon from '@material-ui/icons/OpenInBrowser';
-import DescriptionIcon from "@material-ui/icons/Description";
-import VideocamIcon from "@material-ui/icons/Videocam";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import SlideshowIcon from "@material-ui/icons/Slideshow";
+import { makeStyles, useTheme } from "@mui/styles";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import { Grid, Button, Typography, CardActionArea } from "@mui/material";
+import FolderIcon from "@mui/icons-material/Folder";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import OpenInBrowserIcon from '@mui/icons-material/OpenInBrowser';
+import DescriptionIcon from "@mui/icons-material/Description";
+import VideocamIcon from "@mui/icons-material/Videocam";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
 import PropTypes from "prop-types";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Lightbox from "react-image-lightbox";
 import { Link } from "react-router-dom";
 import "react-image-lightbox/style.css";
@@ -116,21 +116,6 @@ function ProjectCard(props) {
             justifyContent="flex-start"
             style={{ marginTop: mobile ? 20 : 30 }}
           >
-            {githubLink !== null && (
-              <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  className={classes.button}
-                  target="_blank"
-                  href={githubLink}
-                >
-                  <GitHubIcon className={classes.icon} />
-                  Github
-                </Button>
-              </Grid>
-            )}
-
             {projectPageLink !== null && (
               <Grid
                 container
@@ -165,6 +150,21 @@ function ProjectCard(props) {
                     </Button>
                   )}
                 </Grid>
+              </Grid>
+            )}
+
+            {githubLink !== null && (
+              <Grid item style={{ marginLeft: 10, marginTop: 4 }}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  className={classes.button}
+                  target="_blank"
+                  href={githubLink}
+                >
+                  <GitHubIcon className={classes.icon} />
+                  Github
+                </Button>
               </Grid>
             )}
 
@@ -260,10 +260,10 @@ function ProjectCard(props) {
 ProjectCard.propTypes = {
   githubLink: PropTypes.string,
   projectPageLink: PropTypes.string,
-  paperData: [PropTypes.string, PropTypes.string],
-  presentationData: [PropTypes.string, PropTypes.string],
-  archiveDatas: [[PropTypes.string, PropTypes.string]],
-  linkDatas: [[PropTypes.string, PropTypes.string]],
+  paperData: PropTypes.arrayOf(PropTypes.string),
+  presentationData: PropTypes.arrayOf(PropTypes.string),
+  archiveDatas: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  linkDatas: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string, PropTypes.string)),
   videoLink: PropTypes.string,
 };
 

@@ -1,29 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import Slide from "@material-ui/core/Slide";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Slide from "@mui/material/Slide";
 import "react-image-lightbox/style.css";
 
-import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
-import HomeIcon from "@material-ui/icons/HomeRounded";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import { makeStyles } from "@mui/styles";
+import IconButton from "@mui/material/IconButton";
+import HomeIcon from "@mui/icons-material/HomeRounded";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
   homebutton: {
     marginRight: theme.spacing(2),
   },
-  appbar: {
-    backgroundColor: theme.palette.grey[800],
-  },
   icon: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
@@ -65,6 +62,7 @@ function MenuBar(props) {
             <IconButton
               className={classes.homebutton}
               color="inherit"
+              style={{ marginLeft: 10, marginRight: 30 }}
               href={process.env.PUBLIC_URL + "/"}
             >
               <HomeIcon />

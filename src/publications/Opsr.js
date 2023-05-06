@@ -1,13 +1,13 @@
 import React from "react";
-import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import { Grid, Link, Button, Box, Container } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import DescriptionIcon from "@material-ui/icons/Description";
-import ArchiveIcon from "@material-ui/icons/Archive";
-import SlideshowIcon from "@material-ui/icons/Slideshow";
+import { makeStyles, withStyles, useTheme } from "@mui/styles";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Grid, Link, Button, Box, Container } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import DescriptionIcon from "@mui/icons-material/Description";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";

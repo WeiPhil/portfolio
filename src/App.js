@@ -1,7 +1,7 @@
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@mui/styles";
 import React, { Component } from "react";
 import ProjectsOverview from "./components/ProjectsOverview";
-import { Container, Divider } from "@material-ui/core";
+import { Container, Divider } from "@mui/material";
 import PresentationCard from "./components/PresentationCard";
 import Footer from "./components/Footer";
 
