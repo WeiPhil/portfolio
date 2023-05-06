@@ -121,7 +121,7 @@ function Multilayered(props) {
         <Grid
           container
           direction="column"
-          justify="flex-start"
+          justifyContent="flex-start"
           alignItems={smallWidth ? "flex-start" : "center"}
         >
           <Grid item>
@@ -157,7 +157,7 @@ function Multilayered(props) {
               <Grid
                 container
                 direction={smallWidth ? "column" : "row"}
-                justify="flex-start"
+                justifyContent="flex-start"
                 alignItems="center"
               >
                 <Grid item>
@@ -221,13 +221,13 @@ function Multilayered(props) {
                 <Typography variant="body1" gutterBottom>
                   We validated that our model was visualy close to the ground
                   truth. See our supplemental material for all our results
-                  (warning: the archive is > 4GB).
+                  (warning: the archive is &gt; 4GB).
                 </Typography>
               </Grid>
               <Grid
                 container
                 direction={"column"}
-                justify="center"
+                justifyContent="center"
                 alignItems="center"
               >
                 <Card

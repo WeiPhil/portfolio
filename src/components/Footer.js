@@ -22,7 +22,7 @@ function Footer(props) {
         color="textSecondary"
         gutterBottom
       >
-        © 2022 Philippe Weier
+        © 2023 Philippe Weier
       </Typography>
     </React.Fragment>
   );

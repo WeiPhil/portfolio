@@ -72,7 +72,7 @@ function ProjectCard(props) {
     <Grid
       container
       direction={mobile ? "column" : "row"}
-      justify="space-between"
+      justifyContent="space-between"
     >
       <Grid item xs={mobile ? true : 4}>
         <Card className={classes.card}>
@@ -113,7 +113,7 @@ function ProjectCard(props) {
             container
             direction="row"
             alignContent="flex-start"
-            justify="flex-start"
+            justifyContent="flex-start"
             style={{ marginTop: mobile ? 20 : 30 }}
           >
             {githubLink !== null && (
@@ -136,7 +136,7 @@ function ProjectCard(props) {
                 container
                 direction="row"
                 alignContent="flex-start"
-                justify="flex-start"
+                justifyContent="flex-start"
                 style={{ marginBottom: mobile ? 10 : 10 }}
               >
                 <Grid item style={{ marginLeft: 10 }}>

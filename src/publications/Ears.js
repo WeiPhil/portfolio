@@ -121,7 +121,7 @@ function Ears(props) {
 				<Grid
 					container
 					direction="column"
-					justify="flex-start"
+					justifyContent="flex-start"
 					alignItems={smallWidth ? "flex-start" : "center"}
 				>
 					<Grid item>
@@ -157,7 +157,7 @@ function Ears(props) {
 							<Grid
 								container
 								direction={smallWidth ? "column" : "row"}
-								justify="flex-start"
+								justifyContent="flex-start"
 								alignItems="center"
 							>
 								<Grid item>
