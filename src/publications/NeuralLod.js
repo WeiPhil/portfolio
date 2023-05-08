@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 	image: {
 		boxShadow: 0,
 		height: 0,
-		paddingTop: '44.41%' /* image_h/ image_w */
+		paddingTop: '44.41%', /* image_h/ image_w */
 		// paddingTop: '61.59%' /* image_h/ image_w */
 	},
 	playerWrapper: {
