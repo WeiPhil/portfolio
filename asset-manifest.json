@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.js": "/portfolio/static/js/main.a0040d57.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.a0040d57.chunk.js.map",
-    "runtime~main.js": "/portfolio/static/js/runtime~main.f308c8e6.js",
-    "runtime~main.js.map": "/portfolio/static/js/runtime~main.f308c8e6.js.map",
-    "static/css/2.9522b9fe.chunk.css": "/portfolio/static/css/2.9522b9fe.chunk.css",
-    "static/js/2.bb4e9b7e.chunk.js": "/portfolio/static/js/2.bb4e9b7e.chunk.js",
-    "static/js/2.bb4e9b7e.chunk.js.map": "/portfolio/static/js/2.bb4e9b7e.chunk.js.map",
+    "main.css": "/portfolio/static/css/main.db3664a3.css",
+    "main.js": "/portfolio/static/js/main.b9c9a3dd.js",
+    "static/media/ears_teaser.png": "/portfolio/static/media/ears_teaser.8bfaaa12e1ff261341e9.png",
+    "static/media/layered_aniso_05_05_top_varying.png": "/portfolio/static/media/layered_aniso_05_05_top_varying.aa24d51b4b2c7a746f8b.png",
+    "static/media/layered_aniso.png": "/portfolio/static/media/layered_aniso.b40551f914684d4fa8c9.png",
+    "static/media/cs440.png": "/portfolio/static/media/cs440.be02242c3c4a4722305b.png",
+    "static/media/beach_thumbnail.png": "/portfolio/static/media/beach_thumbnail.9bc598eab1028ab2ed8e.png",
+    "static/media/lotrScreenshot.png": "/portfolio/static/media/lotrScreenshot.b888174e5e9008a21823.png",
+    "static/media/resume.pdf": "/portfolio/static/media/resume.9999b8a72c95981b94c3.pdf",
+    "static/media/imageAndVideoProc.gif": "/portfolio/static/media/imageAndVideoProc.1e8a024aac2c9ce3c09c.gif",
+    "static/media/neural_lod_teaser.png": "/portfolio/static/media/neural_lod_teaser.d9dd97aabc20a723512f.png",
+    "static/media/procaryotaScreenshot.png": "/portfolio/static/media/procaryotaScreenshot.27c99c63fcca23e7e3df.png",
+    "static/media/fractal_thumbnail.png": "/portfolio/static/media/fractal_thumbnail.85ed1b43679ed9cedd69.png",
+    "static/media/qulkanScreenshot.png": "/portfolio/static/media/qulkanScreenshot.0a0a035942e677c6a99b.png",
+    "static/media/grazing_angles_overblur.png": "/portfolio/static/media/grazing_angles_overblur.866e28433cd82a4f5fc7.png",
+    "static/media/phil_picture.jpg": "/portfolio/static/media/phil_picture.7a89beaff31105191129.jpg",
     "index.html": "/portfolio/index.html",
-    "precache-manifest.e901380d82627c60aa02e8f6412eb3ab.js": "/portfolio/precache-manifest.e901380d82627c60aa02e8f6412eb3ab.js",
-    "service-worker.js": "/portfolio/service-worker.js",
-    "static/css/2.9522b9fe.chunk.css.map": "/portfolio/static/css/2.9522b9fe.chunk.css.map",
-    "static/media/beach_thumbnail.png": "/portfolio/static/media/beach_thumbnail.b9396ba1.png",
-    "static/media/cs440.png": "/portfolio/static/media/cs440.e6e1053f.png",
-    "static/media/ears_teaser.png": "/portfolio/static/media/ears_teaser.99a9c331.png",
-    "static/media/grazing_angles_overblur.png": "/portfolio/static/media/grazing_angles_overblur.28013ed9.png",
-    "static/media/imageAndVideoProc.gif": "/portfolio/static/media/imageAndVideoProc.7493018c.gif",
-    "static/media/layered_aniso.png": "/portfolio/static/media/layered_aniso.20ca472b.png",
-    "static/media/layered_aniso_05_05_top_varying.png": "/portfolio/static/media/layered_aniso_05_05_top_varying.3b400218.png",
-    "static/media/lotrScreenshot.png": "/portfolio/static/media/lotrScreenshot.bb34f7ec.png",
-    "static/media/phil_picture.jpg": "/portfolio/static/media/phil_picture.bbd436f5.jpg",
-    "static/media/procaryotaScreenshot.png": "/portfolio/static/media/procaryotaScreenshot.f3555398.png",
-    "static/media/qulkanScreenshot.png": "/portfolio/static/media/qulkanScreenshot.566af880.png",
-    "static/media/resume.pdf": "/portfolio/static/media/resume.f116db85.pdf"
-  }
+    "main.db3664a3.css.map": "/portfolio/static/css/main.db3664a3.css.map",
+    "main.b9c9a3dd.js.map": "/portfolio/static/js/main.b9c9a3dd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db3664a3.css",
+    "static/js/main.b9c9a3dd.js"
+  ]
 }
