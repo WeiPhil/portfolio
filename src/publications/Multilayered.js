@@ -72,16 +72,15 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(1),
   },
-  button: {
-    textTransform: "none",
-    margin: theme.spacing(0.5),
-  },
   figureLegend: {
     maxWidth: "70%",
     [theme.breakpoints.down("sm")]: {
       maxWidth: "100%",
     },
   },
+  paperTitles: {
+    textAlign: "center"
+  }
 }));
 
 const StyledLink = withStyles((theme) => ({
@@ -102,16 +101,16 @@ function Multilayered(props) {
 
   const [paperLink, paperLinkLabel] = [
     "http://jcgt.org/published/0009/02/03/paper.pdf",
-    "Paper (10.8 MiB)",
+    "Paper (10.8 MB)",
   ];
   const archiveDatas = [
     [
       "http://jcgt.org/published/0009/02/03/mitsuba_supplemental.zip",
-      "Code (20.8 KiB)",
+      "Code (20.8 KB)",
     ],
     [
       "http://jcgt.org/published/0009/02/03/html_supplemental.zip",
-      "Supplemental (4.1 GiB)",
+      "Supplemental (4.1 GB)",
     ],
   ];
 
@@ -125,13 +124,13 @@ function Multilayered(props) {
           alignItems={smallWidth ? "flex-start" : "center"}
         >
           <Grid item>
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" gutterBottom className={classes.paperTitles}>
               <Box fontWeight="fontWeightRegular">
                 Rendering Layered Materials with Anisotropic Interfaces
               </Box>
             </Typography>
 
-            <Typography>
+            <Typography className={classes.paperTitles}>
               <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>{" "}
               and{" "}
               <StyledLink href="https://belcour.github.io/blog/">
@@ -140,7 +139,7 @@ function Multilayered(props) {
               , 2020
             </Typography>
 
-            <Typography gutterBottom>
+            <Typography gutterBottom className={classes.paperTitles}>
               Published in Journal of Computer Graphics Techniques (
               <StyledLink href="http://jcgt.org/">JCGT</StyledLink>)
             </Typography>
@@ -153,18 +152,19 @@ function Multilayered(props) {
               />
             </Card>
 
-            <Grid item style={{ marginTop: 10 }}>
+            <Grid item style={{ marginTop: 30 }}>
               <Grid
                 container
                 direction={smallWidth ? "column" : "row"}
-                justifyContent="flex-start"
+                justifyContent="center"
                 alignItems="center"
+                columnSpacing={1}
+                rowSpacing={1}
               >
                 <Grid item>
                   <Button
                     variant="outlined"
                     color="secondary"
-                    className={classes.button}
                     target="_blank"
                     href={paperLink}
                   >
@@ -176,10 +176,8 @@ function Multilayered(props) {
                 {archiveDatas.map(([archiveLink, archiveLinkLabel]) => (
                   <Grid item>
                     <Button
-                      key={archiveLink}
                       variant="outlined"
                       color="secondary"
-                      className={classes.button}
                       target="_blank"
                       href={archiveLink}
                     >

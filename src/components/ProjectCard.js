@@ -23,9 +23,6 @@ const useStyles = makeStyles((theme) => ({
   card: {
     width: "100%",
     height: 300,
-    [theme.breakpoints.down("xs")]: {
-      height: 160,
-    },
   },
   image: {
     height: "100%",
@@ -58,7 +55,7 @@ function ProjectCard(props) {
   const [paperLink, paperLinkLabel] = paperData;
   const [presentationLink, presentationLabel] = presentationData;
 
-  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const mobile = useMediaQuery(theme.breakpoints.down("md"));
 
   function handleClickOpen() {
     setToggle(true);

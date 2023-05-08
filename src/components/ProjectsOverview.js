@@ -133,8 +133,6 @@ class ProjectsOverview extends Component {
       />
     );
 
-    // TODO Semester project
-
     // Publications
     const layeredAnisoDescription = (
       <>
@@ -173,20 +171,6 @@ class ProjectsOverview extends Component {
         subtitle={layeredSubtitle}
         description={layeredAnisoDescription}
         projectPageLink="/publications/multilayered"
-        paperData={[
-          "http://jcgt.org/published/0009/02/03/paper.pdf",
-          "Paper (10.8 MiB)",
-        ]}
-        archiveDatas={[
-          [
-            "http://jcgt.org/published/0009/02/03/mitsuba_supplemental.zip",
-            "Code (20.8 KiB)",
-          ],
-          [
-            "http://jcgt.org/published/0009/02/03/html_supplemental.zip",
-            "Supplemental (4.1 GiB)",
-          ],
-        ]}
       />
     );
 
@@ -228,20 +212,6 @@ class ProjectsOverview extends Component {
         subtitle={opsrSubtitle}
         description={opsrDescription}
         projectPageLink="/publications/opsr"
-        paperData={[
-          "https://weiphil.s3.eu-central-1.amazonaws.com/OPSR_EGSR2021.pdf",
-          "Paper (58.8 MiB)",
-        ]}
-        archiveDatas={[
-          [
-            "https://weiphil.s3.eu-central-1.amazonaws.com/opsr_supplemental.zip",
-            "Supplemental (153.8 MB)",
-          ],
-        ]}
-        presentationData={[
-          "https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx",
-          "Presentation (40.8 MB)",
-        ]}
       />
     );
 
@@ -275,21 +245,35 @@ class ProjectsOverview extends Component {
         subtitle={earsSubtitle}
         description={earsDescription}
         projectPageLink="/publications/ears"
-        paperData={[
-          "https://graphics.cg.uni-saarland.de/papers/rath-2022-ears.pdf",
-          "Paper (30.7 MiB)",
-        ]}
-        linkDatas={[
-          [
-            "https://graphics.cg.uni-saarland.de/papers/ears/",
-            "Interactive Viewer",
-          ],
-        ]}
-        presentationData={[
-          "https://www.youtube.com/watch?v=Fby_DTcbU0c&ab_channel=AlexanderRath",
-          "Presentation",
-        ]}
-        githubLink="https://github.com/iRath96/ears"
+      />
+    );
+
+    const neuralLodDescription = (
+      <>
+        <Box fontWeight={500}>Abstract </Box>
+        We introduce a practical general-purpose neural appearance filtering pipeline for physically-based rendering.
+        We tackle the previously difficult challenge of aggregating visibility across many levels of detail from local information only, without relying on learning visibility for the entire scene. The high adaptivity of neural representations allows us to retain geometric correlations along rays and thus avoid light leaks.
+        Common approaches to prefiltering decompose the appearance of a scene into volumetric representations with physically-motivated parameters, where the inflexibility of the fitted models limits rendering accuracy.
+        We avoid assumptions on particular types of geometry or materials, bypassing any special-case decompositions. Instead, we directly learn a compressed representation of the intra-voxel light transport. For such high-dimensional functions, neural networks have proven to be useful representations.
+        To satisfy the opposing constraints of prefiltered appearance and correlation-preserving point-to-point visibility, we use two small independent networks on a sparse multi-level voxel grid.
+        Each network requires 10-20 minutes of training to learn the appearance of an asset across levels of detail. Our method achieves 70-95% compression ratios and around 25% of quality improvements over previous work. We reach interactive to real-time framerates, depending on the level of detail.
+      </>
+    );
+    const neuralLodSubtitle = (
+      <>
+        <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Tobias Zirr, Anton Kaplanyan, Ling-Qi Yan, Philipp Slusallek, 2023
+        <Box fontWeight={500} fontSize="fontSize">
+          ACM Transactions on Graphics (Proceedings of SIGGRAPH 2023)
+        </Box>
+      </>
+    );
+    const neuralLodProject = (
+      <ProjectCard
+        image={require("../data/neural_lod/fractal_thumbnail.png")}
+        title="Neural Prefiltering for Correlation-Aware Levels of Detail"
+        subtitle={neuralLodSubtitle}
+        description={neuralLodDescription}
+        projectPageLink="/publications/neural_lod"
       />
     );
 
@@ -344,7 +328,7 @@ class ProjectsOverview extends Component {
 
     ///////////////////////
 
-    const publications = [earsProject, opsrProject, layeredAnisoProject];
+    const publications = [neuralLodProject, earsProject, opsrProject, layeredAnisoProject];
     const personalProjects = [qulkanProject, procaryotaProject, lotrProject];
     const studyProjects = [cs440Project, imageAndVideoProject];
 

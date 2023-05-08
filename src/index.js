@@ -5,6 +5,7 @@ import App from "./App";
 import Multilayered from "./publications/Multilayered";
 import Opsr from "./publications/Opsr";
 import Ears from "./publications/Ears";
+import NeuralLod from "./publications/NeuralLod";
 import MenuBar from "./components/MenuBar";
 import theme from "./theme";
 import { ThemeProvider } from '@mui/material/styles';
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="/publications/multilayered" component={Multilayered} />
         <Route path="/publications/opsr" component={Opsr} />
         <Route path="/publications/ears" component={Ears} />
+        <Route path="/publications/neural_lod" component={NeuralLod} />
         <Route exact path="/" component={App} />
       </Switch>
     </Router>

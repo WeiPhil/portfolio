@@ -6,12 +6,10 @@ import Typography from "@mui/material/Typography";
 import { Grid, Link, Button, Box, Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DescriptionIcon from "@mui/icons-material/Description";
-import SlideshowIcon from "@mui/icons-material/Slideshow";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
-import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -31,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
 			padding: 20,
 		},
 		[theme.breakpoints.up("md")]: {
-			paddingLeft: 150,
-			paddingRight: 150,
+			paddingLeft: 100,
+			paddingRight: 100,
 		},
 	},
 	card: {
@@ -40,8 +38,10 @@ const useStyles = makeStyles((theme) => ({
 		width: "100%",
 	},
 	image: {
+		boxShadow: 0,
 		height: 0,
-		paddingTop: '56.32%'
+		paddingTop: '44.41%' /* image_h/ image_w */
+		// paddingTop: '61.59%' /* image_h/ image_w */
 	},
 	playerWrapper: {
 		position: 'relative',
@@ -96,7 +96,7 @@ const StyledLink = withStyles((theme) => ({
 	},
 }))((props) => <Link underline="none" {...props} />);
 
-function Ears(props) {
+function NeuralLod(props) {
 	window.scrollTo(0, 0);
 
 	const theme = useTheme();
@@ -105,20 +105,24 @@ function Ears(props) {
 	const smallWidth = useMediaQuery(theme.breakpoints.down("sm"));
 
 	const [paperLink, paperLinkLabel] = [
-		"https://graphics.cg.uni-saarland.de/papers/rath-2022-ears.pdf",
-		"Paper (30.7 MB)",
+		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod.pdf",
+		"Paper (18.3 MB)",
 	];
+	// const [supplementalViewerLink, supplementalViewerLabel] = [
+	// 	"",
+	// 	"Interactive Viewer",
+	// ];
 	const [supplementalLink, supplementalLabel] = [
-		"https://graphics.cg.uni-saarland.de/papers/ears/",
-		"Interactive Viewer",
+		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_supplemental.pdf",
+		"Supplemental (5.3 MB)",
 	];
-	const [presentationLink, presentationLabel] = [
-		"https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx",
-		"Presentation",
-	];
+	// const [presentationLink, presentationLabel] = [
+	// 	"https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx",
+	// 	"Presentation",
+	// ];
 	const [githubLink, githubLabel] = [
-		"https://github.com/iRath96/ears",
-		"Code",
+		"https://github.com/WeiPhil/neural_lod",
+		"Code (Coming Soon)",
 	];
 
 	return (
@@ -134,32 +138,38 @@ function Ears(props) {
 						<Typography variant="h5" gutterBottom className={classes.paperTitles}>
 							<Box fontWeight="fontWeightRegular">
 								{" "}
-								EARS: Efficiency-Aware Russian Roulette and Splitting
+								Neural Prefiltering for Correlation-Aware Levels of Detail
 							</Box>
 						</Typography>
 
-						<Typography className={classes.paperTitles}>
-							Alexander Rath, Pascal Grittmann, Sebastian Herholz,
-							{" "}<Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Philipp Slusallek, 2022
+						<Typography style={{ textAlign: "center" }}>
+							<Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Tobias Zirr, Anton Kaplanyan, Ling-Qi Yan, Philipp Slusallek, 2023
 						</Typography>
 
-						<Typography gutterBottom className={classes.paperTitles}>
+						<Typography gutterBottom style={{ textAlign: "center" }}>
 							Published in ACM Transactions on Graphics (Proceedings of{" "}
-							<StyledLink href="https://s2022.siggraph.org/">
-								SIGGRAPH 2022
+							<StyledLink href="https://s2023.siggraph.org/">
+								SIGGRAPH 2023
 							</StyledLink>
 							)
 						</Typography>
 
-						<Card className={classes.card}>
+						<Card className={classes.card}
+							variant="outlined"
+							sx={{
+								bgcolor: 'rgba(0, 0, 0, 0)',
+								borderRadius: 0,
+								borderColor: 'rgba(0, 0, 0, 0)',
+							}}>
 							<CardMedia
 								className={classes.image}
-								image={require("../data/ears/ears_teaser.png")}
-								title="EARS Teaser"
+
+								image={require("../data/neural_lod/neural_lod_teaser.png")}
+								title="Neural Lod Teaser"
 							/>
 						</Card>
 
-						<Grid item style={{ marginTop: 30 }}>
+						<Grid item style={{ marginTop: 30 }} >
 							<Grid
 								container
 								direction={smallWidth ? "column" : "row"}
@@ -201,12 +211,12 @@ function Ears(props) {
 										target="_blank"
 										href={supplementalLink}
 									>
-										<OpenInBrowser className={classes.icon} />
+										<DescriptionIcon className={classes.icon} />
 										{supplementalLabel}
 									</Button>
 								</Grid>
 
-								<Grid item>
+								{/* <Grid item>
 									<Button
 										variant="outlined"
 										color="secondary"
@@ -217,7 +227,7 @@ function Ears(props) {
 										<SlideshowIcon className={classes.icon} />
 										{presentationLabel}
 									</Button>
-								</Grid>
+								</Grid> */}
 
 
 							</Grid>
@@ -230,20 +240,14 @@ function Ears(props) {
 									<Box fontWeight={500}>Abstract</Box>
 								</Typography>
 								<Typography variant="body1" gutterBottom>
-									Russian roulette and splitting are widely used techniques to increase the
-									efficiency of Monte Carlo estimators. But, despite their popularity, there
-									is little work on how to best apply them. Most existing approaches rely on
-									simple heuristics based on, e.g., surface albedo and roughness. Their efficiency
-									often hinges on user-controlled parameters. We instead iteratively learn optimal
-									Russian roulette and splitting factors during rendering, using a simple and
-									lightweight data structure. Given perfect estimates of variance and cost, our
-									fixed-point iteration provably converges to the optimal Russian roulette and
-									splitting factors that maximize the rendering efficiency. In our application
-									to unidirectional path tracing, we achieve consistent and significant speed-ups
-									over the state of the art.
+									We introduce a practical general-purpose neural appearance filtering pipeline for physically-based rendering.
+									We tackle the previously difficult challenge of aggregating visibility across many levels of detail from local information only, without relying on learning visibility for the entire scene. The high adaptivity of neural representations allows us to retain geometric correlations along rays and thus avoid light leaks.
+									Common approaches to prefiltering decompose the appearance of a scene into volumetric representations with physically-motivated parameters, where the inflexibility of the fitted models limits rendering accuracy.
+									We avoid assumptions on particular types of geometry or materials, bypassing any special-case decompositions. Instead, we directly learn a compressed representation of the intra-voxel light transport. For such high-dimensional functions, neural networks have proven to be useful representations.
+									To satisfy the opposing constraints of prefiltered appearance and correlation-preserving point-to-point visibility, we use two small independent networks on a sparse multi-level voxel grid.
+									Each network requires 10-20 minutes of training to learn the appearance of an asset across levels of detail. Our method achieves 70-95% compression ratios and around 25% of quality improvements over previous work. We reach interactive to real-time framerates, depending on the level of detail.
 								</Typography>
 							</Grid>
-
 							<Box
 								display="flex"
 								justifyContent="center"
@@ -256,7 +260,7 @@ function Ears(props) {
 									width='100%'
 									height='100%'
 									url={
-										"https://www.youtube.com/watch?v=Fby_DTcbU0c&ab_channel=AlexanderRath"
+										"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_supplemental_video.mp4"
 									}
 									controls={true}
 								/>
@@ -266,8 +270,8 @@ function Ears(props) {
 				</Grid>
 			</div>
 			<Footer />
-		</Container >
+		</Container>
 	);
 }
 
-export default Ears;
+export default NeuralLod;
