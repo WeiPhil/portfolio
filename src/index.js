@@ -9,20 +9,24 @@ import NeuralLod from "./publications/NeuralLod";
 import MenuBar from "./components/MenuBar";
 import theme from "./theme";
 import { ThemeProvider } from '@mui/material/styles';
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+
+const reload = () => window.location.reload();
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
-    <Router>
+    <Router >
       <MenuBar />
       <Switch>
-        <Route path="/publications/multilayered" component={Multilayered} />
-        <Route path="/publications/opsr" component={Opsr} />
-        <Route path="/publications/ears" component={Ears} />
-        <Route path="/publications/neural_lod" component={NeuralLod} />
-        <Route exact path="/" component={App} />
+        <Route exact path="/publications/multilayered" component={Multilayered} />
+        <Route exact path="/publications/opsr" component={Opsr} />
+        <Route exact path="/publications/ears" component={Ears} />
+        <Route exact path="/publications/neural_lod" component={NeuralLod} />
+        <Route exact path="/portfolio" component={App} />
+        <Route exact path="/portfolio/neural_lod_viewer" onEnter={reload} />
       </Switch>
     </Router>
   </ThemeProvider>,

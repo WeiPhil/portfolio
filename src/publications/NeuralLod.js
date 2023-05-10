@@ -7,6 +7,7 @@ import { Grid, Link, Button, Box, Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DescriptionIcon from "@mui/icons-material/Description";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
@@ -108,10 +109,10 @@ function NeuralLod(props) {
 		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod.pdf",
 		"Paper (18.3 MB)",
 	];
-	// const [supplementalViewerLink, supplementalViewerLabel] = [
-	// 	"",
-	// 	"Interactive Viewer",
-	// ];
+	const [supplementalViewerLink, supplementalViewerLabel] = [
+		"../portfolio/neural_lod_viewer/",
+		"Interactive Viewer",
+	];
 	const [supplementalLink, supplementalLabel] = [
 		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_supplemental.pdf",
 		"Supplemental (5.3 MB)",
@@ -216,6 +217,18 @@ function NeuralLod(props) {
 									</Button>
 								</Grid>
 
+								<Grid item>
+									<Button
+										variant="outlined"
+										color="secondary"
+										className={classes.button}
+										target="_blank"
+										href={supplementalViewerLink}
+									>
+										<OpenInBrowser className={classes.icon} />
+										{supplementalViewerLabel}
+									</Button>
+								</Grid>
 								{/* <Grid item>
 									<Button
 										variant="outlined"

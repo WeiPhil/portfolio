@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sampler Comparisons">
+    <title>Neural Prefiltering Evaluation</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./utils/report.css">
+    <script src="./utils/data.js"></script>
+    <script src="./utils/ImageBox.js"></script>
+    <script src="./utils/CopyrightBox.js"></script>
+    <script src="./utils/Chart.js"></script>
+    <script src="./utils/ChartBox.js"></script>
+</head>
+<script type="text/javascript">
+
+  
+    function setup() {
+        content = document.getElementById("content");
+        if (data['imageBoxes'])
+            new ImageBox(content, data['imageBoxes']);
+    }
+
+</script>
+<body onload="setup();">
+    <h1>Overview</h1>
+    <p>
+        We compare scenes of different structure and complexity prefiltered using our approach and display their FLIP error [Andersson et al. 2020] when compared to a path traced reference. 
+        For the Pandanus tree, we both include the results of using our optimal thresholds and the stochastic threshold variant.
+    </p>
+    <p>
+        Each LoD corresponds to a different image resolution, with the lowest LoD rendered at the resolution of 512x512 pixels and the lowest resolution rendered at only 8x8 pixels.
+    </p>
+    <p>
+        For more details on training times, rendering performance, memory footprint and variance reduction, please consult our paper.
+    </p>
+    <!-- <p>
+        We thank the following people for providing test scenes: 
+    </p> -->
+    <div class="content" id="content" style="position: relative; margin: 0 auto; margin-bottom: 40px;"></div>
+    <!-- <div id="table"></div> -->
+</body>
+</html>
