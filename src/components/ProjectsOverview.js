@@ -170,7 +170,7 @@ class ProjectsOverview extends Component {
         title="Rendering Layered Materials with Anisotropic Interfaces"
         subtitle={layeredSubtitle}
         description={layeredAnisoDescription}
-        projectPageLink="/portfolio/publications/multilayered"
+        projectPageLink="./multilayered"
       />
     );
 
@@ -211,7 +211,7 @@ class ProjectsOverview extends Component {
         title="Optimised Path Space Regularisation"
         subtitle={opsrSubtitle}
         description={opsrDescription}
-        projectPageLink="/portfolio/publications/opsr"
+        projectPageLink="./opsr"
       />
     );
 
@@ -244,7 +244,7 @@ class ProjectsOverview extends Component {
         title="EARS: Efficiency-Aware Russian Roulette and Splitting"
         subtitle={earsSubtitle}
         description={earsDescription}
-        projectPageLink="/portfolio/publications/ears"
+        projectPageLink="./ears"
       />
     );
 
@@ -273,7 +273,7 @@ class ProjectsOverview extends Component {
         title="Neural Prefiltering for Correlation-Aware Levels of Detail"
         subtitle={neuralLodSubtitle}
         description={neuralLodDescription}
-        projectPageLink="/portfolio/publications/neural_lod"
+        projectPageLink="./neural_lod"
       />
     );
 

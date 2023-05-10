@@ -21,10 +21,10 @@ ReactDOM.render(
     <Router >
       <MenuBar />
       <Switch>
-        <Route exact path="/portfolio/publications/multilayered" component={Multilayered} />
-        <Route exact path="/portfolio/publications/opsr" component={Opsr} />
-        <Route exact path="/portfolio/publications/ears" component={Ears} />
-        <Route exact path="/portfolio/publications/neural_lod" component={NeuralLod} />
+        <Route exact path="/portfolio/multilayered" component={Multilayered} />
+        <Route exact path="/portfolio/opsr" component={Opsr} />
+        <Route exact path="/portfolio/ears" component={Ears} />
+        <Route exact path="/portfolio/neural_lod" component={NeuralLod} />
         <Route exact path="/portfolio" component={App} />
         <Route exact path="/portfolio/neural_lod_viewer" onEnter={reload} />
       </Switch>
