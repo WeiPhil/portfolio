@@ -110,7 +110,7 @@ function NeuralLod(props) {
 		"Paper (18.3 MB)",
 	];
 	const [supplementalViewerLink, supplementalViewerLabel] = [
-		"../portfolio/neural_lod_viewer/",
+		"../neural_lod_viewer/",
 		"Interactive Viewer",
 	];
 	const [supplementalLink, supplementalLabel] = [
