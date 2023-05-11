@@ -18,15 +18,15 @@ ReactDOM.render(
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
-    <Router >
+    <Router basename="/portfolio">
       <MenuBar />
       <Switch>
-        <Route exact path="/portfolio/multilayered" component={Multilayered} />
-        <Route exact path="/portfolio/opsr" component={Opsr} />
-        <Route exact path="/portfolio/ears" component={Ears} />
-        <Route exact path="/portfolio/neural_lod" component={NeuralLod} />
-        <Route exact path="/portfolio" component={App} />
-        <Route exact path="/portfolio/neural_lod_viewer" onEnter={reload} />
+        <Route exact path="/multilayered" component={Multilayered} />
+        <Route exact path="/opsr" component={Opsr} />
+        <Route exact path="/ears" component={Ears} />
+        <Route exact path="/neural_lod" component={NeuralLod} />
+        <Route exact path="/" component={App} />
+        <Route exact path="/neural_lod_viewer" onEnter={reload} />
       </Switch>
     </Router>
   </ThemeProvider>,
