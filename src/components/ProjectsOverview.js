@@ -108,7 +108,7 @@ class ProjectsOverview extends Component {
     );
     const imageAndVideoDescription = (
       <>
-        During the Image and Video processing course (EE550) at EPFL I
+        During the Image and Video processing course (EE550) at EPFL, I
         implemented different reconstruction algorithms of the plenoptic
         function. It is mainly based on previous work on Light Field Rendering
         by{" "}
