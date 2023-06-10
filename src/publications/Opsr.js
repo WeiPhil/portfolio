@@ -8,6 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import DescriptionIcon from "@mui/icons-material/Description";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
@@ -114,6 +115,11 @@ function Opsr(props) {
     const [presentationLink, presentationLabel] = [
         "https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx",
         "Presentation (40.8 MB)",
+    ]
+
+    const [githubLink, githubLabel] = [
+        "https://github.com/WeiPhil/OptimisedPathSpaceRegularisation",
+        "Source Code",
     ];
 
     return (
@@ -163,6 +169,18 @@ function Opsr(props) {
                                 columnSpacing={1}
                                 rowSpacing={1}
                             >
+                                <Grid item>
+                                    <Button
+                                        variant="outlined"
+                                        color="secondary"
+                                        target="_blank"
+                                        href={githubLink}
+                                    >
+                                        <GitHubIcon className={classes.icon} />
+                                        {githubLabel}
+                                    </Button>
+                                </Grid>
+
                                 <Grid item>
                                     <Button
                                         variant="outlined"
