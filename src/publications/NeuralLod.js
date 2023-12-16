@@ -7,6 +7,7 @@ import { Grid, Link, Button, Box, Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DescriptionIcon from "@mui/icons-material/Description";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import ReactPlayer from "react-player";
 
@@ -117,13 +118,13 @@ function NeuralLod(props) {
 		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_supplemental.pdf",
 		"Supplemental (5.3 MB)",
 	];
-	// const [presentationLink, presentationLabel] = [
-	// 	"https://weiphil.s3.eu-central-1.amazonaws.com/opsr_egsr_presentation.pptx",
-	// 	"Presentation",
-	// ];
+	const [presentationLink, presentationLabel] = [
+		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_presentation.pptx",
+		"Presentation (with Speaker Notes)",
+	];
 	const [githubLink, githubLabel] = [
 		"https://github.com/WeiPhil/neural_lod",
-		"Code (Coming Soon)",
+		"Code",
 	];
 
 	return (
@@ -229,7 +230,7 @@ function NeuralLod(props) {
 										{supplementalViewerLabel}
 									</Button>
 								</Grid>
-								{/* <Grid item>
+								<Grid item>
 									<Button
 										variant="outlined"
 										color="secondary"
@@ -240,7 +241,7 @@ function NeuralLod(props) {
 										<SlideshowIcon className={classes.icon} />
 										{presentationLabel}
 									</Button>
-								</Grid> */}
+								</Grid>
 
 
 							</Grid>
@@ -261,23 +262,56 @@ function NeuralLod(props) {
 									Each network requires 10-20 minutes of training to learn the appearance of an asset across levels of detail. Our method achieves 70-95% compression ratios and around 25% of quality improvements over previous work. We reach interactive to real-time framerates, depending on the level of detail.
 								</Typography>
 							</Grid>
-							<Box
-								display="flex"
-								justifyContent="center"
-								alignItems="center"
-								className={classes.playerWrapper}
+							<Grid
+								item
 								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
 							>
-								<ReactPlayer
-									className={classes.reactPlayer}
-									width='100%'
-									height='100%'
-									url={
-										"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_supplemental_video.mp4"
-									}
-									controls={true}
-								/>
-							</Box>
+								<Typography variant="h5" gutterBottom>
+									<Box fontWeight={500}>Fast Forward Video</Box>
+								</Typography>
+								<Box
+									display="flex"
+									justifyContent="center"
+									alignItems="center"
+									className={classes.playerWrapper}
+									style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+								>
+									<ReactPlayer
+										className={classes.reactPlayer}
+										width='100%'
+										height='100%'
+										url={
+											"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_fast_forward.mp4"
+										}
+										controls={true}
+									/>
+								</Box>
+							</Grid>
+							<Grid
+								item
+								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+							>
+								<Typography variant="h5" gutterBottom>
+									<Box fontWeight={500}>Supplemental Video</Box>
+								</Typography>
+								<Box
+									display="flex"
+									justifyContent="center"
+									alignItems="center"
+									className={classes.playerWrapper}
+									style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+								>
+									<ReactPlayer
+										className={classes.reactPlayer}
+										width='100%'
+										height='100%'
+										url={
+											"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_supplemental_video.mp4"
+										}
+										controls={true}
+									/>
+								</Box>
+							</Grid>
 						</Grid>
 					</Grid>
 				</Grid>
