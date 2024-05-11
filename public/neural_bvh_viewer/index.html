@@ -1,0 +1,787 @@
+<html>
+
+<head>
+    <title>N-BVH Viewer</title>
+    <style type="text/css">
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&display=swap");
+
+        :root {
+            --primary-color: #185ee0;
+            --secondary-color: #e6eef9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: rgba(230, 238, 249, 0.5);
+        }
+
+        .container {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            overflow-x: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            position: relative;
+            background-color: #fff;
+            padding: 0.75rem;
+            border-radius: 100px;
+        }
+
+        .tabs,
+        .viewer {
+            box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+        }
+
+        .tabs * {
+            z-index: 2;
+        }
+
+        input[type=radio] {
+            display: none;
+        }
+
+        .tabs label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 54px;
+            width: 200px;
+            font-size: 1.25rem;
+            font-weight: 500;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: color 0.15s ease-in;
+        }
+
+        input[type=radio]:checked+label {
+            color: var(--primary-color);
+        }
+
+        .glider {
+            position: absolute;
+            display: flex;
+            height: 54px;
+            width: 200px;
+            background-color: var(--secondary-color);
+            z-index: 1;
+            border-radius: 99px;
+            transition: 0.25s ease-out;
+        }
+
+        .viewer {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 4px solid white;
+        }
+
+        .viewer,
+        .viewer img {
+            position: relative;
+            width: 960px;
+            height: 540px;
+            box-sizing: content-box;
+        }
+
+        .viewer .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            transition: opacity 0.2s ease;
+        }
+
+        .image span {
+            z-index: 15;
+            cursor: default;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            margin: 10px 12px;
+            line-height: 16px;
+            color: white;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 0 3px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.66);
+            border-radius: 3px;
+            padding: 4px 12px;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+
+        input[type=range] {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            cursor: pointer;
+            height: 12px;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            background: var(--primary-color);
+            height: 4px;
+            border-radius: 4px;
+        }
+
+        input[type=range]::-moz-range-track {
+            background: var(--primary-color);
+            height: 4px;
+            border-radius: 4px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -5px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            height: 14px;
+            width: 14px;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            margin-top: -5px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            height: 14px;
+            width: 14px;
+        }
+
+        .controls {
+            display: flex;
+            font-size: 0.8em;
+        }
+
+        .controls label {
+            display: inline-block;
+            margin-left: 10px;
+            width: 100px;
+            text-align: center;
+        }
+
+        input#show-flip {
+            width: 30px;
+        }
+
+        input#show-flip::-webkit-slider-runnable-track {
+            background: #d60d0d;
+        }
+
+        input#show-flip::-webkit-slider-thumb {
+            border: 2px solid #d60d0d;
+        }
+
+        .statistics {
+            display: flex;
+            margin-bottom: 18px;
+            /* align-items: center; */
+        }
+
+        .statistics div {
+            width: 150px;
+        }
+
+        .statistics div span {
+            display: block;
+            text-align: center;
+            font-size: 0.6em;
+        }
+
+        .statistics div span.big {
+            font-size: 1.5em;
+            font-weight: 200;
+        }
+
+        .statistics div span:first-child {
+            /* font-variant: small-caps; */
+            /* color: var(--primary-color); */
+            opacity: 0.5;
+            font-size: 0.75em;
+        }
+
+        .tabs {
+            transform: scale(0.6);
+            margin-top: -14px;
+            margin-bottom: -4px;
+        }
+
+        @media (max-width: 1000px) {
+            .container {
+                gap: 0;
+            }
+
+            .statistics {
+                transform: scale(0.8);
+            }
+
+            .tabs {
+                transform: scale(0.4);
+                margin-top: -22px;
+                margin-bottom: -14px;
+            }
+
+            .controls {
+                transform: scale(0.666);
+            }
+
+            .viewer,
+            .viewer img {
+                width: 640px;
+                height: 360px;
+            }
+        }
+
+        .loading-overlay {
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .loading-overlay::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            border: 2px solid white;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 50% 50%, 50% 100%, 0% 100%);
+            position: absolute;
+            left: calc(50% - 15px);
+            top: calc(50% - 15px);
+            animation: spin 2s linear infinite;
+            border-radius: 15px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        .controls input[type="checkbox"] {
+            display: none;
+            visibility: hidden;
+        }
+
+        .controls label {
+            display: inline-block;
+        }
+
+        .controls .cbx {
+            position: relative;
+            top: 1px;
+            width: 17px;
+            height: 17px;
+            border: 1px solid #c8ccd4;
+            border-radius: 3px;
+            vertical-align: middle;
+            transition: background 0.1s ease;
+            cursor: pointer;
+        }
+
+        .controls .cbx:after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 5px;
+            width: 5px;
+            height: 11px;
+            opacity: 0;
+            transform: rotate(45deg) scale(0);
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transition: all 0.3s ease;
+            transition-delay: 0.15s;
+        }
+
+        .controls .lbl {
+            margin-left: 5px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .controls input[type="checkbox"]:checked~.cbx {
+            border-color: transparent;
+            background: var(--primary-color);
+            animation: jelly-42 0.6s ease;
+        }
+
+        .controls input[type="checkbox"]:checked~.cbx:after {
+            opacity: 1;
+            transform: rotate(45deg) scale(1);
+        }
+
+        .controls .cntr {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        @-moz-keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @-webkit-keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @-o-keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+    </style>
+    <script type="text/javascript">
+
+        const sceneSizes = {
+            "teaser": 1885000000,
+            "chess": 329337248,
+            "city_house": 1553107512,
+            "bonzai": 852852840,
+            "mammoth_exhibition_large": 2691967568,
+            "andalusian_room": 308561336,
+            "xyzrgb_statuette": 642497152
+        }
+
+        const overheadSizes = {
+            "teaser": 105000000,
+            "chess": 33113728,
+            "city_house": 144075104,
+            "bonzai": 145432088,
+            "mammoth_exhibition_large": 169847640,
+            "andalusian_room": 105005784,
+            "xyzrgb_statuette": 0
+        }
+
+        const neuralFlip = {
+            "teaser": [
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+            ],
+            "chess": [
+                [0.060875654, 0.033698402, 0.02937663, 0.027780691, 0.026004408, 0.024080748, 0.02451631],
+                [0.056774195, 0.029986318, 0.025144586, 0.02164077, 0.018944891, 0.019688807, 0.01863656],
+                [0.054365896, 0.027906753, 0.024122778, 0.021092175, 0.017616875, 0.018828345, 0.015772626],
+                [0.05369247, 0.028116304, 0.021851141, 0.018861836, 0.017456824, 0.016448159, 0.016081661],
+                [0.053120412, 0.027788434, 0.022370882, 0.018107979, 0.01900158, 0.01662259, 0.014182691]
+            ],
+            "city_house": [
+                [0.04122865, 0.031285364, 0.029156454, 0.023587769, 0.021038279, 0.01981693, 0.017295359],
+                [0.04008145, 0.033445593, 0.02691796, 0.020829063, 0.01831041, 0.016400294, 0.015127107],
+                [0.04131236, 0.031975236, 0.025662053, 0.020369386, 0.01631322, 0.015963163, 0.013834648],
+                [0.03879261, 0.030414268, 0.024819994, 0.018998524, 0.015899736, 0.015503924, 0.013678387],
+                [0.038234487, 0.028995425, 0.02357419, 0.019277168, 0.016388508, 0.014513417, 0.012708961]
+            ],
+            "bonzai": [
+                [0.07000066, 0.05395055, 0.048694093, 0.046609644, 0.04172404, 0.040187154, 0.040356472],
+                [0.07021904, 0.054374587, 0.050831404, 0.04386111, 0.038574286, 0.033522915, 0.033008672],
+                [0.065654814, 0.053779963, 0.048829403, 0.04110273, 0.03312102, 0.028872937, 0.026796049],
+                [0.06880009, 0.053121608, 0.04762756, 0.038408905, 0.030168606, 0.026107091, 0.023463763],
+                [0.065968014, 0.05207678, 0.0456704, 0.037900504, 0.027880203, 0.023537515, 0.02116228]
+            ],
+            "mammoth_exhibition_large": [
+                [0.029321253, 0.021722578, 0.01715584, 0.014956851, 0.014867135, 0.014449636, 0.015288402],
+                [0.027235348, 0.019769318, 0.0148948915, 0.012424371, 0.011456598, 0.011005224, 0.01058919],
+                [0.026592365, 0.018393334, 0.013289188, 0.010380259, 0.009502129, 0.0094165085, 0.009663405],
+                [0.025145706, 0.017482424, 0.01253086, 0.0097986935, 0.008796922, 0.009143205, 0.008147389],
+                [0.024662767, 0.017203825, 0.011880471, 0.00928126, 0.00846534, 0.0073761395, 0.0079602655]
+            ],
+            "andalusian_room": [
+                [0.09139747, 0.07469848, 0.0760983, 0.06882312, 0.06939595, 0.07429899, 0.07775531],
+                [0.08820699, 0.06617695, 0.06448089, 0.05692429, 0.055089783, 0.05821569, 0.055673428],
+                [0.07704079, 0.060977653, 0.056415934, 0.049915846, 0.04526705, 0.051241767, 0.04411823],
+                [0.07095851, 0.057090722, 0.05106239, 0.04715428, 0.044797473, 0.04763635, 0.042719334],
+                [0.071318656, 0.057107028, 0.050115235, 0.04473018, 0.039534695, 0.04298077, 0.03965839]
+            ],
+            "xyzrgb_statuette": [
+                [0.02236909, 0.016354216, 0.013824738, 0.012178637, 0.012596278, 0.014469027, 0.020532547],
+                [0.021803593, 0.015066351, 0.011091507, 0.009471995, 0.008921724, 0.008291185, 0.011390751],
+                [0.02047959, 0.013826702, 0.0114401495, 0.0065317065, 0.007151179, 0.0077234344, 0.0069853165],
+                [0.020008387, 0.013651377, 0.009971911, 0.005912179, 0.0045986334, 0.0062014484, 0.0061103017],
+                [0.019295087, 0.012938593, 0.009292666, 0.006820472, 0.0051294006, 0.0046207528, 0.004902757]
+            ]
+        }
+
+        const neuralSizes = {
+            "teaser": [
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000]
+            ],
+            "chess": [
+                [862432, 867168, 901984, 1211104, 1916288, 3192256, 5390560],
+                [2959584, 2964320, 2999136, 3308256, 4013440, 5289408, 7487712],
+                [10823904, 10828640, 10863456, 11172576, 11877760, 13153728, 15352032],
+                [35989728, 35994464, 36029280, 36338400, 37043584, 38319552, 40517856],
+                [119875808, 119880544, 119915360, 120224480, 120929664, 122205632, 124403936]
+            ],
+            "city_house": [
+                [862432, 867168, 901984, 1211104, 1916288, 3192256, 5390560],
+                [2959584, 2964320, 2999136, 3308256, 4013440, 5289408, 7487712],
+                [10823904, 10828640, 10863456, 11172576, 11877760, 13153728, 15352032],
+                [35989728, 35994464, 36029280, 36338400, 37043584, 38319552, 40517856],
+                [119875808, 119880544, 119915360, 120224480, 120929664, 122205632, 124403936]
+            ],
+            "bonzai": [
+                [862432, 867168, 901984, 1211104, 1916288, 3192256, 5390560],
+                [2959584, 2964320, 2999136, 3308256, 4013440, 5289408, 7487712],
+                [10823904, 10828640, 10863456, 11172576, 11877760, 13153728, 15352032],
+                [35989728, 35994464, 36029280, 36338400, 37043584, 38319552, 40517856],
+                [119875808, 119880544, 119915360, 120224480, 120929664, 122205632, 124403936]
+            ],
+            "mammoth_exhibition_large": [
+                [862432, 867168, 901984, 1211104, 1916288, 3192256, 5390560],
+                [2959584, 2964320, 2999136, 3308256, 4013440, 5289408, 7487712],
+                [10823904, 10828640, 10863456, 11172576, 11877760, 13153728, 15352032],
+                [35989728, 35994464, 36029280, 36338400, 37043584, 38319552, 40517856],
+                [119875808, 119880544, 119915360, 120224480, 120929664, 122205632, 124403936]
+            ],
+            "andalusian_room": [
+                [862432, 867168, 901984, 1211104, 1916288, 3192256, 5390560],
+                [2959584, 2964320, 2999136, 3308256, 4013440, 5289408, 7487712],
+                [10823904, 10828640, 10863456, 11172576, 11877760, 13153728, 15352032],
+                [35989728, 35994464, 36029280, 36338400, 37043584, 38319552, 40517856],
+                [119875808, 119880544, 119915360, 120224480, 120929664, 122205632, 124403936]
+            ],
+            "xyzrgb_statuette": [
+                [862432, 867168, 901984, 1211104, 1916288, 3192256, 5390560],
+                [2959584, 2964320, 2999136, 3308256, 4013440, 5289408, 7487712],
+                [10823904, 10828640, 10863456, 11172576, 11877760, 13153728, 15352032],
+                [35989728, 35994464, 36029280, 36338400, 37043584, 38319552, 40517856],
+                [119875808, 119880544, 119915360, 120224480, 120929664, 122205632, 124403936]
+            ]
+        }
+
+        const scenes = [
+            { id: "teaser", name: "Teaser" },
+            { id: "andalusian_room", name: "Andalusian" },
+            { id: "bonzai", name: "Bonsai" },
+            { id: "chess", name: "Chess" },
+            { id: "city_house", name: "City" },
+            { id: "mammoth_exhibition_large", name: "Exhibition" },
+            { id: "xyzrgb_statuette", name: "Statuette" },
+        ]
+
+        const nodeCounts = [7, 155, 1243, 10903, 32940, 72814, 141511]
+        const hashmapSizes = [14, 16, 18, 20, 22]
+
+        function setupTabs() {
+            const tabsDiv = document.querySelector("div.tabs")
+            const gliderDiv = document.querySelector("span.glider")
+            scenes.forEach((scene, index) => {
+                const radio = document.createElement("input")
+                radio.id = scene.id
+                radio.type = "radio"
+                radio.name = "scene"
+                radio.checked = (index == 0)
+                radio.addEventListener("change", () => {
+                    gliderDiv.setAttribute("style", `transform: translateX(${index * 100}%)`)
+                    updateScene()
+                })
+                tabsDiv.appendChild(radio)
+
+                const label = document.createElement("label")
+                label.setAttribute("for", scene.id)
+                label.textContent = scene.name
+                tabsDiv.appendChild(label)
+            })
+        }
+
+        function updateImage(id, src) {
+            const image = document.getElementById(`${id}-image`)
+            const overlay = document.getElementById(`${id}-loading-overlay`)
+            overlay.style.opacity = 1
+            image.onload = event => {
+                // setTimeout(() => {
+                overlay.style.opacity = 0
+                // }, 2000);
+            }
+
+            image.src = src
+        }
+
+        function formatSize(bytes) {
+            const suffixes = ["B", "kB", "MB", "GB", "TB"]
+            let index = 0
+            while (bytes >= 1000) {
+                bytes /= 1000
+                index++
+            }
+
+            return `${bytes.toFixed(bytes >= 10 ? 0 : 1)} ${suffixes[index]}`
+        }
+
+        function formatCompression(factor) {
+            return factor.toFixed(factor >= 10 ? 0 : 1) + "\xD7"
+        }
+
+        function updateScene() {
+            const sceneId = document.querySelector("input[name='scene']:checked").id
+            const nodeCountId = Number(document.querySelector("#node-count").value)
+            const hashmapSizeId = Number(document.querySelector("#hashmap-size").value)
+
+            nodeCount = nodeCounts[nodeCountId]
+            hashmapSize = hashmapSizes[hashmapSizeId]
+            const flipActive = document.querySelector("#show-flip").checked
+
+            if (sceneId == "teaser") {
+                nodeCount = 226233
+                hashmapSize = 20
+                document.getElementById("node-count").style.display = "none"
+                document.getElementById("hashmap-size").style.display = "none"
+            } else {
+                document.getElementById("node-count").style.display = "flex"
+                document.getElementById("hashmap-size").style.display = "flex"
+            }
+
+            updateImage("nbvh", `${sceneId}/lvl_8_hash_${hashmapSize}/nodes_${nodeCount}.jpg`)
+            updateImage("flip", `${sceneId}/lvl_8_hash_${hashmapSize}/flip_nodes_${nodeCount}.jpg`)
+            updateImage("reference", `${sceneId}/reference.jpg`)
+
+            const nodeCountText = nodeCount < 1000 ? nodeCount : `${(nodeCount / 1000).toFixed(nodeCount < 10000 ? 1 : 0)}k`
+
+            document.querySelector("label[for='node-count']").textContent = `${nodeCountText} nodes`
+            document.querySelector("label[for='hashmap-size']").innerHTML = `2<sup>${hashmapSize}</sup> hashmap`
+
+            document.getElementById("flip-image").parentElement.style.opacity = flipActive ? 1 : 0
+
+            // update statistics
+
+            const sizeFixed = overheadSizes[sceneId]
+
+            const prevSizeFull = sceneSizes[sceneId]
+            const prevSizeImpostor = prevSizeFull - sizeFixed
+
+            const oursSizeImpostor = neuralSizes[sceneId][hashmapSizeId][nodeCountId]
+            const oursSizeFull = oursSizeImpostor + sizeFixed
+
+            const oursFlipError = neuralFlip[sceneId][hashmapSizeId][nodeCountId]
+
+            document.getElementById("original-size").textContent = `${formatSize(prevSizeFull)}`
+            document.getElementById("original-size-neural").textContent = `(${formatSize(prevSizeImpostor)} neural part)`
+
+            document.getElementById("compressed-size").textContent = `${formatSize(oursSizeFull)}`
+            document.getElementById("compressed-size-neural").textContent = `(${formatSize(oursSizeImpostor)} neural part)`
+
+            document.getElementById("compression").textContent = `${formatCompression(prevSizeFull / oursSizeFull)}`
+            document.getElementById("compression-neural").textContent = `(${formatCompression(prevSizeImpostor / oursSizeImpostor)} neural part)`
+
+            document.getElementById("mean-flip-error").textContent = oursFlipError.toFixed(3)
+        }
+
+        window.addEventListener("load", () => {
+            setupTabs()
+            updateScene()
+        })
+
+        function updateSplit(e) {
+            const rect = document.querySelector(".viewer").getBoundingClientRect()
+            const x = e.clientX - rect.left
+            const width = x - 3
+
+            const imageDiv = document.querySelector("#nbvh-image").parentElement
+            imageDiv.style.width = Math.max(width, 0) + "px"
+            imageDiv.style.left = Math.min(width, 0)
+
+            document.querySelector("#reference-loading-overlay").style.width = `calc(100% - ${imageDiv.style.width})`
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tabs">
+            <span class="glider"></span>
+        </div>
+        <div class="controls">
+            <input id="node-count" type="range" min="0" max="6" value="3" oninput="updateScene()" />
+            <label for="node-count"></label>
+            <span style="margin: 20px"></span>
+            <input id="hashmap-size" type="range" min="0" max="4" value="3" oninput="updateScene()" />
+            <label for="hashmap-size"></label>
+            <span style="margin: 20px"></span>
+            <input id="show-flip" type="checkbox" oninput="updateScene()" />
+            <label for="show-flip" class="cbx"></label>
+            <label for="show-flip" class="lbl">Show FLIP</label>
+        </div>
+        <div class="statistics">
+            <div>
+                <span>Original Size</span>
+                <span id="original-size" class="big"></span>
+                <span id="original-size-neural"></span>
+            </div>
+            <div>
+                <span>Compressed Size</span>
+                <span id="compressed-size" class="big"></span>
+                <span id="compressed-size-neural"></span>
+            </div>
+            <div style="color: var(--primary-color)">
+                <span>Compression</span>
+                <span id="compression" class="big"></span>
+                <span id="compression-neural"></span>
+            </div>
+            <div>
+                <span>FLIP Error</span>
+                <span id="mean-flip-error" class="big"></span>
+            </div>
+        </div>
+        <div class="viewer" onmousemove="updateSplit(event)">
+            <div class="image">
+                <div id="reference-loading-overlay" class="loading-overlay" style="width: 50%;"></div>
+                <img id="reference-image" />
+                <span style="right:0;text-align:right;">Reference</span>
+            </div>
+            <div class="image" style="width: 50%; border-right: 2px solid white; z-index: 20;">
+                <div id="nbvh-loading-overlay" class="loading-overlay" style="left: 0;"></div>
+                <img id="nbvh-image" />
+                <span style="left:0;text-align:left;">N-BVH</span>
+            </div>
+            <div class="image" style="opacity: 0; z-index: 30;">
+                <div id="flip-loading-overlay" class="loading-overlay" style="left: 0;"></div>
+                <img id="flip-image" />
+                <span style="right:0;text-align:right;">FLIP Error</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
