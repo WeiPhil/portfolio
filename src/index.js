@@ -6,6 +6,7 @@ import Multilayered from "./publications/Multilayered";
 import Opsr from "./publications/Opsr";
 import Ears from "./publications/Ears";
 import NeuralLod from "./publications/NeuralLod";
+import NeuralBVH from "./publications/NeuralBVH";
 import MenuBar from "./components/MenuBar";
 import theme from "./theme";
 import { ThemeProvider } from '@mui/material/styles';
@@ -25,8 +26,10 @@ ReactDOM.render(
         <Route exact path="/opsr" component={Opsr} />
         <Route exact path="/ears" component={Ears} />
         <Route exact path="/neural_lod" component={NeuralLod} />
+        <Route exact path="/neural_bvh" component={NeuralBVH} />
         <Route exact path="/" component={App} />
         <Route exact path="/neural_lod_viewer" onEnter={reload} />
+        <Route exact path="/neural_bvh_viewer" onEnter={reload} />
       </Switch>
     </Router>
   </ThemeProvider>,

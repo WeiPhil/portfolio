@@ -277,6 +277,30 @@ class ProjectsOverview extends Component {
       />
     );
 
+    const nbvhDescription = (
+      <>
+        <Box fontWeight={500}>Abstract </Box>
+        Neural representations have shown spectacular ability to compress complex signals in a fraction of the raw data size. In 3D computer graphics, the bulk of a scene's memory usage is due to polygons and textures, making them ideal candidates for neural compression. Here, the main challenge lies in finding good trade-offs between efficient compression and cheap inference while minimizing training time. In the context of rendering, we adopt a ray-centric approach to this problem and devise N-BVH, a neural compression architecture designed to answer arbitrary ray queries in 3D. Our compact model is learned from the input geometry and substituted for it whenever a ray intersection is queried by a path-tracing engine. While prior neural compression methods have focused on point queries, ours proposes neural ray queries that integrate seamlessly into standard ray-tracing pipelines. At the core of our method, we employ an adaptive BVH-driven probing scheme to optimize the parameters of a multi-resolution hash grid, focusing its neural capacity on the sparse 3D occupancy swept by the original surfaces. As a result, our N-BVH can serve accurate ray queries from a representation that is more than an order of magnitude more compact, providing faithful approximations of visibility, depth, and appearance attributes. The flexibility of our method allows us to combine and overlap neural and non-neural entities within the same 3D scene and extends to appearance level of detail.
+      </>
+    );
+    const nbvhSubtitle = (
+      <>
+        <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Alexander Rath, Élie Michel, Iliyan Georgiev, Philipp Slusallek, Tamy Boubekeur, 2024
+        <Box fontWeight={500} fontSize="fontSize">
+          ACM SIGGRAPH 2024 (Conference Track)
+        </Box>
+      </>
+    );
+    const nbvhProject = (
+      <ProjectCard
+        image={require("../data/neural_bvh/teaser.png")}
+        title="N-BVH: Neural ray queries with bounding volume hierarchies"
+        subtitle={nbvhSubtitle}
+        description={nbvhDescription}
+        projectPageLink="./neural_bvh"
+      />
+    );
+
     // Personal Projects
 
     const qulkanProject = (
@@ -328,7 +352,7 @@ class ProjectsOverview extends Component {
 
     ///////////////////////
 
-    const publications = [neuralLodProject, earsProject, opsrProject, layeredAnisoProject];
+    const publications = [nbvhProject, neuralLodProject, earsProject, opsrProject, layeredAnisoProject];
     const personalProjects = [qulkanProject, procaryotaProject, lotrProject];
     const studyProjects = [cs440Project, imageAndVideoProject];
 
