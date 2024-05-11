@@ -257,6 +257,7 @@
             bottom: 0;
             transition: opacity 0.2s ease;
         }
+
         .loading-overlay::before {
             content: '';
             display: block;
@@ -270,9 +271,15 @@
             animation: spin 2s linear infinite;
             border-radius: 15px;
         }
+
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
     <style>
@@ -460,6 +467,7 @@
     <script type="text/javascript">
 
         const sceneSizes = {
+            "teaser": 1885000000,
             "chess": 329337248,
             "city_house": 1553107512,
             "bonzai": 852852840,
@@ -469,6 +477,7 @@
         }
 
         const overheadSizes = {
+            "teaser": 105000000,
             "chess": 33113728,
             "city_house": 144075104,
             "bonzai": 145432088,
@@ -478,6 +487,13 @@
         }
 
         const neuralFlip = {
+            "teaser": [
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+                [0.022, 0.022, 0.022, 0.022, 0.022, 0.022, 0.022],
+            ],
             "chess": [
                 [0.060875654, 0.033698402, 0.02937663, 0.027780691, 0.026004408, 0.024080748, 0.02451631],
                 [0.056774195, 0.029986318, 0.025144586, 0.02164077, 0.018944891, 0.019688807, 0.01863656],
@@ -523,6 +539,13 @@
         }
 
         const neuralSizes = {
+            "teaser": [
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000],
+                [43000000, 43000000, 43000000, 43000000, 43000000, 43000000, 43000000]
+            ],
             "chess": [
                 [862432, 867168, 901984, 1211104, 1916288, 3192256, 5390560],
                 [2959584, 2964320, 2999136, 3308256, 4013440, 5289408, 7487712],
@@ -568,6 +591,7 @@
         }
 
         const scenes = [
+            { id: "teaser", name: "Teaser" },
             { id: "andalusian_room", name: "Andalusian" },
             { id: "bonzai", name: "Bonsai" },
             { id: "chess", name: "Chess" },
@@ -634,9 +658,19 @@
             const nodeCountId = Number(document.querySelector("#node-count").value)
             const hashmapSizeId = Number(document.querySelector("#hashmap-size").value)
 
-            const nodeCount = nodeCounts[nodeCountId]
-            const hashmapSize = hashmapSizes[hashmapSizeId]
+            nodeCount = nodeCounts[nodeCountId]
+            hashmapSize = hashmapSizes[hashmapSizeId]
             const flipActive = document.querySelector("#show-flip").checked
+
+            if (sceneId == "teaser") {
+                nodeCount = 226233
+                hashmapSize = 20
+                document.getElementById("node-count").style.display = "none"
+                document.getElementById("hashmap-size").style.display = "none"
+            } else {
+                document.getElementById("node-count").style.display = "flex"
+                document.getElementById("hashmap-size").style.display = "flex"
+            }
 
             updateImage("nbvh", `${sceneId}/lvl_8_hash_${hashmapSize}/nodes_${nodeCount}.jpg`)
             updateImage("flip", `${sceneId}/lvl_8_hash_${hashmapSize}/flip_nodes_${nodeCount}.jpg`)
@@ -652,7 +686,7 @@
             // update statistics
 
             const sizeFixed = overheadSizes[sceneId]
-            
+
             const prevSizeFull = sceneSizes[sceneId]
             const prevSizeImpostor = prevSizeFull - sizeFixed
 
