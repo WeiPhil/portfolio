@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 		boxShadow: 0,
 		height: 0,
 		// paddingTop: '44.41%', /* image_h/ image_w */
-		paddingTop: '56.25%' /* image_h/ image_w */
+		paddingTop: '42.579750346%' /* image_h/ image_w */
 	},
 	playerWrapper: {
 		position: 'relative',
@@ -159,15 +159,15 @@ function NeuralBVH(props) {
 							variant="outlined"
 							sx={{
 								bgcolor: 'rgba(0, 0, 0, 0)',
-								borderRadius: 1,
-								borderColor: 'rgba(100, 100, 100, 255)',
-								borderWidth: 1.5,
+								borderRadius: 0,
+								borderColor: 'rgba(0,0,0,0)',
+								borderWidth: 0,
 							}}
 						>
 							<CardMedia
 								className={classes.image}
 
-								image={require("../data/neural_bvh/teaser.png")}
+								image={require("../data/neural_bvh/teaser_large.png")}
 								title="Neural BVH Teaser"
 							/>
 						</Card>
