@@ -9,6 +9,7 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import DescriptionIcon from "@mui/icons-material/Description";
 
 import Footer from "../components/Footer";
+import AuthorBanner from "../components/AuthorBanner";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -114,6 +115,17 @@ function Multilayered(props) {
     ],
   ];
 
+  const authorData = [
+    {
+      name: "Philippe Weier", affiliations: ["EPFL", "Unity Technologies"]
+    },
+    {
+      name: <StyledLink href="https://belcour.github.io/blog/">
+        Laurent Belcour
+      </StyledLink>, affiliations: ["Unity Technologies"]
+    },
+  ]
+
   return (
     <Container className={classes.content}>
       <div className={classes.root}>
@@ -130,14 +142,7 @@ function Multilayered(props) {
               </Box>
             </Typography>
 
-            <Typography className={classes.paperTitles}>
-              <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>{" "}
-              and{" "}
-              <StyledLink href="https://belcour.github.io/blog/">
-                Laurent Belcour
-              </StyledLink>
-              , 2020
-            </Typography>
+            <AuthorBanner authorData={authorData} />
 
             <Typography gutterBottom className={classes.paperTitles}>
               Published in Journal of Computer Graphics Techniques (

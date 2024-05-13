@@ -12,6 +12,7 @@ import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
+import AuthorBanner from "../components/AuthorBanner";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -121,6 +122,33 @@ function Ears(props) {
 		"Code",
 	];
 
+	const authorData = [
+
+		{
+			name: <StyledLink href="https://graphics.cg.uni-saarland.de/people/rath.html">
+				Alexander Rath
+			</StyledLink>, affiliations: ["DFKI", "Saarland University"]
+		},
+		{
+			name: <StyledLink href="https://graphics.cg.uni-saarland.de/people/grittmann.html">
+				Pascal Grittmann
+			</StyledLink>, affiliations: ["DFKI", "Saarland University"]
+		},
+		{
+			name: <StyledLink href="https://www.intel.com/content/www/us/en/developer/articles/community/rendering-researchers-sebastian-herholz.html">
+				Sebastian Herholz
+			</StyledLink>, affiliations: ["Intel Corporation"]
+		},
+		{
+			name: "Philippe Weier", affiliations: ["DFKI", "Saarland University"]
+		},
+		{
+			name: <StyledLink href="https://graphics.cg.uni-saarland.de/people/slusallek.html">
+				Philipp Slusallek
+			</StyledLink>, affiliations: ["DFKI", "Saarland University"]
+		},
+	]
+
 	return (
 		<Container className={classes.content}>
 			<div className={classes.root}>
@@ -138,10 +166,7 @@ function Ears(props) {
 							</Box>
 						</Typography>
 
-						<Typography className={classes.paperTitles}>
-							Alexander Rath, Pascal Grittmann, Sebastian Herholz,
-							{" "}<Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Philipp Slusallek, 2022
-						</Typography>
+						<AuthorBanner authorData={authorData} />
 
 						<Typography gutterBottom className={classes.paperTitles}>
 							Published in ACM Transactions on Graphics (Proceedings of{" "}

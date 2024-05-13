@@ -7,11 +7,12 @@ import { Grid, Link, Button, Box, Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DescriptionIcon from "@mui/icons-material/Description";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import SlideshowIcon from "@mui/icons-material/Slideshow";
+
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
+import AuthorBanner from "../components/AuthorBanner";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -127,6 +128,37 @@ function NeuralBVH(props) {
 		"Code",
 	];
 
+	const authorData = [
+		{
+			name: "Philippe Weier", affiliations: ["DFKI", "Saarland University"]
+		},
+		{
+			name: <StyledLink href="https://graphics.cg.uni-saarland.de/people/rath.html">
+				Alexander Rath
+			</StyledLink>, affiliations: ["DFKI", "Saarland University"]
+		},
+		{
+			name: <StyledLink href="https://portfolio.exppad.com/">
+				Élie Michel
+			</StyledLink>, affiliations: ["Adobe"]
+		},
+		{
+			name: <StyledLink href="https://www.iliyan.com/">
+				Iliyan Georgiev
+			</StyledLink>, affiliations: ["Adobe"]
+		},
+		{
+			name: <StyledLink href="https://graphics.cg.uni-saarland.de/people/slusallek.html">
+				Philipp Slusallek
+			</StyledLink>, affiliations: ["DFKI", "Saarland University"]
+		},
+		{
+			name: <StyledLink href="https://perso.telecom-paristech.fr/boubek/">
+				Tamy Boubekeur
+			</StyledLink>, affiliations: ["Adobe"]
+		},
+	]
+
 	return (
 		<Container className={classes.content}>
 			<div className={classes.root}>
@@ -144,9 +176,7 @@ function NeuralBVH(props) {
 							</Box>
 						</Typography>
 
-						<Typography style={{ textAlign: "center" }}>
-							<Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Alexander Rath, Élie Michel, Iliyan Georgiev, Philipp Slusallek, Tamy Boubekeur, 2024
-						</Typography>
+						<AuthorBanner authorData={authorData} />
 
 						<Typography gutterBottom style={{ textAlign: "center" }}>
 							Published at <StyledLink href="https://s2024.siggraph.org/">

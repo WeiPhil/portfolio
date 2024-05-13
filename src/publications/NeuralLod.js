@@ -12,6 +12,7 @@ import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
+import AuthorBanner from "../components/AuthorBanner";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -127,6 +128,32 @@ function NeuralLod(props) {
 		"Code",
 	];
 
+	const authorData = [
+		{
+			name: "Philippe Weier", affiliations: ["DFKI", "Saarland University"]
+		},
+		{
+			name: <StyledLink href="https://alphanew.net/">
+				Tobias Zirr
+			</StyledLink>, affiliations: ["Intel Corporation"]
+		},
+		{
+			name: <StyledLink href="http://kaplanyan.com/">
+				Anton Kaplanyan
+			</StyledLink>, affiliations: ["Intel Corporation"]
+		},
+		{
+			name: <StyledLink href="https://sites.cs.ucsb.edu/~lingqi/">
+				Ling-Qi Yan
+			</StyledLink>, affiliations: ["University of California"]
+		},
+		{
+			name: <StyledLink href="https://graphics.cg.uni-saarland.de/people/slusallek.html">
+				Philipp Slusallek
+			</StyledLink>, affiliations: ["DFKI"]
+		},
+	]
+
 	return (
 		<Container className={classes.content}>
 			<div className={classes.root}>
@@ -144,9 +171,7 @@ function NeuralLod(props) {
 							</Box>
 						</Typography>
 
-						<Typography style={{ textAlign: "center" }}>
-							<Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Tobias Zirr, Anton Kaplanyan, Ling-Qi Yan, Philipp Slusallek, 2023
-						</Typography>
+						<AuthorBanner authorData={authorData} />
 
 						<Typography gutterBottom style={{ textAlign: "center" }}>
 							Published in ACM Transactions on Graphics (Proceedings of{" "}

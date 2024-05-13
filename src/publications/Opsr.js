@@ -12,6 +12,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
+import AuthorBanner from "../components/AuthorBanner";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -122,6 +123,33 @@ function Opsr(props) {
         "Source Code",
     ];
 
+    const authorData = [
+
+        {
+            name: "Philippe Weier", affiliations: ["Weta Digital"]
+        },
+        {
+            name: <StyledLink href="https://marc.droske.org/">
+                Marc Droske
+            </StyledLink>, affiliations: ["Weta Digital"]
+        },
+        {
+            name: <StyledLink href="https://jo.dreggn.org/home/">
+                Johannes Hanika
+            </StyledLink>, affiliations: ["Weta Digital", "Karlsruhe Institute of Technology"]
+        },
+        {
+            name: <StyledLink href="https://research.nvidia.com/person/andrea-weidlich">
+                Andrea Weidlich
+            </StyledLink>, affiliations: ["Weta Digital"]
+        },
+        {
+            name: <StyledLink href="https://cgg.mff.cuni.cz/~jirka/">
+                Jiří Vorba
+            </StyledLink>, affiliations: ["Weta Digital", "Charles University"]
+        },
+    ]
+
     return (
         <Container className={classes.content}>
             <div className={classes.root}>
@@ -143,6 +171,8 @@ function Opsr(props) {
                             <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>
                             , Marc Droske, Johannes Hanika, Andrea Weidlich, Jiří Vorba, 2021
                         </Typography>
+
+                        <AuthorBanner authorData={authorData} />
 
                         <Typography gutterBottom className={classes.paperTitles}>
                             Published in Computer Graphics Forum (Proceedings of{" "}
