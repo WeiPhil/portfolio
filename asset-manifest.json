@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.c6d7aede.css",
-    "main.js": "/portfolio/static/js/main.19148470.js",
+    "main.js": "/portfolio/static/js/main.b9126311.js",
     "reactPlayerYouTube.js": "/portfolio/static/js/reactPlayerYouTube.7321d739.chunk.js",
     "reactPlayerSoundCloud.js": "/portfolio/static/js/reactPlayerSoundCloud.6c7cc855.chunk.js",
     "reactPlayerVimeo.js": "/portfolio/static/js/reactPlayerVimeo.c4e23feb.chunk.js",
@@ -16,6 +16,7 @@
     "reactPlayerKaltura.js": "/portfolio/static/js/reactPlayerKaltura.f9819e91.chunk.js",
     "reactPlayerFilePlayer.js": "/portfolio/static/js/reactPlayerFilePlayer.6d53f2cf.chunk.js",
     "reactPlayerPreview.js": "/portfolio/static/js/reactPlayerPreview.c2ccba25.chunk.js",
+    "static/media/teaser_large.png": "/portfolio/static/media/teaser_large.c5685692effbb4e22b60.png",
     "static/media/ears_teaser.png": "/portfolio/static/media/ears_teaser.8bfaaa12e1ff261341e9.png",
     "static/media/layered_aniso_05_05_top_varying.png": "/portfolio/static/media/layered_aniso_05_05_top_varying.aa24d51b4b2c7a746f8b.png",
     "static/media/layered_aniso.png": "/portfolio/static/media/layered_aniso.b40551f914684d4fa8c9.png",
@@ -33,7 +34,7 @@
     "static/media/phil_picture.jpg": "/portfolio/static/media/phil_picture.7a89beaff31105191129.jpg",
     "index.html": "/portfolio/index.html",
     "main.c6d7aede.css.map": "/portfolio/static/css/main.c6d7aede.css.map",
-    "main.19148470.js.map": "/portfolio/static/js/main.19148470.js.map",
+    "main.b9126311.js.map": "/portfolio/static/js/main.b9126311.js.map",
     "reactPlayerYouTube.7321d739.chunk.js.map": "/portfolio/static/js/reactPlayerYouTube.7321d739.chunk.js.map",
     "reactPlayerSoundCloud.6c7cc855.chunk.js.map": "/portfolio/static/js/reactPlayerSoundCloud.6c7cc855.chunk.js.map",
     "reactPlayerVimeo.c4e23feb.chunk.js.map": "/portfolio/static/js/reactPlayerVimeo.c4e23feb.chunk.js.map",
@@ -51,6 +52,6 @@
   },
   "entrypoints": [
     "static/css/main.c6d7aede.css",
-    "static/js/main.19148470.js"
+    "static/js/main.b9126311.js"
   ]
 }
