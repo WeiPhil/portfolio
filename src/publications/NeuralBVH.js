@@ -7,6 +7,8 @@ import { Grid, Link, Button, Box, Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DescriptionIcon from "@mui/icons-material/Description";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
+import { ReactComponent as ACMIcon } from './acm_icon.svg';
 
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import ReactPlayer from "react-player";
@@ -119,10 +121,14 @@ function NeuralBVH(props) {
 		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_bvh_supplemental.pdf",
 		"Supplemental (7.1 MB)",
 	];
-	// const [presentationLink, presentationLabel] = [
-	// 	"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_presentation.pptx",
-	// 	"Presentation (with Speaker Notes)",
-	// ];
+	const [acmLink, acmLinkLabel] = [
+		"https://dl.acm.org/doi/10.1145/3641519.3657464",
+		"ACM Link",
+	];
+	const [presentationLink, presentationLabel] = [
+		"https://weiphil.s3.eu-central-1.amazonaws.com/nbvh_presentation.pptx",
+		"Presentation (with Speaker Notes)",
+	];
 	const [githubLink, githubLabel] = [
 		"https://github.com/WeiPhil/nbvh",
 		"Code",
@@ -261,7 +267,7 @@ function NeuralBVH(props) {
 										{supplementalViewerLabel}
 									</Button>
 								</Grid>
-								{/* <Grid item>
+								<Grid item>
 									<Button
 										variant="outlined"
 										color="secondary"
@@ -272,7 +278,20 @@ function NeuralBVH(props) {
 										<SlideshowIcon className={classes.icon} />
 										{presentationLabel}
 									</Button>
-								</Grid> */}
+								</Grid>
+
+								<Grid item>
+									<Button
+										variant="outlined"
+										color="secondary"
+										className={classes.button}
+										target="_blank"
+										href={acmLink}
+									>
+										<ACMIcon className={classes.icon} fill='#585858' height='1.5rem' />
+										{acmLinkLabel}
+									</Button>
+								</Grid>
 
 
 							</Grid>
@@ -288,7 +307,7 @@ function NeuralBVH(props) {
 									Neural representations have shown spectacular ability to compress complex signals in a fraction of the raw data size. In 3D computer graphics, the bulk of a scene's memory usage is due to polygons and textures, making them ideal candidates for neural compression. Here, the main challenge lies in finding good trade-offs between efficient compression and cheap inference while minimizing training time. In the context of rendering, we adopt a ray-centric approach to this problem and devise N-BVH, a neural compression architecture designed to answer arbitrary ray queries in 3D. Our compact model is learned from the input geometry and substituted for it whenever a ray intersection is queried by a path-tracing engine. While prior neural compression methods have focused on point queries, ours proposes neural ray queries that integrate seamlessly into standard ray-tracing pipelines. At the core of our method, we employ an adaptive BVH-driven probing scheme to optimize the parameters of a multi-resolution hash grid, focusing its neural capacity on the sparse 3D occupancy swept by the original surfaces. As a result, our N-BVH can serve accurate ray queries from a representation that is more than an order of magnitude more compact, providing faithful approximations of visibility, depth, and appearance attributes. The flexibility of our method allows us to combine and overlap neural and non-neural entities within the same 3D scene and extends to appearance level of detail.
 								</Typography>
 							</Grid>
-							{/* <Grid
+							<Grid
 								item
 								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
 							>
@@ -307,12 +326,12 @@ function NeuralBVH(props) {
 										width='100%'
 										height='100%'
 										url={
-											"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_fast_forward.mp4"
+											"https://weiphil.s3.eu-central-1.amazonaws.com/nbvh_fast_forward.mp4"
 										}
 										controls={true}
 									/>
 								</Box>
-							</Grid> */}
+							</Grid>
 							<Grid
 								item
 								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}

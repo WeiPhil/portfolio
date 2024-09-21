@@ -10,6 +10,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import ReactPlayer from "react-player";
+import { ReactComponent as ACMIcon } from './acm_icon.svg';
 
 import Footer from "../components/Footer";
 import AuthorBanner from "../components/AuthorBanner";
@@ -118,6 +119,10 @@ function NeuralLod(props) {
 	const [supplementalLink, supplementalLabel] = [
 		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_supplemental.pdf",
 		"Supplemental (5.3 MB)",
+	];
+	const [acmLink, acmLinkLabel] = [
+		"https://dl.acm.org/doi/10.1145/3592443",
+		"ACM Link",
 	];
 	const [presentationLink, presentationLabel] = [
 		"https://weiphil.s3.eu-central-1.amazonaws.com/neural_lod_presentation.pptx",
@@ -265,6 +270,18 @@ function NeuralLod(props) {
 									>
 										<SlideshowIcon className={classes.icon} />
 										{presentationLabel}
+									</Button>
+								</Grid>
+								<Grid item>
+									<Button
+										variant="outlined"
+										color="secondary"
+										className={classes.button}
+										target="_blank"
+										href={acmLink}
+									>
+										<ACMIcon className={classes.icon} fill='#585858' height='1.5rem' />
+										{acmLinkLabel}
 									</Button>
 								</Grid>
 
