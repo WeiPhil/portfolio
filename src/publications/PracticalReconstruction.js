@@ -541,7 +541,7 @@ function PracticalReconstruction(props) {
 												width='100%'
 												height='100%'
 												url={
-													"https://weiphil.s3.eu-central-1.amazonaws.com/face_optim.mp4"
+													require("../data/practical_reconstruction/face_optim.mp4")
 												}
 												muted={true}
 												controls={false}
@@ -565,7 +565,7 @@ function PracticalReconstruction(props) {
 												width='100%'
 												height='100%'
 												url={
-													"https://weiphil.s3.eu-central-1.amazonaws.com/light_anim.mp4"
+													require("../data/practical_reconstruction/light_anim.mp4")
 												}
 												muted={true}
 												controls={false}
@@ -589,7 +589,7 @@ function PracticalReconstruction(props) {
 												width='100%'
 												height='100%'
 												url={
-													"https://weiphil.s3.eu-central-1.amazonaws.com/light_anim_close.mp4"
+													require("../data/practical_reconstruction/light_anim_close.mp4")
 												}
 												muted={true}
 												controls={false}
@@ -613,7 +613,7 @@ function PracticalReconstruction(props) {
 												width='100%'
 												height='100%'
 												url={
-													"https://weiphil.s3.eu-central-1.amazonaws.com/light_anim_envmap.mp4"
+													require("../data/practical_reconstruction/light_anim_envmap.mp4")
 												}
 												muted={true}
 												controls={false}
@@ -637,7 +637,7 @@ function PracticalReconstruction(props) {
 												width='100%'
 												height='100%'
 												url={
-													"https://weiphil.s3.eu-central-1.amazonaws.com/camera_anim.mp4"
+													require("../data/practical_reconstruction/camera_anim.mp4")
 												}
 												muted={true}
 												controls={false}
