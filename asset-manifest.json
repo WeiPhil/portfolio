@@ -1,30 +1,40 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.db3664a3.css",
-    "main.js": "/portfolio/static/js/main.7c4145bc.js",
+    "main.js": "/portfolio/static/js/main.09b3acbf.js",
+    "static/media/light_anim_envmap.mp4": "/portfolio/static/media/light_anim_envmap.1445083cfd1df2d832a1.mp4",
     "static/media/teaser_large.png": "/portfolio/static/media/teaser_large.c5685692effbb4e22b60.png",
     "static/media/ears_teaser.png": "/portfolio/static/media/ears_teaser.8bfaaa12e1ff261341e9.png",
+    "static/media/face_optim.mp4": "/portfolio/static/media/face_optim.0742049d11925bbb82f9.mp4",
+    "static/media/camera_anim.mp4": "/portfolio/static/media/camera_anim.c4517c6e8cc5bea860f1.mp4",
+    "static/media/light_anim_close.mp4": "/portfolio/static/media/light_anim_close.bed91ae514ba9306d6b4.mp4",
     "static/media/layered_aniso_05_05_top_varying.png": "/portfolio/static/media/layered_aniso_05_05_top_varying.aa24d51b4b2c7a746f8b.png",
+    "static/media/light_anim.mp4": "/portfolio/static/media/light_anim.7c7cfc9ca2c5b73fcfa8.mp4",
     "static/media/layered_aniso.png": "/portfolio/static/media/layered_aniso.b40551f914684d4fa8c9.png",
-    "static/media/teaser.png": "/portfolio/static/media/teaser.65874f31d8cc237f3260.png",
+    "static/media/teaser.png": "/portfolio/static/media/teaser.abe99d3abe5360aef4aa.png",
     "static/media/cs440.png": "/portfolio/static/media/cs440.be02242c3c4a4722305b.png",
     "static/media/beach_thumbnail.png": "/portfolio/static/media/beach_thumbnail.9bc598eab1028ab2ed8e.png",
     "static/media/lotrScreenshot.png": "/portfolio/static/media/lotrScreenshot.b888174e5e9008a21823.png",
+    "static/media/teaser_small.png": "/portfolio/static/media/teaser_small.cd127d5a7cf94210e98d.png",
     "static/media/imageAndVideoProc.gif": "/portfolio/static/media/imageAndVideoProc.1e8a024aac2c9ce3c09c.gif",
     "static/media/procaryotaScreenshot.png": "/portfolio/static/media/procaryotaScreenshot.27c99c63fcca23e7e3df.png",
+    "static/media/gradient_filtering_limitation.png": "/portfolio/static/media/gradient_filtering_limitation.33b0ee6b85eec5f12900.png",
     "static/media/neural_lod_teaser.png": "/portfolio/static/media/neural_lod_teaser.98987f0c4eb97665cb8b.png",
+    "static/media/deng_comparison.png": "/portfolio/static/media/deng_comparison.5c94739b2380915b2345.png",
     "static/media/resume.pdf": "/portfolio/static/media/resume.ffa3bbf4923963169256.pdf",
     "static/media/fractal_thumbnail.png": "/portfolio/static/media/fractal_thumbnail.85ed1b43679ed9cedd69.png",
     "static/media/qulkanScreenshot.png": "/portfolio/static/media/qulkanScreenshot.0a0a035942e677c6a99b.png",
     "static/media/grazing_angles_overblur.png": "/portfolio/static/media/grazing_angles_overblur.866e28433cd82a4f5fc7.png",
+    "static/media/laplacian_pyramid.png": "/portfolio/static/media/laplacian_pyramid.c9da6d1cd44d41b36cce.png",
     "static/media/phil_picture.jpg": "/portfolio/static/media/phil_picture.7a89beaff31105191129.jpg",
+    "static/media/subsurface_vs_dipole.png": "/portfolio/static/media/subsurface_vs_dipole.9ab12579760e41db0345.png",
     "static/media/acm_icon.svg": "/portfolio/static/media/acm_icon.ba305f3b330e75ea1f895c0d3fc88a11.svg",
     "index.html": "/portfolio/index.html",
     "main.db3664a3.css.map": "/portfolio/static/css/main.db3664a3.css.map",
-    "main.7c4145bc.js.map": "/portfolio/static/js/main.7c4145bc.js.map"
+    "main.09b3acbf.js.map": "/portfolio/static/js/main.09b3acbf.js.map"
   },
   "entrypoints": [
     "static/css/main.db3664a3.css",
-    "static/js/main.7c4145bc.js"
+    "static/js/main.09b3acbf.js"
   ]
 }

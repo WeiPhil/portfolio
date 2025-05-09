@@ -1,0 +1,1159 @@
+<html>
+
+<head>
+    <title>Practical Reconstruction Viewer</title>
+    <script src="errors.js" defer></script>
+    <style type="text/css">
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&display=swap");
+
+        :root {
+            --primary-color: #185ee0;
+            --secondary-color: #e6eef9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        *,
+        *:after,
+        *:before {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: rgba(230, 238, 249, 0.5);
+        }
+
+        .container {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            overflow-x: hidden;
+        }
+
+        .tabs {
+            display: flex;
+            position: relative;
+            background-color: #fff;
+            padding: 0.75rem;
+            border-radius: 100px;
+        }
+
+        .tabs,
+        .viewer {
+            box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+        }
+
+        .tabs * {
+            z-index: 2;
+        }
+
+        input[type=radio] {
+            display: none;
+        }
+
+        .tabs label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 54px;
+            width: 200px;
+            font-size: 1.25rem;
+            font-weight: 500;
+            border-radius: 99px;
+            cursor: pointer;
+            transition: color 0.15s ease-in;
+        }
+
+        input[type=radio]:checked+label {
+            color: var(--primary-color);
+        }
+
+        .glider {
+            position: absolute;
+            display: flex;
+            height: 54px;
+            width: 200px;
+            background-color: var(--secondary-color);
+            z-index: 1;
+            border-radius: 99px;
+            transition: 0.25s ease-out;
+        }
+
+        .viewer {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 4px solid white;
+            user-select: none; /* Prevent text selection */
+        }
+
+        .viewer,
+        .viewer img {
+            position: relative;
+            width: 960px;
+            height: 540px;
+            box-sizing: content-box;
+        }
+
+        .viewer .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            transition: opacity 0.2s ease;
+        }
+
+        .image span {
+            z-index: 15;
+            cursor: default;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            margin: 10px 12px;
+            line-height: 16px;
+            color: white;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), 0 0 3px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.66);
+            border-radius: 3px;
+            padding: 4px 12px;
+            font-size: 0.8em;
+            white-space: nowrap;
+        }
+
+        input[type=range] {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            cursor: pointer;
+            height: 12px;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            background: var(--primary-color);
+            height: 4px;
+            border-radius: 4px;
+        }
+
+        input[type=range]::-moz-range-track {
+            background: var(--primary-color);
+            height: 4px;
+            border-radius: 4px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -5px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            height: 14px;
+            width: 14px;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            margin-top: -5px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            height: 14px;
+            width: 14px;
+        }
+
+        .controls-container-title {
+            margin-bottom:10px;
+        }
+
+        .controls-container-title span{
+            margin-bottom:0px;
+            opacity: 0.8;
+            font-variant: small-caps;
+        }
+        
+        .controls-container-all {
+            display: flex;
+            gap: 40px; /* Spacing between columns */
+            margin-top: 10px;
+            margin-bottom: 18px;
+        }
+
+        .controls-container {
+           text-align: center;
+        }
+
+        .controls {
+            font-size: 0.8em;
+            display: flex;
+            flex-direction: column; /* Stack sliders vertically */
+            gap: 10px; /* Spacing between sliders */
+            background-color: white;
+            /* border: 2px solid var(--primary-color); */
+            /* border: 2px solid rgba(24, 94, 224, 0.5); */
+            /* border: 2px solid rgba(24, 94, 224, 0.15); */
+            
+            border-radius: 10px;
+            padding:10px;
+            /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+            box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+        }
+
+        .controls hr {
+            border: 0; /* Remove default border */
+            /* border-top: 2px solid #c6cdd6;  */
+            border-top: 2px solid rgba(24, 94, 224, 0.15); 
+            
+            width: 100%; /* Full width of the container */
+            margin-top: 4px; /* Add spacing around the line */
+            margin-bottom: 8px; /* Add spacing around the line */
+            /* opacity: 0.8; */
+            border-style: dashed;
+        }
+
+        .controls label {
+            display: inline-block;
+            margin-left: 10px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .controls-sss {
+            font-size: 0.8em;
+            display: flex;
+            flex-direction: row; /* Stack sliders vertically */
+            gap: 10px; /* Spacing between sliders */
+            border-radius: 10px;
+            padding:10px;
+        }
+
+        .controls-sss hr {
+            border: 0; /* Remove default border */
+            /* border-top: 2px solid #c6cdd6;  */
+            border-top: 2px solid rgba(24, 94, 224, 0.15); 
+            
+            width: 100%; /* Full width of the container */
+            margin-top: 4px; /* Add spacing around the line */
+            margin-bottom: 8px; /* Add spacing around the line */
+            /* opacity: 0.8; */
+            border-style: dashed;
+        }
+
+        .controls-sss label {
+            display: inline-block;
+            margin-left: 10px;
+            width: 110px;
+            text-align: center;
+        }
+        
+        .ref-swap label {
+            user-select: none; /* Prevent text selection */
+            font-variant: small-caps;
+        }
+
+        .ref-swap label {
+            display: inline-block;
+            margin-left: 10px;
+            width: 100px;
+            text-align: center;
+        }
+
+        input#show-ref {
+            width: 30px;
+        }
+
+        input#show-ref::-webkit-slider-runnable-track {
+            background: #d60d0d;
+        }
+
+        input#show-ref::-webkit-slider-thumb {
+            border: 2px solid #d60d0d;
+        }
+
+        .tabs {
+            transform: scale(0.6);
+            margin-top: -14px;
+            margin-bottom: -4px;
+        }
+
+        @media (max-width: 1000px) {
+            .container-container-all {
+                gap: 0;
+            }
+
+            .tabs {
+                transform: scale(0.4);
+                margin-top: -22px;
+                margin-bottom: -14px;
+            }
+
+            .controls-container-title {
+                margin-bottom:5px;
+                transform: scale(0.8);
+            }
+            
+            .controls-container-all {
+                gap: 10px; /* Spacing between columns */
+                margin-top: 10px;
+                margin-bottom: 18px;
+            }
+            
+            .ref-swap,
+            .controls input {
+                transform: scale(0.8);
+            }
+
+            .ref-swap,
+            .controls {
+                padding:5px;
+                gap:5px;
+            }
+            
+            .viewer,
+            .viewer img {
+                width: 910px;
+                height: 512px;
+            }
+        }
+
+        .loading-overlay {
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .loading-overlay::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            border: 2px solid white;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 50% 50%, 50% 100%, 0% 100%);
+            position: absolute;
+            left: calc(50% - 15px);
+            top: calc(50% - 15px);
+            animation: spin 2s linear infinite;
+            border-radius: 15px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        .ref-swap input[type="checkbox"] {
+            display: none;
+            visibility: hidden;
+        }
+
+        .ref-swap .cbx {
+            position: relative;
+            top: 1px;
+            width: 17px;
+            height: 17px;
+            border: 1px solid #c8ccd4;
+            border-radius: 3px;
+            vertical-align: middle;
+            transition: background 0.1s ease;
+            cursor: pointer;
+        }
+
+        .ref-swap .cbx:after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 5px;
+            width: 5px;
+            height: 11px;
+            opacity: 0;
+            transform: rotate(45deg) scale(0);
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transition: all 0.3s ease;
+            transition-delay: 0.15s;
+        }
+
+        .ref-swap .lbl {
+            margin-left: 5px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .ref-swap input[type="checkbox"]:checked~.cbx {
+            border-color: transparent;
+            background: var(--primary-color);
+            animation: jelly-42 0.6s ease;
+        }
+
+        .ref-swap input[type="checkbox"]:checked~.cbx:after {
+            opacity: 1;
+            transform: rotate(45deg) scale(1);
+        }
+
+        .ref-swap .cntr {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        @-moz-keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @-webkit-keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @-o-keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @keyframes jelly-42 {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+    </style>
+    <script type="text/javascript">
+
+        let isMousePressed = false;
+
+        document.addEventListener("mousedown", () => {
+            isMousePressed = true;
+        });
+
+        document.addEventListener("mouseup", () => {
+            isMousePressed = false;
+        });
+
+        const techniqueNames = [
+            "naive",
+            "mipmap_pyramid",
+            "large_steps",
+            "gradient_filtering",
+        ]
+
+        const sceneFrameNames =  {
+            'wicker_basket': [
+                'Camera_iter_127_000',
+            ],
+            'leather_bag': [
+                'CameraClose_iter_127_000',
+            ],
+            'hidden_alley': [
+                'Camera_iter_127',
+            ],
+            'snail_teaser': [
+                'Camera_iter_255',
+                'CameraBack_iter_255',
+                'CameraFront_iter_255',
+                'CameraOpposite_iter_255',
+                'CameraTop_iter_255',
+                
+            ],
+            'snail_relighting': [
+                'Camera_iter_127',
+            ],
+            'jade_dragon': [
+                'Camera_iter_127',
+            ],
+        };
+
+        // Lr first then sigma/lambda if needed
+        const bestConfig =  {
+            'wicker_basket': {
+                "naive" : [7],
+                "mipmap_pyramid": [5],
+                "large_steps" :[9,3],
+                "gradient_filtering" :[11,2],
+            },
+            'leather_bag': {
+                "naive" : [6],
+                "mipmap_pyramid": [3],
+                "large_steps" :[6,3],
+                "gradient_filtering" :[6,0],
+            },
+            'hidden_alley': {
+                "naive" : [18],
+                "mipmap_pyramid": [2],
+                "large_steps" :[18,2],
+                "gradient_filtering" :[13,3],
+            },
+        };
+
+        const sceneDims = {
+            "hidden_alley" : [1024,512],
+            "wicker_basket" : [512,512],
+            "leather_bag" : [512,512],
+            "snail_teaser": [950,540],
+            "snail_relighting" : [950,540],
+            "jade_dragon" : [950,540],
+        }
+        const refImages = {
+            "hidden_alley" : 'ref_view_000.jpg',
+            "wicker_basket": 'ref_view_000_emitter_000.jpg',
+            "leather_bag": 'ref_view_001_emitter_000.jpg',
+        }
+
+        const sigmaDs = [1e-3, 1e-2, 1e-1, 1e0, 1e1, 1e2]
+        const lambdas = [1e-3, 1e-2, 1e-1, 1e0, 1e1, 1e2]
+
+        const mainTextureLearningRates = [1e-3, 2.5e-3, 5e-3, 1e-2, 2.5e-2, 5e-2, 1e-1, 2.5e-1, 5e-1, 1e0, 2.5e0, 5e0, 1e1, 2.5e1, 5e1, 1e2]
+        const mainTextureLearningRatesOurs = [1e-3,2.5e-3,5e-3,1e-2,2.5e-2,5e-2,1e-1,2.5e-1,5e-1,1e0]
+
+        const hiddenAlleyLearningRates = [1e-3, 2.5e-3, 5e-3, 7.5e-3, 1e-2, 2.5e-2, 5e-2, 7.5e-2, 1e-1, 2.5e-1, 5e-1, 7.5e-1, 1e0, 2.5e0, 5e0, 7.5e0, 1e1, 2.5e1, 5e1, 7.5e1, 1e2]
+        const hiddenAlleyLearningRatesOurs = [1e-3,2.5e-3,5e-3,7.5e-3,1e-2]
+
+        const scenes = [
+            { id: "hidden_alley", name: "Patio" },
+            { id: "wicker_basket", name: "Wicker Basket" },
+            { id: "leather_bag", name: "Leather Bag" },
+            { id: "snail_teaser", name: "Snail (teaser)" },
+            { id: "snail_relighting", name: "Snail (single view)" },
+            { id: "jade_dragon", name: "Dragon" },
+        ]
+
+        function setupTabs() {
+            const tabsDiv = document.querySelector("div.tabs")
+            const gliderDiv = document.querySelector("span.glider")
+            scenes.forEach((scene, index) => {
+                const radio = document.createElement("input")
+                radio.id = scene.id
+                radio.type = "radio"
+                radio.name = "scene"
+                radio.checked = (index == 0)
+                radio.addEventListener("change", () => {
+                    gliderDiv.setAttribute("style", `transform: translateX(${index * 100}%)`)
+                    updateScene(true)
+                })
+                tabsDiv.appendChild(radio)
+
+                const label = document.createElement("label")
+                label.setAttribute("for", scene.id)
+                label.textContent = scene.name
+                tabsDiv.appendChild(label)
+            })
+        }
+
+        function resetBest() {
+            const sceneName = document.querySelector("input[name='scene']:checked").id
+            if (['hidden_alley','wicker_basket','leather_bag'].includes(sceneName)){
+                document.querySelector("#learning-rate-ours").value = bestConfig[sceneName]['mipmap_pyramid']
+                document.querySelector("#learning-rate-cheng").value = bestConfig[sceneName]['gradient_filtering'][0]
+                document.querySelector("#learning-rate-nicolet").value = bestConfig[sceneName]['large_steps'][0]
+                document.querySelector("#learning-rate-adam").value = bestConfig[sceneName]['naive']
+                
+                document.querySelector("#sigmaD").value = bestConfig[sceneName]['gradient_filtering'][1]
+                document.querySelector("#lambda").value = bestConfig[sceneName]['large_steps'][1]
+                updateScene(true)
+            }
+        }
+
+        function updateImage(id, src) {
+            const image = document.getElementById(`${id}-image`)
+            const overlay = document.getElementById(`${id}-loading-overlay`)
+            overlay.style.opacity = 1
+            image.onload = event => {
+                // setTimeout(() => {
+                overlay.style.opacity = 0
+                // }, 2000);
+            }
+
+            image.src = src
+        }
+
+        function formatFloat(num) {
+            let [integerPart, decimalPart] = num.toString().split('.');
+            if (!decimalPart) {
+                decimalPart = '0';
+            }
+            return `${integerPart}_${decimalPart}`;
+        }
+
+        function getImageName(sceneName, technique, lr, sigmaD = 0.0, lambda = 0.0, cameraIdx = 0) {
+            let frameName = sceneFrameNames[sceneName][cameraIdx]
+
+            if (technique == "gradient_filtering") {
+                return `${sceneName}/${technique}_lr_${formatFloat(lr)}_sigma_d_${formatFloat(sigmaD)}_F4/${frameName}.jpg`
+            } else if (technique == "large_steps") {
+                return `${sceneName}/${technique}_lr_${formatFloat(lr)}_lambda_${formatFloat(lambda)}/${frameName}.jpg`
+            } else {
+                return `${sceneName}/${technique}_lr_${formatFloat(lr)}/${frameName}.jpg`
+            }
+        }
+
+        function addLeadingZeros(num, targetLength) {
+            let numStr = num.toString();
+            while (numStr.length < targetLength) {
+                numStr = '0' + numStr;
+            }
+            return numStr;
+        }
+
+        function getImageNameSSS(sceneName,cameraIdx,emitterIdx,is_ref) {
+            let frameName = sceneFrameNames[sceneName][cameraIdx]
+            emitter_str = addLeadingZeros(emitterIdx,3)
+            if (is_ref){
+                camera_str = addLeadingZeros(cameraIdx,3)
+                return `${sceneName}/references/ref_view_${camera_str}_emitter_${emitter_str}.jpg`
+            }else{
+                return `${sceneName}/optimized/${frameName}_${emitter_str}_spp_1024.jpg`
+            }
+
+        }
+
+        function formatSize(bytes) {
+            const suffixes = ["B", "kB", "MB", "GB", "TB"]
+            let index = 0
+            while (bytes >= 1000) {
+                bytes /= 1000
+                index++
+            }
+
+            return `${bytes.toFixed(bytes >= 10 ? 0 : 1)} ${suffixes[index]}`
+        }
+
+        function formatCompression(factor) {
+            return factor.toFixed(factor >= 10 ? 0 : 1) + "\xD7"
+        }
+
+        function updateControls() {
+            const sceneName = document.querySelector("input[name='scene']:checked").id
+
+            document.querySelector("#show-ref").checked = false;
+            
+            const viewer = document.querySelector('.viewer');
+            viewer.style.width = `${sceneDims[sceneName][0]}px`;
+            viewer.style.height =`${sceneDims[sceneName][1]}px`;
+
+            const images = document.querySelectorAll('.viewer img');
+
+            // Loop through each <img> and apply the new width and height
+            images.forEach((image) => {
+                image.style.width =  `${sceneDims[sceneName][0]}px`;
+                image.style.height = `${sceneDims[sceneName][1]}px`;
+            });
+
+            maxLrs = 0
+            maxLrsOurs = 0
+            if (sceneName === "hidden_alley"){
+                maxLrs = hiddenAlleyLearningRates.length-1
+                maxLrsOurs = hiddenAlleyLearningRatesOurs.length-1
+            }else{
+                maxLrs = mainTextureLearningRates.length-1
+                maxLrsOurs = mainTextureLearningRatesOurs.length-1
+            }
+            // Update learning rates maximum in controls if hidden alley
+            const learningRateInputs = document.querySelectorAll('input[id^="learning-rate"]');
+
+            // Loop through each matching input and update the max attribute
+            learningRateInputs.forEach(input => {
+                if (input.id === "learning-rate-ours") {
+                    input.max = maxLrsOurs;
+                }else{
+                    input.max = maxLrs;
+                }
+            });
+            resetBest()
+        }
+
+        function updateScene(withSplit) {
+            const sceneName = document.querySelector("input[name='scene']:checked").id
+
+            const refSwap = document.getElementsByClassName("ref-swap")[0]
+            const controlsSSS = document.getElementById("controls-sss")
+            const controlsTexture = document.getElementById("controls-texture")
+            
+            if (['hidden_alley','wicker_basket','leather_bag'].includes(sceneName)){
+                refSwap.style.display = "flex"
+                controlsSSS.style.display = "none"
+                controlsTexture.style.display = "flex"
+                updateSceneTexture(sceneName)
+            }else{
+                refSwap.style.display = "none"
+                controlsSSS.style.display = "flex"
+                controlsTexture.style.display = "none"
+                updateSceneSSS(sceneName)
+            }
+            if (withSplit){
+                // Simulate a mouse event
+                const image = document.getElementsByClassName("viewer")[0];
+                const rect = image.getBoundingClientRect();
+
+                // Calculate the middle of the image
+                const clientX = rect.left + rect.width / 2;
+                const clientY = rect.top + rect.height / 2;
+
+                // Create a synthetic mouse event
+                const syntheticEvent = new MouseEvent("click", {
+                    bubbles: true,
+                    cancelable: true,
+                    clientX: clientX,
+                    clientY: clientY
+                });
+                updateSplit(syntheticEvent)
+            }
+
+        }
+
+        function updateSceneTexture(sceneName) {
+            const learningRateOursId = Number(document.querySelector("#learning-rate-ours").value)
+            const learningRateChengId = Number(document.querySelector("#learning-rate-cheng").value)
+            const learningRateNicoletId = Number(document.querySelector("#learning-rate-nicolet").value)
+            const learningRateAdamId = Number(document.querySelector("#learning-rate-adam").value)
+            const sigmaDId = Number(document.querySelector("#sigmaD").value)
+            const lambdaId = Number(document.querySelector("#lambda").value)
+
+            lrs = []
+            lrsOurs = []
+            if (sceneName === "hidden_alley"){
+                lrs = hiddenAlleyLearningRates
+                lrsOurs = hiddenAlleyLearningRatesOurs
+            }else{
+                lrs = mainTextureLearningRates
+                lrsOurs = mainTextureLearningRatesOurs
+            }
+
+            learningRateOurs = lrsOurs[learningRateOursId]
+            learningRateCheng = lrs[learningRateChengId]
+            learningRateNicolet = lrs[learningRateNicoletId]
+            learningRateAdam = lrs[learningRateAdamId]
+            sigmaD = sigmaDs[sigmaDId]
+            lambda = lambdas[lambdaId]
+
+            const referenceActive = document.querySelector("#show-ref").checked
+            document.getElementById("ref-image").parentElement.style.opacity = referenceActive ? 1 : 0
+           
+            document.getElementById("learning-rate-ours").style.display = "flex"
+            document.getElementById("sigmaD").style.display = "flex"
+            document.getElementById("lambda").style.display = "flex"
+        
+
+            updateImage("top-left", getImageName(sceneName, "mipmap_pyramid", learningRateOurs))
+            document.querySelector("#top-left-image-text").textContent = 'Ours'
+
+            updateImage("top-right", getImageName(sceneName, "gradient_filtering", learningRateCheng,sigmaD))
+            document.querySelector("#top-right-image-text").textContent = 'Cheng et al. 2024'
+
+            updateImage("bottom-left", getImageName(sceneName, "large_steps", learningRateNicolet,0.0,lambda))
+            document.querySelector("#bottom-left-image-text").textContent = 'Nicolet et al. 2021'
+
+            updateImage("bottom-right", getImageName(sceneName, "naive", learningRateAdam))
+            document.querySelector("#bottom-right-image-text").textContent = 'Adam'
+
+            updateImage("ref", `${sceneName}/${refImages[sceneName]}`)
+
+            errorScale = 1.0
+            if (sceneName === "hidden_alley"){
+                errorScale = 100.0
+                scaleText = `x10<sup>2</sup>`
+            }else{
+                errorScale = 1000.0
+                scaleText = `x10<sup>3</sup>`
+            }
+
+            errorOurs = l2Errors[sceneName]['mipmap_pyramid'][learningRateOursId]
+            errorCheng = l2Errors[sceneName]['gradient_filtering'][learningRateChengId][sigmaDId]
+            errorNicolet = l2Errors[sceneName]['large_steps'][learningRateNicoletId][lambdaId]
+            errorAdam = l2Errors[sceneName]['naive'][learningRateAdamId]
+
+            allErrors = [errorOurs, errorCheng, errorNicolet, errorAdam]
+            minError = Math.min(...allErrors)
+
+            // Find the second-best error
+            let sortedErrors = [...allErrors].sort((a, b) => a - b); // Sort errors in ascending order
+            let secondBestError = sortedErrors[1]; // Second smallest error
+
+            document.querySelector("#error-ours").innerHTML = `${(errorOurs*errorScale).toFixed(3)} ${scaleText}`
+            document.querySelector("#error-cheng").innerHTML = `${(errorCheng*errorScale).toFixed(3)} ${scaleText}`
+            document.querySelector("#error-nicolet").innerHTML = `${(errorNicolet*errorScale).toFixed(3)} ${scaleText}`
+            document.querySelector("#error-adam").innerHTML = `${(errorAdam*errorScale).toFixed(3)} ${scaleText}`
+
+            // Set colors based on error ranking
+            document.querySelector("#error-ours").style.color =
+                minError === errorOurs ? "#50a528" : secondBestError === errorOurs ? "#c78624" : "#a52828";
+            document.querySelector("#error-cheng").style.color =
+                minError === errorCheng ? "#50a528" : secondBestError === errorCheng ? "#c78624" : "#a52828";
+            document.querySelector("#error-nicolet").style.color =
+                minError === errorNicolet ? "#50a528" : secondBestError === errorNicolet ? "#c78624" : "#a52828";
+            document.querySelector("#error-adam").style.color =
+                minError === errorAdam ? "#50a528" : secondBestError === errorAdam ? "#c78624" : "#a52828";
+                
+            // document.querySelector("#error-ours").style = minError === errorOurs ? `color:#50a528` : `color:#a52828`
+            // document.querySelector("#error-cheng").style = minError === errorCheng ? `color:#50a528` : `color:#a52828`
+            // document.querySelector("#error-nicolet").style = minError === errorNicolet ? `color:#50a528` : `color:#a52828`            
+            // document.querySelector("#error-adam").style = minError === errorAdam ? `color:#50a528` : `color:#a52828`
+
+
+            document.querySelector("label[for='learning-rate-ours']").textContent = `lr = ${learningRateOurs}`
+            document.querySelector("label[for='learning-rate-adam']").textContent = `lr = ${learningRateAdam}`
+            document.querySelector("label[for='learning-rate-cheng']").textContent = `lr = ${learningRateCheng}`
+            document.querySelector("label[for='learning-rate-nicolet']").textContent = `lr = ${learningRateNicolet}`
+            document.querySelector("label[for='lambda']").innerHTML = `&lambda; = ${lambda}`
+            document.querySelector("label[for='sigmaD']").innerHTML = `&sigma;<sub>d</sub> = ${sigmaD}`
+
+        }
+
+        const lightRotationsLabel = [
+            '0°',
+            '45°',
+            '90°',
+            '135°',
+            '180°',
+            '225°',
+            '270°',
+            '315°',
+        ]
+
+        const cameraViewLabels = [
+            "Main view",
+            "Back view",
+            "Front view",
+            "Opposite view",
+            "Top view",
+        ]
+
+        function updateSceneSSS(sceneName) {
+            let cameraIdx = Number(document.querySelector("#camera-view").value)
+            const rotationIdx = Number(document.querySelector("#light-rotation").value)
+            
+            cameraViewControl = document.querySelector("#camera-view")
+            cameraViewLabel = document.querySelector("label[for='camera-view']")
+            if (sceneName === 'snail_teaser'){
+                cameraViewControl.style.display = 'flex'
+                cameraViewLabel.style.display = 'flex'
+            }else{
+                cameraViewControl.style.display = 'none'
+                cameraViewLabel.style.display = 'none'
+                cameraIdx = 0
+            }
+        
+            updateImage("top-left", getImageNameSSS(sceneName, cameraIdx,rotationIdx,false))
+            document.querySelector("#top-left-image-text").textContent = 'Ours'
+
+            updateImage("top-right", getImageNameSSS(sceneName, cameraIdx,rotationIdx,true))
+            document.querySelector("#top-right-image-text").textContent = 'Reference'
+
+          
+            // cameraView.innerHTML = "Camera view"
+            // document.querySelector("#light-rotation").innerHTML = "Light rotation"
+
+            document.querySelector("label[for='camera-view']").textContent = `${cameraViewLabels[cameraIdx]}`
+            document.querySelector("label[for='light-rotation']").textContent = `light rotation ${lightRotationsLabel[rotationIdx]}`
+
+            // updateImage("bottom-left", getImageName(sceneName, "large_steps", learningRateNicolet,0.0,lambda))
+            // document.querySelector("#bottom-left-image-text").textContent = 'Nicolet et al. 2021'
+
+            // updateImage("bottom-right", getImageName(sceneName, "naive", learningRateAdam))
+            // document.querySelector("#bottom-right-image-text").textContent = 'Adam'
+
+            // updateImage("ref", `${sceneName}/${refImages[sceneName]}`)
+        }
+
+        window.addEventListener("load", () => {
+            setupTabs()
+            updateScene(true)
+            updateControls()
+        })
+
+        function updateSplit(e) {
+            if(isMousePressed | e.type === "click"){
+                const sceneName = document.querySelector("input[name='scene']:checked").id
+
+                const viewer = document.querySelector(".viewer");
+                const rect = viewer.getBoundingClientRect();
+
+                // Mouse position relative to the viewer
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+                if (e == null){
+                    x =  rect.left + rect.width / 2
+                    y =  rect.top + rect.height / 2
+                }
+
+                const width = x - 3
+                const height = y - 3
+                
+                // Update the dimensions of each quadrant
+                const topLeftImage = document.querySelector("#top-left-image").parentElement;
+                topLeftImage.style.width = Math.max(width, 0) + "px"
+                topLeftImage.style.height = Math.max(height, 0) + "px"
+                
+                const topLeftOverlay = document.querySelector("#top-left-image").parentElement;
+
+                const topRightImage = document.querySelector("#top-right-image").parentElement;
+                topRightImage.style.height = Math.max(height, 0) + "px"
+
+                const topRightOverlay = document.querySelector("#top-right-loading-overlay");
+                topRightOverlay.style.left = Math.max(width, 0) + "px"
+
+                const bottomLeftImage = document.querySelector("#bottom-left-image").parentElement;
+                bottomLeftImage.style.width = Math.max(width, 0) + "px"
+
+                const bottomLeftOverlay = document.querySelector("#bottom-left-loading-overlay");
+                bottomLeftOverlay.style.top = Math.max(height, 0) + "px"
+
+                const bottomRightImage = document.querySelector("#bottom-right-image").parentElement;
+
+                const bottomRightOverlay = document.querySelector("#bottom-right-loading-overlay");
+                bottomRightOverlay.style.left = Math.max(width, 0) + "px"
+                bottomRightOverlay.style.top = Math.max(height, 0) + "px"
+
+                if (['hidden_alley','wicker_basket','leather_bag'].includes(sceneName)){
+
+                    bottomLeftImage.style.opacity = 1.0
+                    // bottomLeftOverlay.style.opacity = 1.0
+                    bottomRightImage.style.opacity = 1.0
+                    // bottomRightOverlay.style.opacity = 1.0
+                }else{
+                    topLeftImage.style.height = "100%"
+
+                    topLeftOverlay.style.height = "100%"
+                    topRightImage.style.height = "100%"
+                    topRightOverlay.style.height = "100%"
+
+                    bottomLeftImage.style.opacity = 0.0
+                    bottomLeftOverlay.style.opacity = 0.0
+                    bottomRightImage.style.opacity = 0.0
+                    bottomRightOverlay.style.opacity = 0.0
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tabs" onclick="updateControls()">
+            <span class="glider"></span>
+        </div>
+        <div id="controls-texture" class="controls-container-all">
+            <div class="controls-container">
+                <div class="controls-container-title">
+                    <span>Ours</span>
+                </div>
+                <div class="controls">
+                    <span id="error-label"">L<sub>2</sub> error</span>
+                    <span id="error-ours" style="color:#50a528">0.1</span>
+                    <hr />
+                    <input id="learning-rate-ours" type="range" min="0" max="15" value="3" oninput="updateScene(false)" />
+                    <label for="learning-rate-ours"></label>
+                </div>
+            </div>
+            <div class="controls-container">
+                <div class="controls-container-title">
+                    <span>Cheng et al. 2024</span>
+                </div>
+                <div class="controls">
+                    <span id="error-label" >L<sub>2</sub> error</span>
+                    <span id="error-cheng" style="color:#a52828">0.1</span>
+                    <hr />
+                    <input id="learning-rate-cheng" type="range" min="0" max="15" value="3" oninput="updateScene(false)" />
+                    <label for="learning-rate-cheng"></label>
+                    <!-- <span style="margin: 20px"></span> -->
+                    <input id="sigmaD" type="range" min="0" max="5" value="3" oninput="updateScene(false)" />
+                    <label for="sigmaD"></label>
+                </div>
+            </div>
+            <div class="controls-container">
+                <div class="controls-container-title">
+                    <span>Nicolet et al. 2021</span>
+                </div>
+                <div class="controls">
+                    <span id="error-label">L<sub>2</sub> error</span>
+                    <span id="error-nicolet" style="color:#a52828">0.1</span>
+                    <hr />
+                    <input id="learning-rate-nicolet" type="range" min="0" max="15" value="3" oninput="updateScene(false)" />
+                    <label for="learning-rate-nicolet"></label>
+                    <input id="lambda" type="range" min="0" max="5" value="3" oninput="updateScene(false)" />
+                    <label for="lambda"></label>
+                </div>
+            </div>
+            <div class="controls-container">
+                <div class="controls-container-title">
+                    <span>Adam</span>
+                </div>
+                <div class="controls">
+                    <span id="error-label">L<sub>2</sub> error</span>
+                    <span id="error-adam" style="color:#a52828">0.01</span>
+                    <hr />
+                    <input id="learning-rate-adam" type="range" min="0" max="15" value="3" oninput="updateScene(false)" />
+                    <label for="learning-rate-adam"></label>
+                </div>
+                
+            </div>
+        </div>
+        <div id="controls-sss" class="controls-sss">
+            <input id="light-rotation" type="range" min="0" max="7" value="0" oninput="updateScene(false)" />
+            <label for="light-rotation"></label>
+            <span style="margin: 20px"></span>
+            <input id="camera-view" type="range" min="0" max="4" value="0" oninput="updateScene(false)" />
+            <label for="camera-view"></label>
+        </div>
+        <div class="ref-swap">
+            <input id="show-ref" type="checkbox" oninput="updateScene(false)" />
+            <label for="show-ref" class="cbx"></label>
+            <label for="show-ref" class="lbl">Reference</label>
+        </div>
+
+        <div class="viewer" onmousemove="updateSplit(event)" onclick="updateSplit(event)">
+            <div class="image"
+                style="z-index: 20;height: 50%;width: 50%;border-bottom: 2px solid rgb(255, 255, 255);border-right: 2px solid rgb(255, 255, 255)">
+                <div id="top-left-loading-overlay" class="loading-overlay" style="left: 0;"></div>
+                <img id="top-left-image" />
+                <span id="top-left-image-text" style="left: 0; text-align: left;">Top Left</span>
+            </div>
+            <div class="image" style="z-index: 10;height: 50%;border-bottom: 2px solid rgb(255, 255, 255)">
+                <div id="top-right-loading-overlay" class="loading-overlay" style="z-index: 40;left: 50%;"></div>
+                <img id="top-right-image" />
+                <span id="top-right-image-text" style="right: 0; text-align: right;">Top Right</span>
+            </div>
+
+            <div class="image" style="z-index: 5;width:50%;border-right: 2px solid rgb(255, 255, 255)">
+                <div id="bottom-left-loading-overlay" class="loading-overlay" style="left: 0;top: 50%;"></div>
+                <img id="bottom-left-image" />
+                <span id="bottom-left-image-text" style="left: 0; text-align: left;">Bottom Left</span>
+            </div>
+            <div class="image" style="z-index: 0;">
+                <div id="bottom-right-loading-overlay" class="loading-overlay" style="left: 50%;top: 50%;"></div>
+                <img id="bottom-right-image" />
+                <span id="bottom-right-image-text" style="right: 0; text-align: right;">Bottom Right</span>
+            </div>
+            <div class="image" style="opacity: 0; z-index: 30;">
+                <div id="ref-loading-overlay" class="loading-overlay" style="left: 0;"></div>
+                <img id="ref-image" />
+                <span style="right:0;text-align:right;">Reference</span>
+            </div>
+        </div>
+        <!-- <div class="viewer" onmousemove="updateSplit(event)">
+            <div class="image" style="opacity: 0; z-index: 30;">
+                <div id="flip-loading-overlay" class="loading-overlay" style="left: 0;"></div>
+                <img id="flip-image" />
+                <span style="right:0;text-align:right;">FLIP Error</span>
+            </div>
+        </div> -->
+
+    </div>
+</body>
+
+</html>
