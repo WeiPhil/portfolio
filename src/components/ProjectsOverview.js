@@ -301,6 +301,33 @@ class ProjectsOverview extends Component {
       />
     );
 
+    const practicalReconstructionDescription = (
+      <>
+        <Box fontWeight={500}>Abstract </Box>
+        Inverse rendering has emerged as a standard tool to reconstruct the parameters of appearance models from images (e.g., textured BSDFs). In this work, we present several novel contributions motivated by the practical challenges of recovering high-resolution surface appearance textures, including spatially-varying subsurface scattering parameters.
+        <br />
+        First, we propose Laplacian mipmapping, which combines differentiable mipmapping and a Laplacian pyramid representation into an effective preconditioner. This seemingly simple technique significantly improves the quality of recovered surface textures on a set of challenging inverse rendering problems. Our method automatically adapts to the render and texture resolutions, only incurs moderate computational cost and achieves better quality than prior work while using fewer hyperparameters. Second, we introduce a specialized gradient computation algorithm for textured, path-traced subsurface scattering, which facilitates faithful reconstruction of translucent materials. By using path tracing, we enable the recovery of complex appearance while avoiding the approximations of the previously used diffusion dipole methods. Third, we demonstrate the application of both these techniques to reconstructing the textured appearance of human faces from sparse captures. Our method recovers high-quality relightable appearance parameters that are compatible with current production renderers.
+      </>
+    );
+    const practicalReconstructionSubtitle = (
+      <>
+        <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Jérémy Riviere, Ruslan Guseinov, Stephan Garbin, Philipp Slusallek, Bernd Bickel, Thabo Beeler, Delio Vicini, 2025
+        <Box fontWeight={500} fontSize="fontSize">
+          ACM Transactions on Graphics (Proceedings of SIGGRAPH 2025)
+        </Box>
+      </>
+    );
+    const practicalReconstructionProject = (
+      <ProjectCard
+        image={require("../data/practical_reconstruction/teaser_small.png")}
+        title="Practical Inverse Rendering of Textured and Translucent Appearance"
+        subtitle={practicalReconstructionSubtitle}
+        description={practicalReconstructionDescription}
+        projectPageLink="./practical_reconstruction"
+      />
+    );
+
+
     // Personal Projects
 
     const qulkanProject = (
@@ -352,7 +379,7 @@ class ProjectsOverview extends Component {
 
     ///////////////////////
 
-    const publications = [nbvhProject, neuralLodProject, earsProject, opsrProject, layeredAnisoProject];
+    const publications = [practicalReconstructionProject, nbvhProject, neuralLodProject, earsProject, opsrProject, layeredAnisoProject];
     const personalProjects = [qulkanProject, procaryotaProject, lotrProject];
     const studyProjects = [cs440Project, imageAndVideoProject];
 
