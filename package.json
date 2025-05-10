@@ -5,9 +5,9 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^6.0.0",
-    "@mui/material": "^6.0.0",
-    "@mui/styled-engine-sc": "^6.0.0",
+    "@mui/icons-material": "^6.4.11",
+    "@mui/material": "^6.4.11",
+    "@mui/styled-engine-sc": "^6.4.9",
     "@mui/styles": "^6.4.11",
     "markdown-to-jsx": "^7.7.6",
     "react": "^19.1.0",
