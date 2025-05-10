@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import App from "./App";
 import Multilayered from "./publications/Multilayered";
@@ -13,10 +13,12 @@ import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PracticalReconstruction from "./publications/PracticalReconstruction";
 
+import ReactDOM from 'react-dom/client';
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const reload = () => window.location.reload();
 
-ReactDOM.render(
+root.render(
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
@@ -35,6 +37,6 @@ ReactDOM.render(
         <Route exact path="/practical_reconstruction_viewer" onEnter={reload} />
       </Switch>
     </Router>
-  </ThemeProvider>,
-  document.querySelector("#root")
+  </ThemeProvider>
+  // document.querySelector("#root")
 );

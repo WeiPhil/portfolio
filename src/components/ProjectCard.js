@@ -12,9 +12,9 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
 import PropTypes from "prop-types";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Lightbox from "react-image-lightbox";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import { Link } from "react-router-dom";
-import "react-image-lightbox/style.css";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -33,37 +33,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ProjectCard(props) {
+function ProjectCard({ image,
+  title,
+  subtitle,
+  description,
+  githubLink = null,
+  projectPageLink = null,
+  paperData = [null, null],
+  archiveDatas = [[null, null]],
+  linkDatas = [[null, null]],
+  videoLink = null,
+  presentationData = [null, null] }) {
+
   const theme = useTheme();
   const classes = useStyles();
 
-  const [toggle, setToggle] = useState(false);
-
-  const {
-    image,
-    title,
-    subtitle,
-    description,
-    githubLink,
-    projectPageLink,
-    paperData,
-    archiveDatas,
-    linkDatas,
-    videoLink,
-    presentationData,
-  } = props;
+  const [open, setOpen] = useState(false);
   const [paperLink, paperLinkLabel] = paperData;
   const [presentationLink, presentationLabel] = presentationData;
 
   const mobile = useMediaQuery(theme.breakpoints.down("md"));
-
-  function handleClickOpen() {
-    setToggle(true);
-  }
-
-  function handleClose() {
-    setToggle(false);
-  }
 
   return (
     <Grid
@@ -75,7 +64,7 @@ function ProjectCard(props) {
         <Card className={classes.card}>
           <CardActionArea
             style={{ width: "100%", height: "100%" }}
-            onClick={handleClickOpen}
+            onClick={() => setOpen(true)}
           >
             <CardMedia
               className={classes.image}
@@ -85,7 +74,7 @@ function ProjectCard(props) {
           </CardActionArea>
         </Card>
 
-        {toggle && <Lightbox mainSrc={image} onCloseRequest={handleClose} />}
+        <Lightbox open={open} close={() => setOpen(false)} slides={[{ src: image }]} />
       </Grid>
 
       <Grid item xs={mobile ? true : 7}>
@@ -262,16 +251,6 @@ ProjectCard.propTypes = {
   archiveDatas: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
   linkDatas: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string, PropTypes.string)),
   videoLink: PropTypes.string,
-};
-
-ProjectCard.defaultProps = {
-  githubLink: null,
-  projectPageLink: null,
-  paperData: [null, null],
-  presentationData: [null, null],
-  archiveDatas: [[null, null]],
-  linkDatas: [[null, null]],
-  videoLink: null,
 };
 
 export default ProjectCard;

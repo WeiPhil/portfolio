@@ -10,15 +10,15 @@
     "@mui/styled-engine-sc": "^6.0.0",
     "@mui/styles": "^6.4.11",
     "markdown-to-jsx": "^7.7.6",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-image-lightbox": "^5.1.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-player": "^2.9.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.1",
-    "react-swipeable-views": "^0.14.0",
-    "styled-components": "^6.1.18"
+    "react-scroll-snapper": "^1.0.0",
+    "styled-components": "^6.1.18",
+    "yet-another-react-lightbox": "^3.23.0"
   },
   "scripts": {
     "start": "react-scripts start",

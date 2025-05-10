@@ -5,7 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
-import "react-image-lightbox/style.css";
 
 import { makeStyles } from "@mui/styles";
 import IconButton from "@mui/material/IconButton";
