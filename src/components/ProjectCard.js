@@ -74,7 +74,7 @@ function ProjectCard({ image,
           </CardActionArea>
         </Card>
 
-        <Lightbox open={open} close={() => setOpen(false)} slides={[{ src: image }]} />
+        <Lightbox carousel={{ finite: true }} render={{ buttonPrev: () => null, buttonNext: () => null }} open={open} close={() => setOpen(false)} slides={[{ src: image }]} />
       </Grid>
 
       <Grid item xs={mobile ? true : 7}>
