@@ -431,7 +431,7 @@ function PracticalReconstruction(props) {
 											/>
 											<CardContent>
 												<i>
-													We construct a texture's mipmap hierarchy from a Laplacian pyramid. A texture lookup during rendering thus accumulates information from alllevels in the Laplacian pyramidbelowthe queried mipmap level (red).
+													We construct a texture's mipmap hierarchy from a Laplacian pyramid. A texture lookup during rendering thus accumulates information from all levels in the Laplacian pyramid below the queried mipmap level (red).
 												</i>
 											</CardContent>
 										</Card>
@@ -448,7 +448,7 @@ function PracticalReconstruction(props) {
 											/>
 											<CardContent>
 												<i>
-													Comparison  of  our  method  to  cross-bilateral  gradient  filtering [Chang et al. 2024] on a scene where a 4096<sup>2</sup> texture is simultaneously optimized for a close-up (top row) and a wide-angle view (bottom row), each rendered at 1024<sup>2</sup>. We find the optimal learning rate (lr) and cross-bilateral filter weight 𝜎 using a grid search. We do this for both views at the sametime ("Opt. combined"), as well as for each view individually ("Opt. close" and "Opt. far"). The optimal parameters for one view do not generalize to theother, and even the best combined filter bandwidth 𝜎 cannot simultaneously handle both views.
+													Comparison  of  our  method  to  cross-bilateral  gradient  filtering [Chang et al. 2024] on a scene where a 4096<sup>2</sup> texture is simultaneously optimized for a close-up (top row) and a wide-angle view (bottom row), each rendered at 1024<sup>2</sup>. We find the optimal learning rate (lr) and cross-bilateral filter weight 𝜎 using a grid search. We do this for both views at the sametime ("Opt. combined"), as well as for each view individually ("Opt. close" and "Opt. far"). The optimal parameters for one view do not generalize to the other, and even the best combined filter bandwidth 𝜎 cannot simultaneously handle both views.
 												</i>
 											</CardContent>
 										</Card>
@@ -487,7 +487,7 @@ function PracticalReconstruction(props) {
 											/>
 											<CardContent>
 												<i>
-													<b>Left:</b> Path-traced subsurface scattering estimates outgoing radianceby sampling a light path through the object's interior. The medium parameters are set by evaluating 2D textures at the point of entry. <b>Right:</b> An alternative, approximate solution are diffusion dipole models [Jensen et al. 2001], which directly sample outgoing surface locations according to a two-dimensional scattering profile [King et al. 2013].
+													<b>Left:</b> Path-traced subsurface scattering estimates outgoing radiance by sampling a light path through the object's interior. The medium parameters are set by evaluating 2D textures at the point of entry. <b>Right:</b> An alternative, approximate solution are diffusion dipole models [Jensen et al. 2001], which directly sample outgoing surface locations according to a two-dimensional scattering profile [King et al. 2013].
 												</i>
 											</CardContent>
 										</Card>
@@ -504,7 +504,7 @@ function PracticalReconstruction(props) {
 											/>
 											<CardContent>
 												<i>
-													Comparison of our method and the differentiable diffusion dipolemodel [Deng et al. 2022].
+													Comparison of our method and the differentiable diffusion dipole model [Deng et al. 2022].
 												</i>
 											</CardContent>
 										</Card>
@@ -574,7 +574,7 @@ function PracticalReconstruction(props) {
 											/>
 											<CardContent>
 												<i>
-													Once the model is trained we can easily relight the model under a moving point light.
+													Once the subsurface scattering parameters are optimized we can easily relight the model under a moving point light.
 												</i>
 											</CardContent>
 										</Card>
