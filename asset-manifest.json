@@ -1,7 +1,21 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.db3664a3.css",
-    "main.js": "/portfolio/static/js/main.09b3acbf.js",
+    "main.css": "/portfolio/static/css/main.785eb68e.css",
+    "main.js": "/portfolio/static/js/main.c0ce6cf0.js",
+    "reactPlayerYouTube.js": "/portfolio/static/js/reactPlayerYouTube.1ea34014.chunk.js",
+    "reactPlayerSoundCloud.js": "/portfolio/static/js/reactPlayerSoundCloud.3df0e607.chunk.js",
+    "reactPlayerVimeo.js": "/portfolio/static/js/reactPlayerVimeo.6f023723.chunk.js",
+    "reactPlayerMux.js": "/portfolio/static/js/reactPlayerMux.80e19399.chunk.js",
+    "reactPlayerFacebook.js": "/portfolio/static/js/reactPlayerFacebook.369ace52.chunk.js",
+    "reactPlayerStreamable.js": "/portfolio/static/js/reactPlayerStreamable.d46af3e6.chunk.js",
+    "reactPlayerWistia.js": "/portfolio/static/js/reactPlayerWistia.d12cf75a.chunk.js",
+    "reactPlayerTwitch.js": "/portfolio/static/js/reactPlayerTwitch.1ff60886.chunk.js",
+    "reactPlayerDailyMotion.js": "/portfolio/static/js/reactPlayerDailyMotion.b1e6c12b.chunk.js",
+    "reactPlayerMixcloud.js": "/portfolio/static/js/reactPlayerMixcloud.253e5655.chunk.js",
+    "reactPlayerVidyard.js": "/portfolio/static/js/reactPlayerVidyard.cfddfe46.chunk.js",
+    "reactPlayerKaltura.js": "/portfolio/static/js/reactPlayerKaltura.c369928d.chunk.js",
+    "reactPlayerFilePlayer.js": "/portfolio/static/js/reactPlayerFilePlayer.e8e7f927.chunk.js",
+    "reactPlayerPreview.js": "/portfolio/static/js/reactPlayerPreview.ed9165c6.chunk.js",
     "static/media/light_anim_envmap.mp4": "/portfolio/static/media/light_anim_envmap.1445083cfd1df2d832a1.mp4",
     "static/media/teaser_large.png": "/portfolio/static/media/teaser_large.c5685692effbb4e22b60.png",
     "static/media/ears_teaser.png": "/portfolio/static/media/ears_teaser.8bfaaa12e1ff261341e9.png",
@@ -30,11 +44,25 @@
     "static/media/subsurface_vs_dipole.png": "/portfolio/static/media/subsurface_vs_dipole.9ab12579760e41db0345.png",
     "static/media/acm_icon.svg": "/portfolio/static/media/acm_icon.ba305f3b330e75ea1f895c0d3fc88a11.svg",
     "index.html": "/portfolio/index.html",
-    "main.db3664a3.css.map": "/portfolio/static/css/main.db3664a3.css.map",
-    "main.09b3acbf.js.map": "/portfolio/static/js/main.09b3acbf.js.map"
+    "main.785eb68e.css.map": "/portfolio/static/css/main.785eb68e.css.map",
+    "main.c0ce6cf0.js.map": "/portfolio/static/js/main.c0ce6cf0.js.map",
+    "reactPlayerYouTube.1ea34014.chunk.js.map": "/portfolio/static/js/reactPlayerYouTube.1ea34014.chunk.js.map",
+    "reactPlayerSoundCloud.3df0e607.chunk.js.map": "/portfolio/static/js/reactPlayerSoundCloud.3df0e607.chunk.js.map",
+    "reactPlayerVimeo.6f023723.chunk.js.map": "/portfolio/static/js/reactPlayerVimeo.6f023723.chunk.js.map",
+    "reactPlayerMux.80e19399.chunk.js.map": "/portfolio/static/js/reactPlayerMux.80e19399.chunk.js.map",
+    "reactPlayerFacebook.369ace52.chunk.js.map": "/portfolio/static/js/reactPlayerFacebook.369ace52.chunk.js.map",
+    "reactPlayerStreamable.d46af3e6.chunk.js.map": "/portfolio/static/js/reactPlayerStreamable.d46af3e6.chunk.js.map",
+    "reactPlayerWistia.d12cf75a.chunk.js.map": "/portfolio/static/js/reactPlayerWistia.d12cf75a.chunk.js.map",
+    "reactPlayerTwitch.1ff60886.chunk.js.map": "/portfolio/static/js/reactPlayerTwitch.1ff60886.chunk.js.map",
+    "reactPlayerDailyMotion.b1e6c12b.chunk.js.map": "/portfolio/static/js/reactPlayerDailyMotion.b1e6c12b.chunk.js.map",
+    "reactPlayerMixcloud.253e5655.chunk.js.map": "/portfolio/static/js/reactPlayerMixcloud.253e5655.chunk.js.map",
+    "reactPlayerVidyard.cfddfe46.chunk.js.map": "/portfolio/static/js/reactPlayerVidyard.cfddfe46.chunk.js.map",
+    "reactPlayerKaltura.c369928d.chunk.js.map": "/portfolio/static/js/reactPlayerKaltura.c369928d.chunk.js.map",
+    "reactPlayerFilePlayer.e8e7f927.chunk.js.map": "/portfolio/static/js/reactPlayerFilePlayer.e8e7f927.chunk.js.map",
+    "reactPlayerPreview.ed9165c6.chunk.js.map": "/portfolio/static/js/reactPlayerPreview.ed9165c6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.db3664a3.css",
-    "static/js/main.09b3acbf.js"
+    "static/css/main.785eb68e.css",
+    "static/js/main.c0ce6cf0.js"
   ]
 }
