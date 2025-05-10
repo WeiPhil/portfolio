@@ -10,7 +10,7 @@ import NeuralBVH from "./publications/NeuralBVH";
 import MenuBar from "./components/MenuBar";
 import theme from "./theme";
 import { ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PracticalReconstruction from "./publications/PracticalReconstruction";
 
 import ReactDOM from 'react-dom/client';
@@ -24,18 +24,18 @@ root.render(
     <CssBaseline />
     <Router basename="/portfolio">
       <MenuBar />
-      <Switch>
-        <Route exact path="/multilayered" component={Multilayered} />
-        <Route exact path="/opsr" component={Opsr} />
-        <Route exact path="/ears" component={Ears} />
-        <Route exact path="/neural_lod" component={NeuralLod} />
-        <Route exact path="/neural_bvh" component={NeuralBVH} />
-        <Route exact path="/practical_reconstruction" component={PracticalReconstruction} />
-        <Route exact path="/" component={App} />
+      <Routes>
+        <Route exact path="/multilayered" element={<Multilayered />} />
+        <Route exact path="/opsr" element={<Opsr />} />
+        <Route exact path="/ears" element={<Ears />} />
+        <Route exact path="/neural_lod" element={<NeuralLod />} />
+        <Route exact path="/neural_bvh" element={<NeuralBVH />} />
+        <Route exact path="/practical_reconstruction" element={<PracticalReconstruction />} />
+        <Route exact path="/" element={<App />} />
         <Route exact path="/neural_lod_viewer" onEnter={reload} />
         <Route exact path="/neural_bvh_viewer" onEnter={reload} />
         <Route exact path="/practical_reconstruction_viewer" onEnter={reload} />
-      </Switch>
+      </Routes>
     </Router>
   </ThemeProvider>
   // document.querySelector("#root")
