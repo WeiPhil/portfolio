@@ -13,6 +13,7 @@ import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
 import AuthorBanner from "../components/AuthorBanner";
+import BibtexEntry from "../components/BibtexEntry";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -149,6 +150,16 @@ function Opsr(props) {
             </StyledLink>, affiliations: ["Weta Digital", "Charles University"]
         },
     ]
+    const opsrBibtex = `@article{Weier2021Opsr,
+  author = {Weier, Philippe and Droske, Marc and Hanika, Johannes and Weidlich, Andrea and Vorba, Jiří},
+  title = {Optimised Path Space Regularisation},
+  year = 2021,
+  journal = {Computer Graphics Forum (Proceedings of Eurographics Symposium on Rendering)},
+  year = 2021,
+  volume = 40,
+  number = 4,
+  doi = {10.1111/cgf.14347}
+}`
 
     return (
         <Container className={classes.content}>
@@ -314,7 +325,12 @@ function Opsr(props) {
                                     </StyledLink>
                                 </Typography>
                             </Grid>
-
+                            <Grid
+                                item
+                                style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+                            >
+                                <BibtexEntry bibtexString={opsrBibtex} />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -13,6 +13,7 @@ import ReactPlayer from "react-player";
 import Footer from "../components/Footer";
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import AuthorBanner from "../components/AuthorBanner";
+import BibtexEntry from "../components/BibtexEntry";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -148,6 +149,20 @@ function Ears(props) {
 			</StyledLink>, affiliations: ["DFKI", "Saarland University"]
 		},
 	]
+
+	const earsBibtex = `@article{Rath2022Ears,
+  author          = {Rath, Alexander and Grittmann, Pascal and Herholz, Sebastian and Weier, Philippe and Slusallek, Philipp},
+  title           = {EARS: Efficiency-Aware Russian Roulette and Splitting},
+  journal         = {ACM Transactions on Graphics (Proceedings of SIGGRAPH 2022)},
+  numpages        = {14},
+  volume          = {41},
+  number          = {4},
+  articleno       = {81},
+  year            = {2022},
+  month           = {jul},
+  doi             = {10.1145/3528223.3530168},
+  publisher       = {ACM}
+}`
 
 	return (
 		<Container className={classes.content}>
@@ -286,6 +301,12 @@ function Ears(props) {
 									controls={true}
 								/>
 							</Box>
+						</Grid>
+						<Grid
+							item
+							style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+						>
+							<BibtexEntry bibtexString={earsBibtex} />
 						</Grid>
 					</Grid>
 				</Grid>

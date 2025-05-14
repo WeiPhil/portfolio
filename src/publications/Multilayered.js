@@ -8,6 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import DescriptionIcon from "@mui/icons-material/Description";
 
+import BibtexEntry from "../components/BibtexEntry";
 import Footer from "../components/Footer";
 import AuthorBanner from "../components/AuthorBanner";
 
@@ -125,6 +126,20 @@ function Multilayered(props) {
       </StyledLink>, affiliations: ["Unity Technologies"]
     },
   ]
+
+  const multilayeredBibtex = `@article{Weier2020Layered,
+  author =       {Philippe Weier and Laurent Belcour}, 
+  title =        {Rendering Layered Materials with Anisotropic Interfaces},
+  year =         2020,
+  month =        {June},
+  day =          20,
+  journal =      {Journal of Computer Graphics Techniques (JCGT)},
+  volume =       9,
+  number =       2,
+  pages =        {37--57},
+  url =          {http://jcgt.org/published/0009/02/03/},
+  issn =         {2331-7418}
+}  `
 
   return (
     <Container className={classes.content}>
@@ -276,6 +291,12 @@ function Multilayered(props) {
                     overblurs the reflectance at grazing angles.
                   </i>
                 </Typography>
+              </Grid>
+              <Grid
+                item
+                style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+              >
+                <BibtexEntry bibtexString={multilayeredBibtex} />
               </Grid>
             </Grid>
           </Grid>

@@ -14,6 +14,7 @@ import { ReactComponent as ACMIcon } from './acm_icon.svg';
 
 import Footer from "../components/Footer";
 import AuthorBanner from "../components/AuthorBanner";
+import BibtexEntry from "../components/BibtexEntry";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -158,6 +159,18 @@ function NeuralLod(props) {
 			</StyledLink>, affiliations: ["DFKI"]
 		},
 	]
+
+	const neuralLodBibtex = `@article{Weier2024NeuralLod,
+  title = {Neural Prefiltering for Correlation-Aware Levels of Detail},
+  author = {Weier, Philippe and Zirr, Tobias and Kaplanyan, Anton and Yan, Ling-Qi and Slusallek, Philipp},
+  year = {2023},
+  month = aug,
+  journal = {ACM Trans. Graph.},
+  volume = {42},
+  number = {4},
+  issn = {0730-0301},
+  doi = {10.1145/3592443},
+}`
 
 	return (
 		<Container className={classes.content}>
@@ -353,6 +366,12 @@ function NeuralLod(props) {
 										controls={true}
 									/>
 								</Box>
+							</Grid>
+							<Grid
+								item
+								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+							>
+								<BibtexEntry bibtexString={neuralLodBibtex} />
 							</Grid>
 						</Grid>
 					</Grid>

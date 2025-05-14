@@ -14,6 +14,7 @@ import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
+import BibtexEntry from "../components/BibtexEntry";
 import AuthorBanner from "../components/AuthorBanner";
 import VideocamIcon from '@mui/icons-material/Videocam';
 
@@ -227,6 +228,17 @@ function PracticalReconstruction(props) {
 			</StyledLink>, affiliations: ["Google"]
 		},
 	]
+	const practicalReconstructionBibtex = `@article{Weier2025PracticalInverse,
+  title   = {Practical Inverse Rendering of Textured and Translucent Appearance},
+  author  = {Philippe Weier and J\\'{e}r\\'{e}my Riviere and Ruslan Guseinov and Stephan Garbin and Philipp Slusallek and Bernd Bickel and Thabo Beeler and Delio Vicini},
+  year    = 2025,
+  month   = aug,
+  journal = {Transactions on Graphics (Proceedings of SIGGRAPH)},
+  volume  = 44,
+  number  = 4,
+  doi     = {10.1145/3730855}
+}
+	`
 
 	const supplementalVideoRef = useRef(null);
 
@@ -705,6 +717,12 @@ function PracticalReconstruction(props) {
 										controls={true}
 									/>
 								</Box>
+							</Grid>
+							<Grid
+								item
+								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+							>
+								<BibtexEntry bibtexString={practicalReconstructionBibtex} />
 							</Grid>
 						</Grid>
 					</Grid>

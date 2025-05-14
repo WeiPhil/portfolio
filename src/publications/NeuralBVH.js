@@ -15,6 +15,7 @@ import ReactPlayer from "react-player";
 
 import Footer from "../components/Footer";
 import AuthorBanner from "../components/AuthorBanner";
+import BibtexEntry from "../components/BibtexEntry";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -164,6 +165,16 @@ function NeuralBVH(props) {
 			</StyledLink>, affiliations: ["Adobe"]
 		},
 	]
+
+	// no-useless-escape
+	const neuralBVHBibtex = `@inproceedings{Weier2024NeuralBVH,
+  author = {Philippe Weier and Alexander Rath and \\'{E}lie Michel and Iliyan Georgiev and Philipp Slusallek and Tamy Boubekeur},
+  title = {N-BVH: Neural ray queries with bounding volume hierarchies},
+  booktitle = {ACM SIGGRAPH 2024 Conference Proceedings},
+  year = {2024},
+  doi = {10.1145/3641519.3657464},
+  isbn = {979-8-4007-0525-0/24/07}
+}`
 
 	return (
 		<Container className={classes.content}>
@@ -356,6 +367,12 @@ function NeuralBVH(props) {
 										controls={true}
 									/>
 								</Box>
+							</Grid>
+							<Grid
+								item
+								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+							>
+								<BibtexEntry bibtexString={neuralBVHBibtex} />
 							</Grid>
 						</Grid>
 					</Grid>
