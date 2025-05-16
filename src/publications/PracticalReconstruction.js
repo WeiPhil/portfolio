@@ -184,8 +184,8 @@ function PracticalReconstruction(props) {
 	// 	"Presentation (with Speaker Notes)",
 	// ];
 	const [githubLink, githubLabel] = [
-		"https://github.com/WeiPhil/practical_reconstruction",
-		"Code (soon available)",
+		"https://github.com/google/practical-inverse-rendering-of-textured-and-translucent-appearance",
+		"Code",
 	];
 
 	const authorData = [
@@ -297,7 +297,6 @@ function PracticalReconstruction(props) {
 										color="secondary"
 										target="_blank"
 										href={githubLink}
-										disabled="True"
 									>
 										<GitHubIcon className={classes.icon} />
 										{githubLabel}
