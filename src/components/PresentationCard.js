@@ -100,8 +100,8 @@ function PresentationCard(props) {
                 gutterBottom
                 style={{ marginTop: 30 }}
               >
-                I'm currently a PhD student at the University of Saarland. My research focuses on appearance modelling and filtering, differentiable rendering and neural representations.<br />
-                Before that, I graduated with a Masters in Computer Science
+                I'm currently a PhD student at the University of Saarland and a Marie Sklodowska-Curie Fellow of the EU Project <StyledLink target="_blank" href="https://prime-itn.eu/">PRIME</StyledLink>. My research focuses on appearance modelling and filtering, differentiable rendering and neural representations.
+                During my PhD I also had the opportunity to intern at various companies including Intel, Adobe, Google and Meta. <br /> Before that, I graduated with a Masters in Computer Science
                 at the <StyledLink target="_blank" href="https://www.epfl.ch/">
                   École Polytechnique Fédérale de Lausanne (EPFL)
                 </StyledLink> and worked as a Rendering Researcher at <StyledLink target="_blank" href="https://www.wetafx.co.nz/">

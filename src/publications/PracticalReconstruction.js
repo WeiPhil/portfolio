@@ -7,7 +7,7 @@ import { Grid, Link, Button, Box, Container, CardContent } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DescriptionIcon from "@mui/icons-material/Description";
 import GitHubIcon from "@mui/icons-material/GitHub";
-// import SlideshowIcon from "@mui/icons-material/Slideshow";
+import SlideshowIcon from "@mui/icons-material/Slideshow";
 import { ReactComponent as ACMIcon } from './acm_icon.svg';
 
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
@@ -179,10 +179,10 @@ function PracticalReconstruction(props) {
 		"https://dl.acm.org/doi/10.1145/3730855",
 		"ACM Link",
 	];
-	// const [presentationLink, presentationLabel] = [
-	// 	"https://weiphil.s3.eu-central-1.amazonaws.com/nbvh_presentation.pptx",
-	// 	"Presentation (with Speaker Notes)",
-	// ];
+	const [presentationLink, presentationLabel] = [
+		"https://weiphil.s3.eu-central-1.amazonaws.com/practical_reconstruction_presentation.pptx",
+		"Presentation (with Speaker Notes) (472 MB)",
+	];
 	const [githubLink, githubLabel] = [
 		"https://github.com/google/practical-inverse-rendering-of-textured-and-translucent-appearance",
 		"Code",
@@ -366,7 +366,7 @@ function PracticalReconstruction(props) {
 										{supplementalViewerLabel}
 									</Button>
 								</Grid>
-								{/* <Grid item>
+								<Grid item>
 									<Button
 										variant="outlined"
 										color="secondary"
@@ -377,7 +377,7 @@ function PracticalReconstruction(props) {
 										<SlideshowIcon className={classes.icon} />
 										{presentationLabel}
 									</Button>
-								</Grid> */}
+								</Grid>
 
 								<Grid item>
 									<Button
@@ -386,7 +386,6 @@ function PracticalReconstruction(props) {
 										className={classes.button}
 										target="_blank"
 										href={acmLink}
-										disabled="True"
 									>
 										<ACMIcon className={classes.icon} fill='#585858' height='1.5rem' />
 										{acmLinkLabel}
