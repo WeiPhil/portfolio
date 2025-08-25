@@ -14,6 +14,7 @@ import Footer from "../components/Footer";
 import OpenInBrowser from "@mui/icons-material/OpenInBrowser";
 import AuthorBanner from "../components/AuthorBanner";
 import BibtexEntry from "../components/BibtexEntry";
+import Acknowledgments from "../components/Acknowledgments";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -307,6 +308,12 @@ function Ears(props) {
 							style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
 						>
 							<BibtexEntry bibtexString={earsBibtex} />
+						</Grid>
+						<Grid
+							item
+							style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+						>
+							<Acknowledgments />
 						</Grid>
 					</Grid>
 				</Grid>

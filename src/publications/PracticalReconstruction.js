@@ -17,6 +17,7 @@ import Footer from "../components/Footer";
 import BibtexEntry from "../components/BibtexEntry";
 import AuthorBanner from "../components/AuthorBanner";
 import VideocamIcon from '@mui/icons-material/Videocam';
+import Acknowledgments from '../components/Acknowledgments';
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -720,7 +721,13 @@ function PracticalReconstruction(props) {
 								item
 								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
 							>
-								<BibtexEntry bibtexString={practicalReconstructionBibtex} />
+								<BibtexEntry bibtexString={practicalReconstructionBibtex} withPRIME={true} />
+							</Grid>
+							<Grid
+								item
+								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+							>
+								<Acknowledgments />
 							</Grid>
 						</Grid>
 					</Grid>

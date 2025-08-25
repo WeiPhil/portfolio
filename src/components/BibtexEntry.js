@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Snackbar from '@mui/material/Snackbar';
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined'; // MUI copy icon
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'; // Optional: for success indication
+import { Box } from '@mui/material';
 
 const BibtexEntry = ({ bibtexString }) => {
     const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -89,6 +89,7 @@ const BibtexEntry = ({ bibtexString }) => {
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 />
             </Box>
+
         </div>
 
     );

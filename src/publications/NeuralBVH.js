@@ -16,6 +16,7 @@ import ReactPlayer from "react-player";
 import Footer from "../components/Footer";
 import AuthorBanner from "../components/AuthorBanner";
 import BibtexEntry from "../components/BibtexEntry";
+import Acknowledgments from "../components/Acknowledgments";
 
 const useStyles = makeStyles((theme) => ({
 	content: {
@@ -373,6 +374,12 @@ function NeuralBVH(props) {
 								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
 							>
 								<BibtexEntry bibtexString={neuralBVHBibtex} />
+							</Grid>
+							<Grid
+								item
+								style={smallWidth ? { marginTop: 20 } : { marginTop: 40 }}
+							>
+								<Acknowledgments />
 							</Grid>
 						</Grid>
 					</Grid>
