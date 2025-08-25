@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.785eb68e.css",
-    "main.js": "/portfolio/static/js/main.563eede4.js",
+    "main.js": "/portfolio/static/js/main.89c84810.js",
     "reactPlayerYouTube.js": "/portfolio/static/js/reactPlayerYouTube.1ea34014.chunk.js",
     "reactPlayerSoundCloud.js": "/portfolio/static/js/reactPlayerSoundCloud.3df0e607.chunk.js",
     "reactPlayerVimeo.js": "/portfolio/static/js/reactPlayerVimeo.6f023723.chunk.js",
@@ -32,10 +32,10 @@
     "static/media/teaser_small.png": "/portfolio/static/media/teaser_small.cd127d5a7cf94210e98d.png",
     "static/media/imageAndVideoProc.gif": "/portfolio/static/media/imageAndVideoProc.1e8a024aac2c9ce3c09c.gif",
     "static/media/procaryotaScreenshot.png": "/portfolio/static/media/procaryotaScreenshot.27c99c63fcca23e7e3df.png",
+    "static/media/resume.pdf": "/portfolio/static/media/resume.77e416ee1ee62113eae8.pdf",
     "static/media/gradient_filtering_limitation.png": "/portfolio/static/media/gradient_filtering_limitation.33b0ee6b85eec5f12900.png",
     "static/media/neural_lod_teaser.png": "/portfolio/static/media/neural_lod_teaser.98987f0c4eb97665cb8b.png",
     "static/media/deng_comparison.png": "/portfolio/static/media/deng_comparison.5c94739b2380915b2345.png",
-    "static/media/resume.pdf": "/portfolio/static/media/resume.ffa3bbf4923963169256.pdf",
     "static/media/fractal_thumbnail.png": "/portfolio/static/media/fractal_thumbnail.85ed1b43679ed9cedd69.png",
     "static/media/qulkanScreenshot.png": "/portfolio/static/media/qulkanScreenshot.0a0a035942e677c6a99b.png",
     "static/media/grazing_angles_overblur.png": "/portfolio/static/media/grazing_angles_overblur.866e28433cd82a4f5fc7.png",
@@ -45,7 +45,7 @@
     "static/media/acm_icon.svg": "/portfolio/static/media/acm_icon.ba305f3b330e75ea1f895c0d3fc88a11.svg",
     "index.html": "/portfolio/index.html",
     "main.785eb68e.css.map": "/portfolio/static/css/main.785eb68e.css.map",
-    "main.563eede4.js.map": "/portfolio/static/js/main.563eede4.js.map",
+    "main.89c84810.js.map": "/portfolio/static/js/main.89c84810.js.map",
     "reactPlayerYouTube.1ea34014.chunk.js.map": "/portfolio/static/js/reactPlayerYouTube.1ea34014.chunk.js.map",
     "reactPlayerSoundCloud.3df0e607.chunk.js.map": "/portfolio/static/js/reactPlayerSoundCloud.3df0e607.chunk.js.map",
     "reactPlayerVimeo.6f023723.chunk.js.map": "/portfolio/static/js/reactPlayerVimeo.6f023723.chunk.js.map",
@@ -63,6 +63,6 @@
   },
   "entrypoints": [
     "static/css/main.785eb68e.css",
-    "static/js/main.563eede4.js"
+    "static/js/main.89c84810.js"
   ]
 }
