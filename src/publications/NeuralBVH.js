@@ -169,13 +169,14 @@ function NeuralBVH(props) {
 
 	// no-useless-escape
 	const neuralBVHBibtex = `@inproceedings{Weier2024NeuralBVH,
-  author = {Philippe Weier and Alexander Rath and \\'{E}lie Michel and Iliyan Georgiev and Philipp Slusallek and Tamy Boubekeur},
-  title = {N-BVH: Neural ray queries with bounding volume hierarchies},
-  booktitle = {ACM SIGGRAPH 2024 Conference Proceedings},
-  year = {2024},
-  doi = {10.1145/3641519.3657464},
-  isbn = {979-8-4007-0525-0/24/07}
-}`
+		author = {Weier, Philippe and Rath, Alexander and Michel, \\'{E}lie and Georgiev, Iliyan and Slusallek, Philipp and Boubekeur, Tamy},
+		title = {N-BVH: Neural ray queries with bounding volume hierarchies},
+		booktitle = {ACM SIGGRAPH 2024 Conference Papers},
+		year = {2024},
+		isbn = {9798400705250},
+		url = {https://doi.org/10.1145/3641519.3657464},
+		doi = {10.1145/3641519.3657464},
+	}`
 
 	return (
 		<Container className={classes.content}>
