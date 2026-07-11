@@ -330,6 +330,30 @@ function ProjectsOverview({ classes }) {
     />
   );
 
+  const directionalHashDescription = (
+    <>
+      <Box fontWeight={500}>Abstract </Box>
+      In this work, we propose a new spatio-directional neural encoding that is compact and efficient, and supports all-frequency signals in both space and direction. Current learnable encodings focus on Cartesian orthonormal spaces, which have been shown to be useful for representing high-frequency signals in the spatial domain. However, directly applying these encodings in the directional domain results in distortions, singularities, and discontinuities. As a result, most related works have used more traditional encodings for the directional domain, which lack the expressivity of learnable neural encodings. We address this by proposing a new angular encoding that generalizes the hash-grid approach from Müller et al. [2022] to the directional domain by encoding directions using a hierarchical geodesic grid. Each vertex in the geodesic grid stores a learnable latent parameter, which is used to feed a neural network. Armed with this directional encoding, we propose a five-dimensional encoding for spatio-directional signals. We demonstrate that both encodings significantly outperform other hash-based alternatives. We apply our five-dimensional encoding in the context of neural path guiding, outperforming the state of the art by up to a factor of 2 in terms of variance reduction for the same number of samples.
+    </>
+  );
+  const directionalHashSubtitle = (
+    <>
+      <Box fontWeight={500} style={{ display: 'inline-block' }}>Philippe Weier</Box>, Lukas Bode, Philipp Slusallek, Adrián Jarabo, Sébastien Speierer, 2026
+      <Box fontWeight={500} fontSize="fontSize">
+        ACM SIGGRAPH 2026 (Conference Track)
+      </Box>
+    </>
+  );
+  const directionalHashProject = (
+    <ProjectCard
+      image={require("../data/directional_hash_encoding/teaser.png")}
+      title="Beyond Positional Encoding: A 5D Spatio-Directional Hash Encoding"
+      subtitle={directionalHashSubtitle}
+      description={directionalHashDescription}
+      projectPageLink="./directional_hash_encoding"
+    />
+  );
+
 
   // Personal Projects
 
@@ -382,7 +406,7 @@ function ProjectsOverview({ classes }) {
 
   ///////////////////////
 
-  const publications = [practicalReconstructionProject, nbvhProject, neuralLodProject, earsProject, opsrProject, layeredAnisoProject];
+  const publications = [directionalHashProject, practicalReconstructionProject, nbvhProject, neuralLodProject, earsProject, opsrProject, layeredAnisoProject];
   const personalProjects = [qulkanProject, procaryotaProject, lotrProject];
   const studyProjects = [cs440Project, imageAndVideoProject];
 

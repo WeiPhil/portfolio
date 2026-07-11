@@ -12,6 +12,7 @@ import theme from "./theme";
 import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PracticalReconstruction from "./publications/PracticalReconstruction";
+import DirectionalHashEncoding from "./publications/DirectionalHashEncoding";
 
 import ReactDOM from 'react-dom/client';
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -30,6 +31,7 @@ root.render(
         <Route exact path="/ears" element={<Ears />} />
         <Route exact path="/neural_lod" element={<NeuralLod />} />
         <Route exact path="/neural_bvh" element={<NeuralBVH />} />
+        <Route exact path="/directional_hash_encoding" element={<DirectionalHashEncoding />} />
         <Route exact path="/practical_reconstruction" element={<PracticalReconstruction />} />
         <Route exact path="/" element={<App />} />
         <Route exact path="/neural_lod_viewer" onEnter={reload} />
