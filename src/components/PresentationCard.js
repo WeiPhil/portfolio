@@ -100,7 +100,7 @@ function PresentationCard(props) {
                 gutterBottom
                 style={{ marginTop: 30 }}
               >
-                I'm currently a PhD student at the University of Saarland and a Marie Sklodowska-Curie Fellow of the EU Project <StyledLink target="_blank" href="https://prime-itn.eu/">PRIME</StyledLink>. My research focuses on appearance modelling and filtering, differentiable rendering and neural representations.
+                I am currently a Research Scientist at Google Zurich. Previously, I did my PhD at the University of Saarland, where I was a Marie Sklodowska-Curie Fellow of the EU Project <StyledLink target="_blank" href="https://prime-itn.eu/">PRIME</StyledLink> under the supervision of Philipp Slusallek. My research focuses on appearance modelling and filtering, differentiable rendering and neural representations.
                 During my PhD I also had the opportunity to intern at various companies including Intel, Adobe, Google and Meta. <br /> Before that, I graduated with a Masters in Computer Science
                 at the <StyledLink target="_blank" href="https://www.epfl.ch/">
                   École Polytechnique Fédérale de Lausanne (EPFL)
@@ -117,7 +117,7 @@ function PresentationCard(props) {
               >
                 In my free time, when not programming some toy project, I like to play
                 all sorts of instruments, including the euphonium, the trumpet and the
-                saxophone. You might also see me paint miniatures, climbing walls or cycling :)
+                saxophone. You might also see me paint miniatures, climbing walls or surfing :)
               </Typography>
               <Typography
                 variant="subtitle1"
