@@ -111,12 +111,12 @@ function DirectionalHashEncoding(props) {
 			</StyledLink>, affiliations: ["Saarland University, Germany"]
 		},
 		{
-			name: <StyledLink href="http://giga.cps.unizar.es/~ajarabo">
+			name: <StyledLink href="https://scholar.google.com/citations?user=pXKBhbkAAAAJ&hl=en">
 				Adrián Jarabo
 			</StyledLink>, affiliations: ["Meta, Spain"]
 		},
 		{
-			name: <StyledLink href="https://sebastien-speierer.github.io/">
+			name: <StyledLink href="https://speierers.github.io/">
 				Sébastien Speierer
 			</StyledLink>, affiliations: ["Meta, Switzerland"]
 		},
