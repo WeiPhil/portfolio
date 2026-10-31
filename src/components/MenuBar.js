@@ -1,38 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Slide from "@mui/material/Slide";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  useScrollTrigger,
+  Slide,
+  IconButton,
+  Box,
+  Container,
+  Tooltip,
+} from '@mui/material';
+import HomeIcon from '@mui/icons-material/HomeRounded';
+import SchoolIcon from '@mui/icons-material/School';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { Link as RouterLink } from 'react-router-dom';
+import { profileData } from '../data/portfolioData';
 
-import { makeStyles } from "@mui/styles";
-import IconButton from "@mui/material/IconButton";
-import HomeIcon from "@mui/icons-material/HomeRounded";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-
-const useStyles = makeStyles((theme) => ({
-  offset: theme.mixins.toolbar,
-  homebutton: {
-    marginRight: theme.spacing(2),
-  },
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
-
-function HideOnScroll(props) {
-  const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+function HideOnScroll({ children, window }) {
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -42,60 +30,101 @@ function HideOnScroll(props) {
 
 HideOnScroll.propTypes = {
   children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
 function MenuBar(props) {
-  const classes = useStyles();
-
   return (
     <div>
-      {/* // <React.Fragment> */}
       <HideOnScroll {...props}>
-        <AppBar className={classes.appbar}>
-          <Toolbar>
-            <IconButton
-              className={classes.homebutton}
-              color="inherit"
-              style={{ marginLeft: 10, marginRight: 30 }}
-              href={process.env.PUBLIC_URL + "/"}
-            >
-              <HomeIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Philippe Weier
-            </Typography>
+        <AppBar>
+          <Container maxWidth="lg" disableGutters>
+            <Toolbar sx={{ px: { xs: 1.5, sm: 3 } }}>
+              <IconButton
+                color="inherit"
+                component={RouterLink}
+                to="/"
+                sx={{ mr: 2 }}
+                aria-label="Home"
+              >
+                <HomeIcon />
+              </IconButton>
 
-            <IconButton
-              color="inherit"
-              target="_blank"
-              href="https://github.com/WeiPhil"
-            >
-              <GitHubIcon className={classes.icon}></GitHubIcon>
-            </IconButton>
-            <IconButton
-              color="inherit"
-              target="_blank"
-              href="https://ch.linkedin.com/in/philippe-weier-5125a2165"
-            >
-              <LinkedInIcon className={classes.icon}></LinkedInIcon>
-            </IconButton>
-            <IconButton
-              color="inherit"
-              target="_blank"
-              href="https://twitter.com/PhilippeWeier"
-            >
-              <TwitterIcon className={classes.icon}></TwitterIcon>
-            </IconButton>
-          </Toolbar>
+              <Typography
+                variant="h6"
+                component={RouterLink}
+                to="/"
+                sx={{
+                  flexGrow: 1,
+                  color: 'inherit',
+                  textDecoration: 'none',
+                  fontWeight: 600,
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                {profileData.name}
+              </Typography>
+
+              <Tooltip title="GitHub">
+                <IconButton
+                  color="inherit"
+                  component="a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={profileData.socials.github}
+                  aria-label="GitHub"
+                  sx={{ mx: 0.25 }}
+                >
+                  <GitHubIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Google Scholar">
+                <IconButton
+                  color="inherit"
+                  component="a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={profileData.socials.scholar}
+                  aria-label="Google Scholar"
+                  sx={{ mx: 0.25 }}
+                >
+                  <SchoolIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="LinkedIn">
+                <IconButton
+                  color="inherit"
+                  component="a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={profileData.socials.linkedin}
+                  aria-label="LinkedIn"
+                  sx={{ mx: 0.25 }}
+                >
+                  <LinkedInIcon />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="X / Twitter">
+                <IconButton
+                  color="inherit"
+                  component="a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={profileData.socials.twitter}
+                  aria-label="Twitter"
+                  sx={{ mx: 0.25 }}
+                >
+                  <TwitterIcon />
+                </IconButton>
+              </Tooltip>
+            </Toolbar>
+          </Container>
         </AppBar>
       </HideOnScroll>
-      <div className={classes.offset} />
-      {/* // </React.Fragment> */}
+      <Box sx={(theme) => ({ ...theme.mixins.toolbar })} />
     </div>
   );
 }

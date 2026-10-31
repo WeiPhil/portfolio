@@ -1,28 +1,21 @@
-import React from "react";
-import { makeStyles } from "@mui/styles";
-import { Divider, Typography } from "@mui/material";
+import React from 'react';
+import { Divider, Typography } from '@mui/material';
 
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    textAlign: "center",
-  },
-}));
-
-function Footer(props) {
-  const classes = useStyles();
-
+function Footer() {
   return (
     <React.Fragment>
       <Divider />
       <Typography
-        className={classes.footer}
+        sx={{
+          pt: '20px',
+          pb: '20px',
+          textAlign: 'center',
+        }}
         variant="subtitle1"
-        color="textSecondary"
+        color="text.secondary"
         gutterBottom
       >
-        © 2025 Philippe Weier
+        © 2026 Philippe Weier
       </Typography>
     </React.Fragment>
   );

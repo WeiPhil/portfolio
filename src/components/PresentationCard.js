@@ -1,152 +1,152 @@
-import React from "react";
-import { makeStyles, withStyles, useTheme } from "@mui/styles";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Grid, Link, Button, Icon } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import React from 'react';
+import {
+  Card,
+  CardMedia,
+  Typography,
+  Grid,
+  Link,
+  Button,
+  Box,
+  Stack,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import { profileData } from '../data/portfolioData';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: 50,
-    paddingTop: 60,
-    paddingBottom: 50,
-    [theme.breakpoints.down("sm")]: {
-      padding: 10,
-    },
-  },
-  card: {
-    marginTop: 15,
-    height: 250,
-    width: 180,
-    [theme.breakpoints.down("sm")]: {
-      height: 200,
-      width: 160,
-      margin: "0 auto",
-      marginTop: 30,
-    },
-  },
-  image: {
-    height: "100%",
-    maxWidth: "100%",
-  },
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  button: {
-    textTransform: "none",
-    marginTop: theme.spacing(3),
-  },
-}));
-
-const StyledLink = withStyles((theme) => ({
-  root: {
-    "&:hover": {
-      color: "#af7b6b",
-    },
-  },
-}))((props) => <Link underline="none" {...props} />);
-
-function PresentationCard(props) {
+function PresentationCard() {
   const theme = useTheme();
-  const classes = useStyles();
+  const smallWidth = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const smallWidth = useMediaQuery(theme.breakpoints.down("sm"));
+  const portraitCard = (
+    <Card
+      elevation={0}
+      sx={{
+        mt: smallWidth ? '24px' : '12px',
+        mb: smallWidth ? '8px' : 0,
+        height: smallWidth ? 210 : 255,
+        width: smallWidth ? 165 : 190,
+        mx: smallWidth ? 'auto' : 0,
+        borderRadius: 1.5,
+        border: '1px solid',
+        borderColor: 'divider',
+        boxShadow: '0 8px 20px -4px rgba(15, 23, 42, 0.1)',
+      }}
+    >
+      <CardMedia
+        sx={{ height: '100%', maxWidth: '100%' }}
+        image={profileData.avatar}
+        title="Philippe Weier"
+      />
+    </Card>
+  );
 
   return (
-    <div className={classes.root}>
+    <Box
+      sx={{
+        p: { xs: '24px 16px', sm: '52px 48px 44px 48px' },
+      }}
+    >
       <Grid
         container
-        direction={smallWidth ? "column" : "row"}
-        alignItems={smallWidth ? "center" : "flex-start"}
+        direction={smallWidth ? 'column' : 'row'}
+        alignItems={smallWidth ? 'center' : 'flex-start'}
+        spacing={smallWidth ? 0 : 4}
       >
         {!smallWidth && (
           <Grid item md={3}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.image}
-                image={require("../data/images/phil_picture.jpg")}
-                title="My Picture"
-              />
-            </Card>
+            {portraitCard}
           </Grid>
         )}
 
         <Grid item md={smallWidth ? true : 9}>
           <Grid container direction="column" alignItems="center">
-            <Grid item style={{ paddingTop: smallWidth ? 15 : 5 }}>
+            <Grid item sx={{ pt: smallWidth ? '8px' : '2px', width: '100%' }}>
               <Typography
-                component={smallWidth ? "h2" : "h4"}
-                variant={smallWidth ? "h3" : "h4"}
-                align={smallWidth ? "center" : "inherit"}
+                component={smallWidth ? 'h2' : 'h4'}
+                variant={smallWidth ? 'h3' : 'h4'}
+                align={smallWidth ? 'center' : 'inherit'}
                 gutterBottom
+                sx={{ fontWeight: 600 }}
               >
-                Philippe Weier
+                {profileData.name}
               </Typography>
 
-              {smallWidth && (
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.image}
-                    image={require("../data/images/phil_picture.jpg")}
-                    title="My Picture"
-                  />
-                </Card>
-              )}
+              {smallWidth && portraitCard}
 
               <Typography
                 variant="subtitle1"
-                color="textSecondary"
+                color="text.secondary"
                 gutterBottom
-                style={{ marginTop: 30 }}
+                sx={{ mt: '24px' }}
               >
-                I am currently a Research Scientist at Google Zurich. Previously, I did my PhD at the University of Saarland, where I was a Marie Sklodowska-Curie Fellow of the EU Project <StyledLink target="_blank" href="https://prime-itn.eu/">PRIME</StyledLink> under the supervision of Philipp Slusallek. My research focuses on appearance modelling and filtering, differentiable rendering and neural representations.
-                During my PhD I also had the opportunity to intern at various companies including Intel, Adobe, Google and Meta. <br /> Before that, I graduated with a Masters in Computer Science
-                at the <StyledLink target="_blank" href="https://www.epfl.ch/">
+                I am currently a Research Scientist at Google Zurich. Previously, I did my PhD at
+                the University of Saarland, where I was a Marie Skłodowska-Curie Fellow of the EU
+                Project{' '}
+                <Link target="_blank" rel="noopener noreferrer" href="https://prime-itn.eu/">
+                  PRIME
+                </Link>{' '}
+                under the supervision of Philipp Slusallek. My research focuses on appearance
+                modelling and filtering, differentiable rendering and neural representations. During
+                my PhD I also had the opportunity to intern at various companies including Intel,
+                Adobe, Google and Meta. <br /> Before that, I graduated with a Masters in Computer
+                Science at the{' '}
+                <Link target="_blank" rel="noopener noreferrer" href="https://www.epfl.ch/">
                   École Polytechnique Fédérale de Lausanne (EPFL)
-                </StyledLink> and worked as a Rendering Researcher at <StyledLink target="_blank" href="https://www.wetafx.co.nz/">
+                </Link>{' '}
+                and worked as a Rendering Researcher at{' '}
+                <Link target="_blank" rel="noopener noreferrer" href="https://www.wetafx.co.nz/">
                   Weta Digital
-                </StyledLink>, where I improved the performance of light transport algorithms in the in-house <StyledLink target="_blank" href="https://www.wetafx.co.nz/research-and-tech/technology/manuka/">
+                </Link>
+                , where I improved the performance of light transport algorithms in the in-house{' '}
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.wetafx.co.nz/research-and-tech/technology/manuka/"
+                >
                   Manuka Renderer
-                </StyledLink>.
+                </Link>
+                .
               </Typography>
+
               <Typography
                 variant="subtitle1"
-                color="textSecondary"
+                color="text.secondary"
                 gutterBottom
+                sx={{ mt: '12px' }}
               >
-                In my free time, when not programming some toy project, I like to play
-                all sorts of instruments, including the euphonium, the trumpet and the
-                saxophone. You might also see me paint miniatures, climbing walls or surfing :)
+                In my free time, when not programming some toy project, I like to play all sorts of
+                instruments, including the euphonium, the trumpet and the saxophone. You might also
+                see me paint miniatures, climbing walls or surfing :)
               </Typography>
+
               <Typography
                 variant="subtitle1"
-                color="textSecondary"
-                style={{ marginTop: 30, marginBottom: 30 }}
+                color="text.secondary"
+                sx={{ mt: '20px', mb: '24px' }}
               >
-                Feel free to{" "}
-                <StyledLink href="mailto:ph.weier@gmail.com">
-                  contact me
-                </StyledLink>{" "}
-                if you have any questions or simply want to chat.
+                Feel free to{' '}
+                <Link href={`mailto:${profileData.email}`}>contact me</Link> if you have any
+                questions or simply want to chat.
               </Typography>
             </Grid>
           </Grid>
+
           <Grid item>
             <Button
               variant="outlined"
               color="secondary"
-              className={classes.button}
               target="_blank"
-              href={require("../data/resume.pdf")}
+              rel="noopener noreferrer"
+              href={profileData.cvUrl}
             >
-              <Icon className={classes.icon}>description</Icon>
+              <DescriptionOutlinedIcon sx={{ mr: 1, fontSize: 20 }} />
               CV
             </Button>
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 }
 

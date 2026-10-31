@@ -1,50 +1,32 @@
 {
   "name": "portfolio",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
+  "type": "module",
+  "homepage": "https://weiphil.github.io/portfolio",
   "dependencies": {
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^6.4.11",
-    "@mui/material": "^6.4.11",
-    "@mui/styled-engine-sc": "^6.4.9",
-    "@mui/styles": "^6.4.11",
-    "markdown-to-jsx": "^7.7.6",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.5.0",
+    "@mui/material": "^6.5.0",
+    "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-player": "^2.9.0",
-    "react-router": "^7.6.0",
-    "react-router-dom": "^7.6.0",
-    "react-scripts": "^5.0.1",
-    "react-scroll-snapper": "^1.0.0",
-    "styled-components": "^6.1.18",
-    "yet-another-react-lightbox": "^3.23.0"
+    "react-router": "^7.18.5",
+    "react-router-dom": "^7.18.5",
+    "yet-another-react-lightbox": "^3.33.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "gh-pages": "^6.3.0",
+    "vite": "^8.3.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "homepage": "https://weiphil.github.io/portfolio",
-  "devDependencies": {
-    "gh-pages": "5.0.0"
   }
 }
