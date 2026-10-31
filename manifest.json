@@ -1,6 +1,6 @@
 {
-  "short_name": "Your Orders",
-  "name": "Your Orders",
+  "short_name": "Philippe Weier",
+  "name": "Philippe Weier — Research Portfolio",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0F172A",
+  "background_color": "#F8FAFC"
 }
